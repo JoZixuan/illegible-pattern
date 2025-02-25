@@ -90,11 +90,14 @@ background-color: white;
 }
 
 .float{
-    position:sticky;
     top:100px;
     margin-top: 900px;
     
 }
+.sticky{
+    position:sticky;
+}
+
 .skyblue{
     color:#469ae0;
 }
