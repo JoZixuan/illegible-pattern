@@ -1,33 +1,112 @@
-/*html, body {
-    height: 100%;
+ /* Default font sizes */
+:root {
+    --rem-size: 1rem; 
+    --h1-size: 16px;
+    --h2-size: 32px;
+    --rem-color: blue;
+    --px-color: red;
+    --h1-color: green;
+    --custom-cursor: url('dotcursor.svg') 10 10, auto;
 }
-body{
-    display:block;
-}*/
-* {
-    font-size: 18px;
-    /* background-color: grey;*/
-}
-
 
 @font-face {
     font-family: 'shape-font';
     src: url(SHAPE\ FONT.woff2);
 }
-
+ 
 body {
-
+    cursor: var(--custom-cursor); /* THIS IS NOT WORKING YET*/
+    font-size: 1rem;
+    color: #fff04b;
     word-break: break-word; /* Ensures unbroken words wrap */
     margin:0.5rem;/* outer most margin*/
     font-family:'shape-font';
     background-color:#f9f8f9;
      
 }
+/* Width & Height of the scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track (background of the scrollbar) */
+  ::-webkit-scrollbar-track {
+    background: #34d3ff;
+    border-radius: 10px;
+  }
+  
+  /* Handle (the draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: #fff04b;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff4a4a;
+  }
+
+/* !!!!!!!!!!!!!!!!!!   SLIDER STYLE SET UP   !!!!!!!!!!!!!!!!!!!! */
+.slider-container {
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); */
+    z-index: 1000;
+}
+
+/* Individual slider rows */
+.slider-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 250px;
+}
+
+.slider-group label {
+    flex: 1; /* Ensures label takes up space */
+    text-align: right;
+    font-weight: bold;
+}
+
+input[type="range"] {
+    flex: 2; /* Makes slider take up more space */
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Reset button */
+.reset-button {
+    margin-top: 5px;
+    padding: 5px 15px;
+    background: #34d3ff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+}
+
+.reset-button:hover {
+    background: #ff4a4a;
+}
+
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                !!!!!!!!!!!!!!!!!!CONTENT STARTS HERE!!!!!!!!!!!!!!!!!!!!!!          */
 
 .container{
     width: 100%;
     max-width: 100vw;
-    margin:0 auto;
+    margin:40px auto;
     display: flex;
     flex-flow: row;
     word-wrap: break-word;
@@ -52,24 +131,67 @@ p{
     font-size: 20px;
 
 }
-
-.h1{
-    min-width: 200px;
-    max-width: 600px;
-    font-size: 10rem;
-    letter-spacing: -0.1vw;
-    line-height: 80%;
-    margin: -0.5rem -2rem 0 -0.2rem;
+/* Dynamic text styles USE FOR REFERENCE TO CUSTOM ON TOP THESE SETTING*/
+/* .rem-text {
+    font-size: var(--rem-size);
+    color: var(--rem-color);
+    transition: all 0.3s ease-in-out;
 }
 
+.h1{
+    font-size: var(--h1-size);
+    color: var(--h1-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.h2 {
+    font-size: var(--h2-size);
+    color: var(--h2-color);
+    transition: all 0.3s ease-in-out;
+} */
+/* Edit t */
 .h2{
+    font-size: var(--h2-size);
+    color: var(--h2-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.yellowtextsetting{
+    min-width: 200px;
+    max-width: 600px;
+    font-size: var(--rem-size);
+    color: var(--rem-color);
+    letter-spacing: 0.01vw;
+    line-height: 80%;
+    margin: -0.5rem -2rem 0 -0.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.redtextsetting{
+    font-size: calc(var(--rem-size) * 10);
+    color: var(--rem-color);
+    transition: all 0.3s ease-in-out;
+    line-height: 90%;
+    margin-top: -30px;
+}
+
+.pinktextsetting{
     text-align: right;
     width: 40vw;
     right:-500px;
     top:10vw;
     align-self: center;
+    line-height: 100%;
+    font-size: var(--h1-size);
+    color: var(--h1-color);
+    transition: all 0.3s ease-in-out;
 }
 
+/* .greentextsetting{
+    font-size: var(--h1-size);
+    color: var(--h1-color);
+    transition: all 0.3s ease-in-out;
+} */
 .relative{
     font-size: 20vw;
     width: 600px;
@@ -103,7 +225,7 @@ background-color: white;
 }
 
 .pink{
-    color:#e4468d; 
+    color:#ff489a; 
 }
 
 .red{
@@ -125,3 +247,66 @@ background-color: white;
 .yellow{
     color: #f4dc51;
 }
+
+/* Slider Bar Color Customization */
+input[type="range"] {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #fff04b; /* Default right side color */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+ /* 🎨 Firefox Support */
+ input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Customize REM Slider (Blue) */
+/* #rem-slider {
+    background: #0099ff;
+} */
+/* 🎨 Customize the circular slider button */
+#rem-slider::-webkit-slider-thumb {
+    background: #f4dc51;
+}
+
+/* Customize H1 Slider (Red) */
+/* #h1-slider {
+    background:  #ff6666; 
+}*/
+/* 🎨 Customize the circular slider button */
+#h1-slider::-webkit-slider-thumb {
+    background: #ff489a;
+}
+
+/* Customize H2 Slider (Green) */
+/* #h2-slider {
+    background: #66ff66;
+} */
+/* 🎨 Customize the circular slider button */
+#h2-slider::-webkit-slider-thumb {
+    background: #318cd6;
+}
+
+/* Customize button size */
+input[type="range"]::-webkit-slider-thumb {
+height:25px;
+width: 25px;
+border-radius: 50%;
+cursor: pointer;
+-webkit-appearance: none;
+appearance: none;}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2); /* Slight increase on hover */
+}
+ 
