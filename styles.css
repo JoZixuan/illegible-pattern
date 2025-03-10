@@ -11,7 +11,7 @@
 
 @font-face {
     font-family: 'shape-font';
-    src: url(SHAPE\ FONT.woff2);
+    src: url(shape-font.woff2);
 }
  
 body {
@@ -310,3 +310,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
     transform: scale(1.2); /* Slight increase on hover */
 }
  
+/* EDITABLE TEXT */
+.editable {
+    outline: none;
+    cursor: text;
+}
+.editable:focus {
+    border: 1px dashed #999;
+}
