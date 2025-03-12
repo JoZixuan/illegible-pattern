@@ -48,7 +48,7 @@ body {
   }
 
 /* !!!!!!!!!!!!!!!!!!   SLIDER STYLE SET UP   !!!!!!!!!!!!!!!!!!!! */
-.slider-container {
+/* .slider-container {
     position: fixed;
     top: 5px;
     right: 10px;
@@ -59,8 +59,7 @@ body {
     padding: 15px;
     border-radius: 10px;
     /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); */
-    z-index: 1000;
-}
+  
 
 /* Individual slider rows */
 .slider-group {
@@ -82,22 +81,6 @@ input[type="range"] {
     transition: all 0.2s ease-in-out;
 }
 
-/* Reset button */
-.reset-button {
-    margin-top: 5px;
-    padding: 5px 15px;
-    background: #34d3ff;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.1s ease-in-out;
-}
-
-.reset-button:hover {
-    background: #ff4a4a;
-}
 
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -122,7 +105,6 @@ div p {
 p{
     position:relative;
     display: block;
-    background-color: rgb(255, 255, 255);/* box color*/
     margin:0 0.2rem;
     padding:0%;
     mix-blend-mode: multiply;
@@ -199,7 +181,6 @@ p{
     top:1vw;
     right:0;
     text-align: center;
-background-color: white;
 }
 
 .absolute{
@@ -207,7 +188,6 @@ background-color: white;
     text-align: justify;
     top:20vw;
     width: 30vw;
-    background-color: white;
     font-size: 65px;
 }
 
@@ -220,19 +200,32 @@ background-color: white;
     position:sticky;
 }
 
+
+/* COLOR PALETTE */
 .skyblue{
     color:#469ae0;
 }
-
+.skyblueback{
+    background-color:#469ae0;
+}
 .pink{
     color:#ff489a; 
+}
+.pinkback{
+    background-color:#ff489a; 
 }
 
 .red{
     color: #e83e26;
 }
+.redback{
+    background-color: #e83e26;
+}
 
 .green{
+    color:#37993d;
+}
+.greenback{
     color:#37993d;
 }
 
@@ -247,7 +240,9 @@ background-color: white;
 .yellow{
     color: #f4dc51;
 }
-
+.yellowback{
+    background-color: #f4dc51;
+}
 /* Slider Bar Color Customization */
 input[type="range"] {
     -webkit-appearance: none; /* Remove default styling */
@@ -297,7 +292,7 @@ input[type="range"] {
     background: #318cd6;
 }
 
-/* Customize button size */
+/* Customize Slider button size */
 input[type="range"]::-webkit-slider-thumb {
 height:25px;
 width: 25px;
@@ -316,7 +311,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     cursor: text;
 }
 .editable:focus {
-    border: 1px dashed #999;
+    border: 5px solid #fff04b;
 }
 
 /* BUTTON STYLING */
@@ -324,22 +319,38 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .button-container {
     display: flex;
     gap: 10px; /* Space between buttons */
-    margin-top: 20px; /* Adjust spacing */
+    margin-top: 10px; /* Adjust spacing */
+    z-index: 1000;
 }
 
-.styled-button {
-    background: #fff04b; /* Gradient background */
-    border: none;
-    color: lightseagreen;
-    font-size: 13px;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: box-shadow 0.2s;
-    font-weight: bold;
-}
-
-.styled-button:hover {
+/* .button {
+/* 
+.button:hover {
     background-color: #000;
-    box-shadow: 0px 2px 2px pink;
+} */ 
+
+/* Reset button */
+.reset-button {
+    top:10px;
+    min-width: 30px;
+    background: #34d3ff;
+    /* color: white;
+    font-weight: bold; */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+}
+
+.styled-button{
+    top:10px;
+    min-width: 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+}
+
+button:hover {
+    background: #ff4a4a;
 }
