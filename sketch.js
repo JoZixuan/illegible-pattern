@@ -1,8 +1,11 @@
 
-let myFont;
-function preload() {
-    myFont = loadFont('shape-variable-font.otf'); // Replace with your actual font path
-}
+// let myFont;
+// function preload() {
+//     myFont = loadFont('shape-variable-font.otf'); // Replace with your actual font path
+// }
+
+
+
 
 let canvasWidth = 800; // Set a default size
 let canvasHeight = 600;
@@ -19,6 +22,11 @@ function setup() {
     canvas.position(container ? container.offsetLeft : 0, container ? container.offsetTop : 0);
     console.log("Canvas Size:", canvasWidth, canvasHeight);
 }
+
+html2canvas(document.querySelector('.container')).then(img => {
+    let containerImage = img.getContext('2d');
+    image(containerImage, 0, 0, width, height); // Draw HTML onto p5.js canvas
+});
 
     function setup() {
     let canvas = createCanvas(canvasWidth, canvasHeight);

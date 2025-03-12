@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Illegible Website</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
-    <script src="sketch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas-add-mix-blend-mode@1.4.1/dist/html2canvas.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script> -->
+    <!-- <script src="sketch.js"></script> -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <!-- 
     <button id="download-png">Download PNG</button> -->
+    <div class="button-container">
+        <button id="save-svg-btn" class="styled-button">Save as SVG</button>
+        <button id="save-png-btn" class="styled-button">Save as PNG</button>
+    </div>
+
 
     <div class="slider-container">
         <!-- REM Size Slider -->
@@ -45,7 +51,7 @@
 
       <!-- A BIG CONTAINER -->
 
-    <div class="container">
+    <div id="blended-content" class="container">
 
          <!-- section 1 -->
 
@@ -160,6 +166,64 @@ makingmeetingmakingmeetingmakingmakingmeetingmakingmeetingmaking makingmeetingma
                 p.style.lineHeight = this.value;
             });
         });
+
+        
+
+        document.getElementById("save-svg-btn").addEventListener("click", saveAsSVG);
+
+function saveAsSVG() {
+    let targetElement = document.querySelector("#blended-content"); // Update this ID to match your content
+    let width = targetElement.offsetWidth;
+    let height = targetElement.offsetHeight;
+
+    // Create a canvas
+    let canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    let ctx = canvas.getContext("2d");
+
+    // Use html2canvas to capture blended content
+    html2canvas(targetElement, {
+        backgroundColor: null,
+        useCORS: true
+    }).then(canvas => {
+        let imgData = canvas.toDataURL("image/png");
+
+        // Wrap image in SVG
+        let svgContent = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+            <image href="${imgData}" width="${width}" height="${height}" />
+        </svg>`;
+
+        let blob = new Blob([svgContent], { type: "image/svg+xml;charset=utf-8" });
+        let url = URL.createObjectURL(blob);
+
+        let a = document.createElement("a");
+        a.href = url;
+        a.download = "blended-output.svg";
+        a.click();
+        URL.revokeObjectURL(url);
+    });
+}
+
+/////////  save as png function /////////
+document.getElementById("save-png-btn").addEventListener("click", saveAsPNG);
+
+function saveAsPNG() {
+    let targetElement = document.querySelector(".container"); // Adjust selector if needed
+
+    html2canvas(targetElement, {
+        backgroundColor: null,
+        useCORS: true
+    }).then(canvas => {
+        let a = document.createElement("a");
+        a.href = canvas.toDataURL("image/png");
+        a.download = "blended-output.png";
+        a.click();
+    }).catch(error => {
+        console.error("Error capturing content:", error);
+    });
+}
 
     </script>
 </body>
