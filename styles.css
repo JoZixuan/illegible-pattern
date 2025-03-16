@@ -1,4 +1,4 @@
- /* Default font sizes */
+/* Default font sizes */
 :root {
     --rem-size: 1rem; 
     --h1-size: 16px;
@@ -13,7 +13,17 @@
     font-family: 'shape-font';
     src: url(shape-font.woff2);
 }
+
+@font-face {
+    font-family: authentic-sans-130;
+    src: url("AUTHENTIC SANS/AUTHENTICSans-130.woff2");
+}
  
+@font-face {
+    font-family: authentic-sans-60;
+    src: url("AUTHENTIC SANS/AUTHENTICSans-60.woff2");
+}
+
 body {
     cursor: var(--custom-cursor); /* THIS IS NOT WORKING YET*/
     font-size: 1rem;
@@ -107,34 +117,21 @@ p{
     display: block;
     margin:0 0.2rem;
     padding:0%;
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
 }
+
 .bodytext{
     font-size: 20px;
 
 }
-/* Dynamic text styles USE FOR REFERENCE TO CUSTOM ON TOP THESE SETTING*/
-/* .rem-text {
-    font-size: var(--rem-size);
-    color: var(--rem-color);
-    transition: all 0.3s ease-in-out;
-}
 
-.h1{
-    font-size: var(--h1-size);
-    color: var(--h1-color);
-    transition: all 0.3s ease-in-out;
-}
-
-.h2 {
-    font-size: var(--h2-size);
-    color: var(--h2-color);
-    transition: all 0.3s ease-in-out;
-} */
 /* Edit t */
+
+
 .h2{
     font-size: var(--h2-size);
     color: var(--h2-color);
+    line-height: 100%;
     transition: all 0.3s ease-in-out;
 }
 
@@ -144,9 +141,10 @@ p{
     font-size: var(--rem-size);
     color: var(--rem-color);
     letter-spacing: 0.01vw;
-    line-height: 80%;
+    line-height: 95%;
     margin: -0.5rem -2rem 0 -0.2rem;
     transition: all 0.3s ease-in-out;
+    padding-top: 10%;
 }
 
 .redtextsetting{
@@ -154,7 +152,7 @@ p{
     color: var(--rem-color);
     transition: all 0.3s ease-in-out;
     line-height: 90%;
-    margin-top: -30px;
+    padding-top: -110px;
 }
 
 .pinktextsetting{
@@ -169,16 +167,17 @@ p{
     transition: all 0.3s ease-in-out;
 }
 
-/* .greentextsetting{
+.greentextsetting{
     font-size: var(--h1-size);
     color: var(--h1-color);
     transition: all 0.3s ease-in-out;
-} */
+    line-height: 30%;
+}
 .relative{
     font-size: 20vw;
     width: 600px;
     position: realtive;
-    top:1vw;
+    top:-31vw;
     right:0;
     text-align: center;
 }
@@ -186,9 +185,12 @@ p{
 .absolute{
     position: absolute;
     text-align: justify;
-    top:20vw;
+    top:10vw;
     width: 30vw;
     font-size: 65px;
+    font-size: var(--h1-size);
+    color: var(--h1-color);
+    line-height: 50%;
 }
 
 .float{
@@ -201,12 +203,16 @@ p{
 }
 
 
-/* COLOR PALETTE */
+/* //////////////
+--------   COLOR PALETTE  -------- ////////*/
 .skyblue{
-    color:#469ae0;
+    color:#34d3ff;
+}
+.lightblueback{
+    background-color:#469ae0;
 }
 .skyblueback{
-    background-color:#469ae0;
+    background-color:#34d3ff;
 }
 .pink{
     color:#ff489a; 
@@ -223,20 +229,24 @@ p{
 }
 
 .green{
-    color:#37993d;
+    color:#3fbd48;
 }
 .greenback{
-    color:#37993d;
+    background-color:#3fbd48;
 }
 
 .ink{
-    color:#434239;
+    color:#969692;
 }
-
+.inkback{
+    background-color:#bcbcb9;
+}
 .darkblue{
     color:#318cd6;
 }
-
+.darkblueback{
+    background-color:#318cd6;
+}
 .yellow{
     color: #f4dc51;
 }
