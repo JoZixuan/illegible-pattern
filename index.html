@@ -8,6 +8,13 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script> -->
     <!-- <script src="sketch.js"></script> -->
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <!-- <script src="script.js"></script> -->
 </head>
 <body>
 
@@ -15,96 +22,169 @@
        
         
             <!--  第1个按钮：About page pop-up -->
-         <button id="about" class="styled-button pinkback"></button>  
+         <button id="about"> ? </button>  
 
             <!--  第2个按钮：Glyphs Chart -->
-         <button id="chart" class="styled-button greenback"></button>  
+         <button id="chart"> ! </button>  
          
-            <!--  第4个按钮：Change Shape font to Authentic Sans -->
-         <button id="meaning" class="styled-button inkback"></button>  
+            <!--  第3个按钮：Change Shape font to Authentic Sans -->
+         <button id="meaning" >字</button>
 
-            <!--  第3个按钮：Change multiply color to solid color -->
+
+            <!--  4：Change multiply color to solid color -->
          <button id="color-mode" class="styled-button darkblueback"></button>  
 
 
-            <!--  第5个按钮：SVG Download button-->
-         <button id="save-svg-btn" class="styled-button skyblueback"></button>   
-        
-            <!--  第6个按钮：PNG Download button-->
-         <button id="save-png-btn" class="styled-button yellowback"></button> 
+            <!--  5：Greyscale Button -->
+        <button id="greyscale" class="styled-button inkback"></button>  
+
+
+             <!--  6：Text Alignment button-->
+         <button id="text-alignment" class="styled-button yellowback"></button> 
 
           
          <!-- REM Size Slider -->
         <div class="slider-group">
             <label for="rem-slider"></label>
-            <input type="range" id="rem-slider" min="0.5" max="13" step="0.1" value="1">
+            <input type="range" id="rem-slider" min="0.5" max="30" step="0.1" value="1">
         </div>
 
         <!-- H1 Size Slider -->
         <div class="slider-group">
             <label for="h1-slider"></label>
-            <input type="range" id="h1-slider" min="10" max="1000" step="1" value="16">
+            <input type="range" id="h1-slider" min="10" max="200" step="1" value="16">
         </div>
 
         <!-- H2 Size Slider -->
         <div class="slider-group">
             <label for="h2-slider"></label>
-            <input type="range" id="h2-slider" min="10" max="800" step="1" value="32">
+            <input type="range" id="h2-slider" min="10" max="100" step="1" value="32">
         </div>
 
-        <!-- Line-height Slider for Paragraphs -->
+        <!-- Line-height Slider vertical spacing -->
         <div class="slider-group">
         <label for="line-height-slider"></label>
-        <input type="range" id="line-height-slider" min="1" max="3" step="0.01" value="2.5">
+        <input type="range" id="line-height-slider" min="0.1" max="3" step="0.01" value="1">
         </div>
 
-        <!-- Reset Button -->
+        <!-- letter spacing Slider horizontal spacing -->
+        <div class="slider-group">
+            <label for="letter-spacing-slider"></label>
+            <input type="range" id="letter-spacing-slider" min="-20" max="300" step="1" value="0">
+            </div>
+
+         <!--  7: Import image as background-->
+        <button id="import" class="styled-button darkblueback"></button>  
+
+
+          <!-- 8：SVG Download button-->
+            <!-- <button id="save-svg-btn" class="styled-button skyblueback"></button>    -->
+        
+        <!--  9：PNG Download button-->
+         <button id="save-png-btn" class="styled-button yellowback"></button> 
+
+          <!-- Reset Button -->
         <button class="reset-button"></button>  <!--  Reset  -->
+
+        <!-- 10: Advance Mode Button -->
+<button id="advance-mode-btn" class="control-input">!
+</button>
     </div>
 
 
  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Content starts here !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-      <!-- A BIG CONTAINER -->
+ <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Content starts here !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+ <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Content starts here !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+     
+ <!-- A BIG CONTAINER -->
 
     <div id="blended-content" class="container">
 
-         <!-- section 1 -->
+         <!-- Pattern 001 -->
 
-       <div> <p class="yellowtextsetting editable" contenteditable="true">
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWaWaWaWaWaWaWaWaWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWaWaWaWaWaWaW</p>
-        <p> kkkkkijijiijiaiiijjjjjiiijijjijiijkkkkkkkkakkkkkkkkaYZ56656kjkk561234563157461a234563157432156413245412663215641327461a234563145k4126jijiijkkakiiiikaijijjjjijj  </p> 
+         <div class="drag-wrapper box1" tabindex="0">
+            <div class="drag-box">
+                <p class="textstyle1">
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
+<div class="resize-handle"></div>
+            </div>
+         
 
-        <p> WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW     </p> </div>
+            <!-- Pattern 002 -->
+       <div class="drag-wrapper box2" tabindex="0">
+        <div class="drag-box">  <p> kkkkkijijiijiaiiijjjjjiiijijjijiijkkkkkkkkakkkkkkkkaYZ56656kjkk561234563157461a234563157432156413245412663215641327461a234563145k4126jijiijkkakiiiikaijijjjjijj  </p> </div>
+        <div class="resize-handle"></div></div>
 
+      
+
+          <!-- Pattern 003 -->
+
+    <div class="drag-wrapper box3" tabindex="0">
+        <div class="drag-box">
+        <p class="red redtextsetting" >
+        kWWYXGZWDWWYkZWWZWXG
+    </p> </div>
+    <div class="resize-handle"></div></div>
+   
+
+         <!-- Pattern 004 -->
         
- <!-- section 2 -->
-        
-        <div><p class="h2 editable" contenteditable="true"> 
-            QRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRQRASQRASRQRASRQRQRQSRSQRQSRQSRSRQSRSSSRQSQRSQRSQQRASQRASRQRSRSQRQSRQSRQRSRQSRSSSRQSQRSQQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQSSSRQSQRSQRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQR   </p>
-            
-            <p class= "pinktextsetting editable" contenteditable="true"> FLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyysrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLF</p>
+        <div class="drag-wrapper box4" tabindex="0">
+            <div class="drag-box">
+            <p class="h2"> 
+            QRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRQRASQRASRQRASRQRQRQSRSQRQSRQSRSRQSRSSSRQSQRSQRSQQRASQRASRQRSRSQRQSRQSRQRSRQSRSSSRQSQRSQQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQSSSRQSQRSQRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQR   </p></div>
+             <div class="resize-handle"></div>
+        </div>
 
-        </p> <p class= "green greentextsetting relative editable" contenteditable="true"> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+                  <!-- Pattern 005 -->
+
+            <div class="drag-wrapper box5" tabindex="0">
+                <div class="drag-box">
+                <p class= "green greentextsetting"> 
+                    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                </p></div>
+                <div class="resize-handle"></div>
+            </div>
+
+              <!-- Pattern 006 -->
+            <div class="drag-wrapper box6" tabindex="0"> 
+                <div class="drag-box"> 
+                <p class="textsetting6"> WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW  </p></div>
+                 <div class="resize-handle"></div>
+                </div>
+
+           
+              <!-- Pattern 007 -->
+            <div class="drag-wrapper box7" tabindex="0">
+                <div class="drag-box">
+                <p class= "pinktextsetting"> FLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyysrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLF</p></div>
+                <div class="resize-handle"></div>
+            </div>
+
+             <!-- Pattern 008 -->
         
-    <p class="absolute skyblue editable" contenteditable="true"> 
-        AIAIAIAIAIAIAIAIAIAAIIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAAIAIAIAIAIAAIAIAIAIAIAIAIAIAAIAIAIAIAIAIAAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAAIAIAIAAIAIAIAIAIAIAI
-    </p>
+    <div class="drag-wrapper box8" tabindex="0">
+        <div class="drag-box">
+        <p class="textsetting8 skyblue "> 
+        AIAIAIAIAIAIAIAIAIAAIIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAAIAIAIAIAIAAIAIAIAI
+    </p></div>
+    <div class="resize-handle"></div>
     </div>
 
 
-  <!-- section 3 -->
-    <div><p class="red redtextsetting editable" contenteditable="true">
-            kWWYXGZWDWWYkZWWZWXGDrXGDWWXCkjGDqYRZo
-        </p> </div>
-       
+
         
  <!-- section 4 -->
-        <div><p class="float ink editable" contenteditable="true">aaaaaaaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p></div>
+        <div class="drag-wrapper box9" tabindex="0">
+            <div class="drag-box">
+            <p class=" ink">aaaaaaaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p></div>
+            <div class="resize-handle"></div></div>
 
         
-    </div>   <!-- CONTAINER END -->
+    </div>   
+    <!---------- CONTAINER END ------->
 
+    
     <script>
         const remSlider = document.getElementById("rem-slider");
         const h1Slider = document.getElementById("h1-slider");
@@ -134,8 +214,10 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWaWaWaWaWaWaWaWaWWWWWWWWWWWWWWWWWWWWWWWWWWW
             document.documentElement.style.setProperty("--h2-color", getRandomColor());
         });
 
-        // Reset Button Functionality
+
+        ///// Reset Button Functionality///////
         resetButton.addEventListener("click", function () {
+            // Reset slider values
             remSlider.value = "1";
             h1Slider.value = "16";
             h2Slider.value = "32";
@@ -147,9 +229,26 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWaWaWaWaWaWaWaWaWWWWWWWWWWWWWWWWWWWWWWWWWWW
             document.documentElement.style.setProperty("--rem-color", "blue");
             document.documentElement.style.setProperty("--h1-color", "red");
             document.documentElement.style.setProperty("--h2-color", "green");
+
+            // Reset all <p> styles
+             document.querySelectorAll("p").forEach(p => {
+            p.style.lineHeight = "";
+            p.style.letterSpacing = "";
+            p.style.fontFamily = "shape-font";
+            p.style.textAlign = "left";
+            p.style.mixBlendMode = "multiply";
+            p.style.filter = "none";
+            p.style.opacity = "1";
+            p.classList.remove("shap-4");
+         });
+
+            // Reset slider visuals
+            sliders.forEach(slider => {
+                updateSliderBackground(slider);
+            });
         });
 
-           // Function to update the slider background
+        // Function to update the slider background
            function updateSliderBackground(slider) {
             let value = slider.value; // Get slider value
             let min = slider.min;
@@ -183,51 +282,84 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWaWaWaWaWaWaWaWaWWWWWWWWWWWWWWWWWWWWWWWWWWW
             });
         });
 
-        
-// SVG FUNCTION!!
-        document.getElementById("save-svg-btn").addEventListener("click", saveAsSVG);
+    // Update letter spacing dynamically
+        const letterSpacingSlider = document.getElementById("letter-spacing-slider");
 
-function saveAsSVG() {
-    let targetElement = document.querySelector("#blended-content"); // Update this ID to match your content
-    let width = targetElement.offsetWidth;
-    let height = targetElement.offsetHeight;
-
-    // Create a canvas
-    let canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
-    let ctx = canvas.getContext("2d");
-
-    // Use html2canvas to capture blended content
-    html2canvas(targetElement, {
-        backgroundColor: null,
-        useCORS: true
-    }).then(canvas => {
-        let imgData = canvas.toDataURL("image/png");
-
-        // Wrap image in SVG
-        let svgContent = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
-            <image href="${imgData}" width="${width}" height="${height}" />
-        </svg>`;
-
-        let blob = new Blob([svgContent], { type: "image/svg+xml;charset=utf-8" });
-        let url = URL.createObjectURL(blob);
-
-        let a = document.createElement("a");
-        a.href = url;
-        a.download = "blended-output.svg";
-        a.click();
-        URL.revokeObjectURL(url);
+    letterSpacingSlider.addEventListener("input", function () {
+    const percentage = this.value;
+    const emValue = percentage / 100;
+    document.querySelectorAll("p").forEach(p => {
+        p.style.letterSpacing = `${emValue}em`;
     });
-}
+});
 
-/////////  SAVE PNG function /////////
+// SVG FUNCTION!!
+//         document.getElementById("save-svg-btn").addEventListener("click", saveAsSVG);
+
+// function saveAsSVG() {
+//     let targetElement = document.querySelector("#blended-content"); // Update this ID to match your content
+    
+//     let rect = targetElement.getBoundingClientRect();
+// let width = rect.width;
+// let height = rect.height;
+
+//     // Create a canvas
+//     let canvas = document.createElement("canvas");
+//     canvas.width = width;
+//     canvas.height = height;
+//     let ctx = canvas.getContext("2d");
+// targetElement.offsetHeight; // forces reflow
+
+// // Force repaint on draggable elements by flattening styles
+// document.querySelectorAll(".drag-wrapper").forEach(el => {
+//     const computedStyle = window.getComputedStyle(el);
+//   el.style.left = computedStyle.left;
+//   el.style.top = computedStyle.top;
+//   el.style.transform = "none"; // Disable transform
+// });
+
+// // Force reflow
+// targetElement.offsetHeight;
+//     // Use html2canvas to capture blended content
+//     html2canvas(targetElement, {
+//         backgroundColor: null,
+//         useCORS: true
+//     }).then(canvas => {
+//         let imgData = canvas.toDataURL("image/png");
+
+//         // Wrap image in SVG
+//         let svgContent = `
+//         <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+//             <image href="${imgData}" width="${width}" height="${height}" />
+//         </svg>`;
+
+//         let blob = new Blob([svgContent], { type: "image/svg+xml;charset=utf-8" });
+//         let url = URL.createObjectURL(blob);
+
+//         let a = document.createElement("a");
+//         a.href = url;
+//         a.download = "blended-output.svg";
+//         a.click();
+//         URL.revokeObjectURL(url);
+//     });
+// }
+
+///////////  SAVE PNG function /////////
 document.getElementById("save-png-btn").addEventListener("click", saveAsPNG);
 
 function saveAsPNG() {
     let targetElement = document.querySelector(".container"); // Adjust selector if needed
 
+// Force repaint on draggable elements by flattening styles
+document.querySelectorAll(".drag-wrapper").forEach(el => {
+    const computedStyle = window.getComputedStyle(el);
+  el.style.left = computedStyle.left;
+  el.style.top = computedStyle.top;
+  el.style.transform = "none"; // Disable transform
+});
+
+// Force reflow
+targetElement.offsetHeight;
     html2canvas(targetElement, {
         backgroundColor: null,
         useCORS: true
@@ -241,13 +373,11 @@ function saveAsPNG() {
     });
 }
 
-    </script>
 
-    <!-- /////////////////////////////////////////////////////////
-     ----------------- [  ABOUT PAGE _ Pop-Up Window  ] -----------------
-     //////////////////////////////////////////////////////////////////////////-->
+     //////////////////////////////////////////////////////
+     ///----------------- [  ABOUT PAGE _ Pop-Up Window  ] -----------------
+     ///////////////////////////////////////////////////////////////////////
 
-    <script>
         document.getElementById("about").addEventListener("click", function () {
             let popup = document.getElementById("about-popup");
 
@@ -299,7 +429,7 @@ function saveAsPNG() {
             }
         });
 
-//  //////////////////////////////////////-------------------- [  GLYPHS CHART _ Pop-Up Window  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
+///////////////------- [  GLYPHS CHART _ Pop-Up Window  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
 document.getElementById("chart").addEventListener("click", function () {
             let popup = document.getElementById("about-popup");
 
@@ -391,8 +521,6 @@ document.getElementById("color-mode").addEventListener("click", function () {
     });
 });
 
-    </script>
-    <script>
         ////////////////////////
         //   --------     Function to play sound     --------  //////////////
 
@@ -402,9 +530,9 @@ document.getElementById("color-mode").addEventListener("click", function () {
         }
 
         // Assign different sounds to buttons
-        document.getElementById("save-svg-btn").addEventListener("click", function () {
-            playSound("audio/button1.wav");
-        });
+        // document.getElementById("save-svg-btn").addEventListener("click", function () {
+        //     playSound("audio/button1.wav");
+        // });
 
         document.getElementById("save-png-btn").addEventListener("click", function () {
             playSound("audio/button2.wav");
@@ -436,11 +564,10 @@ document.getElementById("color-mode").addEventListener("click", function () {
                 playSound("audio/click3.wav");
             });
         });
-    </script>
 
-    <!-- SHAP changes when clicked -->
- <script>
-//   <!-- toggle between shap 1 & 4 -->
+
+//  <!-- SHAP Variable Axis changes when clicked -->
+//   <!-- toggle between shap 1 rectangular  & 4 circular -->
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("p").forEach(p => {
         p.addEventListener("click", function () {
@@ -449,7 +576,172 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// // }); 
+
+//________________________<< Import Image as background  >>__________________
+// _____________________________________________________________________
+document.addEventListener("DOMContentLoaded", () => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.style.display = "none"; // Keep it hidden, but accessible via button
+
+    // Append file input to body
+    document.body.appendChild(fileInput);
+
+    // Get the import button
+    const importButton = document.getElementById("import");
+
+    // Click event to trigger file selection
+    importButton.addEventListener("click", () => {
+        fileInput.click();
+    });
+
+    // Handle file selection
+    fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.body.style.backgroundImage = `url('${e.target.result}')`;
+                document.body.style.backgroundSize = "100vw auto";
+                document.body.style.backgroundPosition = "top center";
+                document.body.style.backgroundRepeat = "no-repeat";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Drag and Drop functionality
+    document.body.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        document.body.style.opacity = "0.8";
+    });
+
+    document.body.addEventListener("dragleave", () => {
+        document.body.style.opacity = "1";
+    });
+
+    document.body.addEventListener("drop", (event) => {
+        event.preventDefault();
+        document.body.style.opacity = "1";
+
+        const file = event.dataTransfer.files[0];
+        if (file && file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.body.style.backgroundImage = `url('${e.target.result}')`;
+                document.body.style.backgroundSize = "100vw auto";
+                document.body.style.backgroundPosition = "top center";
+                document.body.style.backgroundRepeat = "no-repeat";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+//________________________<< Greyscale Function button >>_________________________ _____________________________________________________________________
+
+document.addEventListener("DOMContentLoaded", () => {
+    const greyscaleButton = document.getElementById("greyscale");
+    let isGreyscale = false;
+
+    greyscaleButton.addEventListener("click", () => {
+        isGreyscale = !isGreyscale;
+        document.querySelectorAll("p").forEach(p => {
+            if (isGreyscale) {
+                p.style.filter = "grayscale(100%)"; // Apply greyscale
+                p.style.opacity = "0.6"; // Reduce opacity slightly for effect
+            } else {
+                p.style.filter = "none"; // Remove greyscale
+                p.style.opacity = "1"; // Restore full opacity
+            }
+        });
+    });
+});
+
+//________________________<< Text Alignment Function button >>_________________________ _____________________________________________________________________
+
+document.addEventListener("DOMContentLoaded", () => {
+    const textAlignmentButton = document.getElementById("text-alignment");
+    const alignments = ["left", "center", "right"];
+    let currentAlignmentIndex = 0;
+
+    textAlignmentButton.addEventListener("click", () => {
+        currentAlignmentIndex = (currentAlignmentIndex + 1) % alignments.length;
+        document.querySelectorAll("p").forEach(p => {
+            p.style.textAlign = alignments[currentAlignmentIndex];
+        });
+    });
+});
+
+
+
+// TRYING JQuery drag edit and resize
+
+$(document).ready(function () {
+      $(".drag-wrapper").each(function () {
+        const $wrapper = $(this);
+        const $box = $wrapper.find(".drag-box");
+        const $handle = $wrapper.find(".resize-handle");
+
+        $wrapper.draggable({
+  containment: "#blended-content",
+  stop: function(event, ui) {
+    // On stop, apply absolute positioning instead of transform
+    $wrapper.css({
+      left: ui.position.left,
+      top: ui.position.top,
+      transform: "none"
+    });
+  }
+});
+
+        $box.on("dblclick", function () {
+          $box.attr("contenteditable", true).focus();
+          $wrapper.draggable("disable");
+        });
+
+        $box.on("blur", function () {
+          $box.removeAttr("contenteditable");
+          $wrapper.draggable("enable");
+        });
+
+        let isResizing = false;
+        let startX, startY, startWidth, startHeight;
+
+        $handle.on("mousedown", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          isResizing = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          startWidth = $wrapper.outerWidth();
+          startHeight = $wrapper.outerHeight();
+
+          $wrapper.draggable("disable");
+
+          $(document).on("mousemove.boxResize", function (e) {
+            if (!isResizing) return;
+            let newWidth = startWidth + (e.clientX - startX);
+            let newHeight = startHeight + (e.clientY - startY);
+            $wrapper.css({ width: newWidth + "px", height: newHeight + "px" });
+          });
+
+          $(document).on("mouseup.boxResize", function () {
+            isResizing = false;
+            $(document).off(".boxResize");
+            $wrapper.draggable("enable");
+          });
+        });
+      });
+    });
+
+    ///// 按钮跳转到advance mode .////
+    document.getElementById("advance-mode-btn").addEventListener("click", function () {
+    window.location.href = "advance.html";
+});
+
 </script>
 </body>
 </html>

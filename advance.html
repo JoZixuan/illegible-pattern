@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illegible Website</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas-add-mix-blend-mode@1.4.1/dist/html2canvas.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script> -->
+    <!-- <script src="sketch.js"></script> -->
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <!-- <script src="script.js"></script> -->
+</head>
+<body>
+
+    <div class="button-container">
+       
+        
+         <button id="about" class="control-input"> ? </button>  
+         <button id="chart" class="control-input"> ! </button>  
+         <button id="meaning" class="control-input" >字</button>
+         <button id="color-mode" class="styled-button darkblueback control-input"></button>  
+         <button id="greyscale" class="styled-button inkback control-input"></button>  
+         <button id="text-alignment" class="styled-button yellowback control-input"></button> 
+         <label class="toggle-wrapper">
+            <input type="checkbox" id="toggle-switch" class="control-input">
+            <span class="slider"></span>
+          </label>
+          
+         <!-- Font Size Slider -->
+        <div class="slider-group">
+            <label for="font-size-slider"></label>
+            <input type="range" id="font-size-slider" class="control-input" min="10" max="200" step="1" value="16">
+        </div>
+    
+        <!-- Line-height Slider vertical spacing -->
+        <div class="slider-group">
+        <label for="line-height-slider"></label>
+        <input type="range" id="line-height-slider"class="control-input" min="0.1" max="3" step="0.01" value="1">
+        </div>
+
+        <!-- letter spacing Slider horizontal spacing -->
+        <div class="slider-group">
+            <label for="letter-spacing-slider"></label>
+            <input type="range" id="letter-spacing-slider" class="control-input" min="-20" max="300" step="1" value="0">
+            </div>
+
+       
+        <button id="import" class="styled-button darkblueback control-input"></button>  
+        <button id="save-png-btn" class="styled-button yellowback control-input"></button> 
+        <button id="delete" class="control-input"><img src="delete.svg" /></button>  <!--  Reset  -->
+        <button id="go-back" class="control-input"><img src="u-turn.svg" />
+        </button>
+    </div>
+
+
+    
+ <!-- A BIG CONTAINER -->
+
+    <div id="blended-content" class="container">
+
+     
+
+
+        
+    </div>   <!---------- CONTAINER END ------->
+</body>
+
+
+<!----------------- JAVASCRIPT PART ------------------>
+<!----------------- JAVASCRIPT PART ------------------>
+<!----------------- JAVASCRIPT PART ------------------>
+    <script>
+       let startX, startY, isSelecting = false;
+let selections = [];
+let currentSelection = null;
+
+// Dummy text options
+const dummyTexts = [
+  "QRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRQRASQRASRQRASRQRQRQSRSQRQSRQSRSRQSRSSSRQSQRSQRSQQRASQRASRQRSRSQRQSRQSRQRSRQSRSSSRQSQRSQQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQSSSRQSQRSQRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQR",
+    "FLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLF",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "rsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrssrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsr",
+    "AIAIAIAIAIAIAIAIAIAAIIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAAIAIAIAIAIAAIAIAIAIAIAIAIAIAAIAIAIAIAIAIAAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAAIAIAIAAIAIAIAIAIAIAI",
+    "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWaWaWaWaWaWaWaWaWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWaWaWaWaWaWaW",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+];
+
+// Prevent default browser selection
+document.addEventListener("mousedown", (e) => {
+    // Ignore clicks on sliders, color picker, and input elements
+    if (e.target.closest(".control-input")) {
+        return; // Do nothing if interacting with UI elements
+    }
+    
+    if (!e.target.classList.contains("selection")) {
+        e.preventDefault(); // Only block text selection if not clicking on an editable box
+    }
+
+    if (e.button !== 0) return; // Ignore right-clicks or middle-clicks
+
+    let clickedElement = document.elementFromPoint(e.clientX, e.clientY);
+    if (clickedElement.closest(".selection")) {
+        currentSelection = clickedElement.closest(".selection");
+        updateSliders(currentSelection);
+        isSelecting = false;
+        return; // Prevent new selection when dragging an existing one
+    }
+
+    startX = e.clientX;
+    startY = e.clientY;
+    isSelecting = true;
+
+    document.addEventListener("mousemove", detectDrag);
+    document.addEventListener("mouseup", cancelIfNotDragged);
+});
+
+
+function detectDrag(e) {
+  if (!isSelecting) return;
+  if (Math.abs(e.clientX - startX) > 5 || Math.abs(e.clientY - startY) > 5) {
+    createSelection(startX, startY);
+    document.removeEventListener("mousemove", detectDrag);
+    document.removeEventListener("mouseup", cancelIfNotDragged);
+  }
+}
+
+function cancelIfNotDragged() {
+  isSelecting = false;
+  document.removeEventListener("mousemove", detectDrag);
+  document.removeEventListener("mouseup", cancelIfNotDragged);
+}
+
+function createSelection(x, y) {
+    
+    let selection = document.createElement("div");
+    selection.classList.add("selection");
+    selection.style.left = `${x}px`;
+    selection.style.top = `${y}px`;
+    selection.style.position = "absolute";
+    selection.style.backgroundColor = "transparent";
+    selection.style.lineHeight="0.9"
+    selection.style.mixBlendMode = "multiply";
+    selection.style.padding = "10px";
+    selection.style.minWidth = "50px";
+    selection.style.minHeight = "30px";
+    selection.style.resize = "both";
+    selection.style.overflow = "auto";
+    selection.style.fontFamily = "shape-font";
+    selection.tabIndex = 0;
+    selection.style.resize = "none"; // Disable native resizer
+    
+    const customHandle = document.createElement("div");
+    customHandle.classList.add("custom-resize-handle");
+    selection.customHandle = customHandle;
+    selection.appendChild(customHandle);
+
+    document.getElementById("blended-content").appendChild(selection);
+    $(selection).draggable({
+      containment: "#blended-content",
+      start: function () {
+        this.classList.add("dragging");
+      },
+      stop: function () {
+        this.classList.remove("dragging");
+      }
+    });
+    selections.push(selection);
+    currentSelection = selection;
+
+    selection.focus();
+
+    document.addEventListener("mousemove", resizeSelection);
+    document.addEventListener("mouseup", finalizeSelection);
+    enableCustomResize(selection);
+}
+
+function resizeSelection(e) {
+    if (!isSelecting) return;
+    let selection = currentSelection;
+
+    let endX = e.clientX;
+    let endY = e.clientY;
+
+    selection.style.width = `${Math.abs(endX - startX)}px`;
+    selection.style.height = `${Math.abs(endY - startY)}px`;
+    selection.style.left = `${Math.min(startX, endX)}px`;
+    selection.style.top = `${Math.min(startY, endY)}px`;
+    selection.tabIndex = 0; // allow programmatic focus
+selection.focus();
+}
+
+
+
+function finalizeSelection() {
+    isSelecting = false;
+    let selection = currentSelection;
+ 
+    if (!selection || selection.offsetWidth < 50 || selection.offsetHeight < 50) {
+        selection.remove();
+        selections.pop();
+        return;
+    }
+    
+    selection.tabIndex = 0; 
+    
+    const paragraph = document.createElement("p");
+   
+    paragraph.innerText = dummyTexts[Math.floor(Math.random() * dummyTexts.length)];
+    paragraph.style.margin = "0";
+    paragraph.style.padding = "0";
+    paragraph.style.whiteSpace = "pre-wrap";
+    paragraph.style.wordBreak = "break-word";
+    paragraph.style.outline = "none";
+    paragraph.style.cursor = "text";
+    paragraph.style.mixBlendMode = "inherit"; // inherit parent mix blend
+    paragraph.style.color = "inherit"; // inherit parent color
+    paragraph.style.font = "inherit"; // inherit all font styles
+    paragraph.setAttribute("contenteditable", "true");
+    paragraph.setAttribute("tabindex", "0");
+    
+    selection.setAttribute("contenteditable", "true");
+    selection.innerHTML = ""; // Clear any existing content
+    selection.setAttribute("tabindex", "0");
+    selection.focus();
+    selection.appendChild(paragraph);
+    selection.appendChild(selection.customHandle); // Re-append the resize handle
+    paragraph.focus();
+ 
+ 
+    selection.style.color = getRandomColor();
+    selection.style.fontSize = `${Math.floor(Math.random() * (200 - 16 + 1)) + 16}px`;
+    selection.style.display = "block";
+    selection.style.alignItems = "left";
+    selection.style.justifyContent = "left";
+    selection.style.textAlign = "left";
+    selection.style.overflow = "hidden";
+    selection.style.padding = "5px";
+    selection.style.wordBreak = "break-word";
+    selection.style.wordWrap = "break-word";
+    selection.style.fontFamily = "shape-font";
+    selection.style.fontVariationSettings = `'SHAP' 1`;
+ 
+    document.removeEventListener("mousemove", resizeSelection);
+    document.removeEventListener("mouseup", finalizeSelection);
+}
+
+
+
+function enableCustomResize(selection) {
+  const handle = selection.querySelector(".custom-resize-handle");
+  let isResizing = false, startX, startY, startWidth, startHeight;
+
+  handle.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    isResizing = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startWidth = selection.offsetWidth;
+    startHeight = selection.offsetHeight;
+
+    function onMouseMove(e) {
+      if (!isResizing) return;
+      const newWidth = startWidth + (e.clientX - startX);
+      const newHeight = startHeight + (e.clientY - startY);
+      selection.style.width = `${newWidth}px`;
+      selection.style.height = `${newHeight}px`;
+    }
+
+    function onMouseUp() {
+      isResizing = false;
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    }
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  });
+}
+
+// Sliders to edit current selection only
+document.getElementById("font-size-slider").addEventListener("input", function () {
+  if (currentSelection) currentSelection.style.fontSize = this.value + "px";
+});
+document.getElementById("line-height-slider").addEventListener("input", function () {
+  if (currentSelection) currentSelection.style.lineHeight = this.value;
+});
+document.getElementById("letter-spacing-slider").addEventListener("input", function () {
+  if (currentSelection) currentSelection.style.letterSpacing = this.value + "px";
+});
+
+
+// Sync sliders when clicking a selection
+document.addEventListener("click", (e) => {
+  const sel = e.target.closest(".selection");
+  if (sel) {
+    currentSelection = sel;
+    updateSliders(currentSelection);
+  }
+});
+
+function updateSliders(sel) {
+  const style = window.getComputedStyle(sel);
+  document.getElementById("font-size-slider").value = parseInt(style.fontSize);
+  document.getElementById("line-height-slider").value = parseFloat(style.lineHeight);
+  document.getElementById("letter-spacing-slider").value = parseFloat(style.letterSpacing);
+}
+
+function getRandomColor() {
+  return `#${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}`;
+}
+
+
+     //////////////////////////////////////////////////////
+     ///----------------- [  ABOUT PAGE _ Pop-Up Window  ] -----------------
+     ///////////////////////////////////////////////////////////////////////
+
+     document.getElementById("about").addEventListener("click", function () {
+            let popup = document.getElementById("about-popup");
+
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "about-popup";
+                popup.style.position = "fixed";
+                popup.style.width = "500px";
+                popup.style.maxHeight = "400px"; // Set max height
+                popup.style.overflow = "auto"; // Enable scroll bar when content is too long
+                popup.style.height = "auto";
+                popup.style.background = "#ff489a";
+                popup.style.color = "black";
+                popup.style.fontFamily = "authentic-sans-90"
+                popup.style.lineHeight = "120%"
+                popup.style.padding = "20px";
+                popup.style.textAlign = "left";
+                popup.style.top = "50%";
+                popup.style.left = "50%";
+                popup.style.outline = "5px solid #fff04b";
+                popup.style.transform = "translate(-50%, -50%)";
+                popup.style.zIndex = "1000";
+                popup.innerHTML = `
+      <span id="close-popup" style="
+          position: absolute;
+          top: 10px;
+          right: 15px;
+          cursor: pointer;
+          font-size: 20px;
+          font-weight: 100;">
+
+          ✕
+          
+          </span>
+          
+      <p style="margin-bottom: 20px;">ABOUT</p>
+       <p style="margin-bottom: 20px;"><span style="font-family: authentic-sans-130;">Illegible Text</span> is web pattern generator using illegible typography comprised of geometric elements.</p>
+             <p style="text-indent: 40px; margin-bottom: 20px; "> Try typing in some letters to design your own pattern!</p>
+                <p style=" margin-bottom: 20px; "> [this paragraph is placeholder text]Illegible Website is an experimental typography project exploring patterns generated by text using a custom variable font.Illegible Website is an experimental typography project exploring patterns generated by text using a custom variable font.Illegible Website is an experimental typography project exploring patterns generated by ts generated by text using a custom variable font tktkt ktktktk tktktktk tktktk tktktktk tktktktktktktk tktkt tktktktkt tktktkt tktktk tktk.</p>
+                   <p> This project is designed by Jo Zixuan in 2025 @RISD GD MFA</p>
+  `;
+                document.body.appendChild(popup);
+
+                document.getElementById("close-popup").addEventListener("click", function () {
+                    popup.remove();
+                });
+            } else {
+                popup.remove();
+            }
+        });
+
+///////////////------- [  GLYPHS CHART _ Pop-Up Window  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
+document.getElementById("chart").addEventListener("click", function () {
+            let popup = document.getElementById("about-popup");
+
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "about-popup";
+                popup.style.position = "fixed";
+                popup.style.width = "600px";
+                popup.style.maxHeight = "390px"; // Set max height
+                popup.style.overflow = "auto"; // Enable scroll bar when content is too long
+                popup.style.height = "auto";
+                popup.style.background = "#3fbd48";
+                popup.style.color = "black";
+                popup.style.fontFamily = "authentic-sans-90"
+                popup.style.fontSize = "13px"
+                popup.style.letterSpacing = "111%"
+                popup.style.color = "white"
+                popup.style.lineHeight = "120%"
+                popup.style.padding = "20px";
+                popup.style.paddingRight = "30px";
+               
+                popup.style.textAlign = "left";
+                popup.style.outline = "5px solid #fff04b";
+                popup.style.bottom = "0%";
+                popup.style.left = "0%";
+                // popup.style.top = "50%";
+                // popup.style.left = "50%";
+                // popup.style.transform = "translate(-50%, -50%)";
+                popup.style.zIndex = "1000";
+                popup.innerHTML = `
+      <span id="close-popup" style="
+          position: absolute;
+          top: 10px;
+          right: 15px;
+          cursor: pointer;
+          font-size: 20px;
+          font-weight: 100;">
+
+          ✕
+          
+          </span>
+          
+      <p style="margin-bottom: 5px;mix-blend-mode:normal;">Rectangular mode</p>
+      <img src="rectangular-chart.svg" alt='Chart explaining what the abstract shapes' correspoding keyboard input style=" width:600px;mix-blend-mode: normal;">
+      <p style="margin-top: 10px;margin-bottom: 5px;mix-blend-mode:normal">Circular mode</p>
+      <img src="circular-chart.svg" alt='Chart explaining what the abstract shapes' correspoding keyboard input style=" width:600px;mix-blend-mode: normal;">
+  `;
+                document.body.appendChild(popup);
+
+                document.getElementById("close-popup").addEventListener("click", function () {
+                    popup.remove();
+                });
+            } else {
+                popup.remove();
+            }
+        });
+
+
+//  //////////////////////////////////////
+// -------------------- [  Toggle between Shape and Meaning  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
+    
+
+document.getElementById("meaning").addEventListener("click", function () {
+    if (!currentSelection) return;
+    let currentFont = window.getComputedStyle(currentSelection).fontFamily;
+    currentSelection.style.fontFamily = currentFont.includes("shape-font") ? "authentic-sans-130" : "shape-font";
+});
+
+
+
+//  ///////////////////////////////////
+// -------------------- [  Toggle between Multiply and Solid  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
+    
+document.getElementById("color-mode").addEventListener("click", function () {
+    let paragraphs = document.querySelectorAll("p");
+    paragraphs.forEach(p => {
+        let currentBlendMode = window.getComputedStyle(p).mixBlendMode;
+        if (currentBlendMode === "multiply") {
+            p.style.mixBlendMode = "normal";
+        } else {
+            p.style.mixBlendMode = "multiply";
+        }
+    });
+});
+
+        ////////////////////////
+        //   --------     Function to play sound     --------  //////////////
+
+        function playSound(soundFile) {
+            let audio = new Audio(soundFile);
+            audio.play();
+        }
+
+        // Assign different sounds to buttons
+        // document.getElementById("save-svg-btn").addEventListener("click", function () {
+        //     playSound("audio/button1.wav");
+        // });
+
+        document.getElementById("save-png-btn").addEventListener("click", function () {
+            playSound("audio/button2.wav");
+        });
+
+        document.getElementById("chart").addEventListener("click", function () {
+            playSound("audio/button3.wav");
+        });
+
+        document.getElementById("about").addEventListener("click", function () {
+            playSound("audio/button4.wav");
+        });
+
+        document.getElementById("meaning").addEventListener("click", function () {
+            playSound("audio/button5.wav");
+        });
+
+        document.getElementById("color-mode").addEventListener("click", function () {
+            playSound("audio/button6.wav");
+        });
+
+        document.querySelector(".reset-button").addEventListener("click", function () {
+            playSound("audio/button8.wav");
+        });
+
+        // Play sound effect when slider thumb is released
+        document.querySelectorAll("input[type='range']").forEach(slider => {
+            slider.addEventListener("change", function () {
+                playSound("audio/click3.wav");
+            });
+        });
+
+
+//  <!-- SHAP Variable Axis changes when clicked -->
+//   <!-- toggle between shap 1 rectangular  & 4 circular -->
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("p").forEach(p => {
+        p.addEventListener("click", function () {
+            this.classList.toggle("shap-4"); // Toggle the class
+        });
+    });
+});
+
+
+//________________________<< Import Image as background  >>__________________
+// _____________________________________________________________________
+document.addEventListener("DOMContentLoaded", () => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.style.display = "none"; // Keep it hidden, but accessible via button
+
+    // Append file input to body
+    document.body.appendChild(fileInput);
+
+    // Get the import button
+    const importButton = document.getElementById("import");
+
+    // Click event to trigger file selection
+    importButton.addEventListener("click", () => {
+        fileInput.click();
+    });
+
+    // Handle file selection
+    fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.body.style.backgroundImage = `url('${e.target.result}')`;
+                document.body.style.backgroundSize = "100vw auto";
+                document.body.style.backgroundPosition = "top center";
+                document.body.style.backgroundRepeat = "no-repeat";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Drag and Drop functionality
+    document.body.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        document.body.style.opacity = "0.8";
+    });
+
+    document.body.addEventListener("dragleave", () => {
+        document.body.style.opacity = "1";
+    });
+
+    document.body.addEventListener("drop", (event) => {
+        event.preventDefault();
+        document.body.style.opacity = "1";
+
+        const file = event.dataTransfer.files[0];
+        if (file && file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.body.style.backgroundImage = `url('${e.target.result}')`;
+                document.body.style.backgroundSize = "100vw auto";
+                document.body.style.backgroundPosition = "top center";
+                document.body.style.backgroundRepeat = "no-repeat";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+//save png function//
+document.getElementById("save-png-btn").addEventListener("click", function () {
+    playSound("audio/button2.wav");
+
+    const target = document.getElementById("blended-content");
+
+    const paragraphs = target.querySelectorAll(".selection p");
+    const originalSettings = [];
+
+    paragraphs.forEach(p => {
+        const selection = p.closest(".selection");
+        const val = selection.style.fontVariationSettings || "'SHAP' 1";
+        originalSettings.push({
+            el: p,
+            fontVariationSettings: p.style.fontVariationSettings
+        });
+        p.style.fontVariationSettings = val;
+    });
+
+    html2canvas(target, {
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: null
+    }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "illegible-pattern.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+
+        // Restore original inline styles
+        originalSettings.forEach(({ el, fontVariationSettings }) => {
+            el.style.fontVariationSettings = fontVariationSettings;
+        });
+    });
+});
+//________________________<< Greyscale Function button >>_________________________ _____________________________________________________________________
+
+document.addEventListener("DOMContentLoaded", () => {
+    const greyscaleButton = document.getElementById("greyscale");
+    let isGreyscale = false;
+
+    greyscaleButton.addEventListener("click", () => {
+        isGreyscale = !isGreyscale;
+        document.querySelectorAll("p").forEach(p => {
+            if (isGreyscale) {
+                p.style.filter = "grayscale(100%)"; // Apply greyscale
+                p.style.opacity = "0.6"; // Reduce opacity slightly for effect
+            } else {
+                p.style.filter = "none"; // Remove greyscale
+                p.style.opacity = "1"; // Restore full opacity
+            }
+        });
+    });
+});
+
+//________________________<< Text Alignment Function button >>_________________________ _____________________________________________________________________
+
+document.addEventListener("DOMContentLoaded", () => {
+    const textAlignmentButton = document.getElementById("text-alignment");
+    const alignments = ["left", "center", "right"];
+    let currentAlignmentIndex = 0;
+
+    textAlignmentButton.addEventListener("click", () => {
+        currentAlignmentIndex = (currentAlignmentIndex + 1) % alignments.length;
+        document.querySelectorAll("p").forEach(p => {
+            p.style.textAlign = alignments[currentAlignmentIndex];
+        });
+    });
+});
+
+//Improve Click Handling
+document.addEventListener("click", (e) => {
+  const sel = e.target.closest(".selection");
+  if (sel) {
+    currentSelection = sel;
+    updateSliders(currentSelection);
+    updateToggleFromSelection(currentSelection);
+  }
+});
+    
+// Inject custom styles for selection and custom resize handle
+const style = document.createElement('style');
+style.textContent = `
+.selection {
+  cursor: text;
+  position: relative;
+}
+
+.selection:focus-within,
+.selection:hover {
+    outline: 3px dotted rgb(255, 105, 188);
+    outline-offset: -3px;
+}
+
+.custom-resize-handle {
+  width: 17px;
+  height: 17px;
+  background: hotpink;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+  display: none;
+}
+
+.selection:hover .custom-resize-handle,
+.selection:focus-within .custom-resize-handle {
+  display: block;
+}
+ .selection:hover {
+   cursor: grab;
+ }
+ .selection.dragging {
+   cursor: grabbing !important;
+ }
+`;
+document.head.appendChild(style);
+document.addEventListener("dblclick", (e) => {
+  if (e.target.matches(".selection p")) {
+    e.target.focus();
+  }
+});
+
+// Toggle SHAP axis using toggle switch
+document.getElementById("toggle-switch").addEventListener("change", function () {
+    if (currentSelection) {
+        const newVal = this.checked ? 4 : 1;
+        currentSelection.style.fontVariationSettings = `'SHAP' ${newVal}`;
+    }
+});
+
+// Sync toggle with current selection
+function updateToggleFromSelection(sel) {
+    const toggle = document.getElementById("toggle-switch");
+    const settings = window.getComputedStyle(sel).fontVariationSettings;
+    const shapValMatch = settings.match(/'SHAP'\s*(\d+(\.\d+)?)/);
+    if (shapValMatch) {
+        toggle.checked = parseFloat(shapValMatch[1]) === 4;
+    } else {
+        toggle.checked = false;
+    }
+}
+
+// Update toggle when selection is clicked
+document.addEventListener("click", (e) => {
+    const sel = e.target.closest(".selection");
+    if (sel) {
+        currentSelection = sel;
+        updateSliders(currentSelection);
+        updateToggleFromSelection(currentSelection);
+    }
+});
+
+    document.getElementById("go-back").addEventListener("click", function () {
+        window.location.href = "index.html";
+    });
+</script>
+
+</html>
