@@ -95,7 +95,7 @@ body {
 .slider-group {
     display: flex;
     align-items: center;
-    gap: 7px;
+   
     width: 350px;
 }
 
@@ -504,7 +504,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     filter:  invert(45%) sepia(99%) saturate(463%) hue-rotate(167deg) brightness(89%) contrast(86%);
 }
 #delete:hover{
-    filter:invert(99%) sepia(98%) saturate(1484%) hue-rotate(323deg) brightness(108%) contrast(91%);
+    filter:invert(71%) sepia(75%) saturate(5030%) hue-rotate(324deg) brightness(90%) contrast(104%);
 }
 
 button:hover {
@@ -527,7 +527,43 @@ button:hover {
     margin-top:0px;
 }
     
-
+/* color picker setting */
+input[type="color"] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    min-width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    padding: 0;
+    
+  }
+  
+  *:focus{
+    border-radius: 0;
+    outline: none;
+  }
+  
+  ::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  
+  ::-webkit-color-swatch{
+    border: 0;
+    border-radius: 0;
+  }
+  
+  ::-moz-color-swatch,
+  ::-moz-focus-inner{
+    border: 0;
+  }
+  
+  ::-moz-focus-inner{
+    padding: 0;
+  }
 /* JQUERY STYLING */
 
 

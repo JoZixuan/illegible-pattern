@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="iro.min.js"></script>
   <!-- <script src="script.js"></script> -->
 </head>
 <body>
@@ -31,7 +32,10 @@
             <input type="checkbox" id="toggle-switch" class="control-input">
             <span class="slider"></span>
           </label>
-          
+          <div id="picker1" class="control-input"></div>
+        <div id="picker2" class="control-input"></div>
+        <div id="picker3" class="control-input"></div>
+          <!-- <input type="color" id="color-picker" class="control-input" value="#FF0000"> -->
          <!-- Font Size Slider -->
         <div class="slider-group">
             <label for="font-size-slider"></label>
@@ -39,7 +43,7 @@
         </div>
     
         <!-- Line-height Slider vertical spacing -->
-        <div class="slider-group">
+        <div class="">
         <label for="line-height-slider"></label>
         <input type="range" id="line-height-slider"class="control-input" min="0.1" max="3" step="0.01" value="1">
         </div>
@@ -491,8 +495,12 @@ document.getElementById("color-mode").addEventListener("click", function () {
             playSound("audio/button6.wav");
         });
 
-        document.querySelector(".reset-button").addEventListener("click", function () {
+        document.getElementById("delete").addEventListener("click", function () {
             playSound("audio/button8.wav");
+            if (currentSelection) {
+                currentSelection.remove();
+                currentSelection = null;
+            }
         });
 
         // Play sound effect when slider thumb is released
@@ -731,6 +739,52 @@ document.addEventListener("click", (e) => {
 
     document.getElementById("go-back").addEventListener("click", function () {
         window.location.href = "index.html";
+    });
+
+    ///test out spcial color pick///
+    var colorPicker = new iro.ColorPicker('#picker1',{
+        width: 100,
+        // Set the initial color to pure red
+        color: "#f00",
+        layout: [
+            { 
+            component: iro.ui.Slider,
+            options: {
+                sliderType: 'hue',
+                // sliderType: 'saturation',
+                // sliderType: 'value',
+            }
+            },
+        ]
+    });
+    var colorPicker = new iro.ColorPicker('#picker2',{
+        width: 100,
+        // Set the initial color to pure red
+        color: "#f00",
+        layout: [
+            { 
+            component: iro.ui.Slider,
+            options: {
+               
+                sliderType: 'saturation',
+              
+            }
+            },
+        ]
+    });
+    var colorPicker = new iro.ColorPicker('#picker3',{
+        width: 100,
+        // Set the initial color to pure red
+        color: "#f00",
+        layout: [
+            { 
+            component: iro.ui.Slider,
+            options: {
+               
+                sliderType: 'value',
+            }
+            },
+        ]
     });
 </script>
 
