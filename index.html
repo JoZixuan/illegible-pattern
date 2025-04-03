@@ -17,7 +17,11 @@
   <script src="iro.min.js"></script>
   <!-- <script src="script.js"></script> -->
 </head>
-<body>
+<body> 
+    <!-- <div id="loader-wrapper">
+        <div id="loader">
+        <div class="loading-text" id="loading-text"></div>
+          </div>     </div>    -->
 
     <div class="button-container">
        
@@ -47,13 +51,13 @@
          <!-- REM Size Slider -->
         <div class="slider-group">
             <label for="rem-slider"></label>
-            <input type="range" id="rem-slider" min="0.5" max="30" step="0.1" value="1">
+            <input type="range" id="rem-slider" min="0.5" max="20" step="0.1" value="1">
         </div>
 
         <!-- H1 Size Slider -->
         <div class="slider-group">
             <label for="h1-slider"></label>
-            <input type="range" id="h1-slider" min="10" max="200" step="1" value="16">
+            <input type="range" id="h1-slider" min="5" max="100" step="1" value="16">
         </div>
 
         <!-- H2 Size Slider -->
@@ -71,24 +75,25 @@
         <!-- letter spacing Slider horizontal spacing -->
         <div class="slider-group">
             <label for="letter-spacing-slider"></label>
-            <input type="range" id="letter-spacing-slider" min="-20" max="300" step="1" value="0">
+            <input type="range" id="letter-spacing-slider" min="-30" max="300" step="1" value="0">
             </div>
 
          <!--  7: Import image as background-->
-        <button id="import" class="styled-button darkblueback"></button>  
+        <button id="import" class="darkblueback"></button>  
 
 
           <!-- 8：SVG Download button-->
             <!-- <button id="save-svg-btn" class="styled-button skyblueback"></button>    -->
         
         <!--  9：PNG Download button-->
-         <button id="save-png-btn" class="styled-button yellowback"></button> 
+         <button id="save-png-btn" class="yellowback"></button> 
 
           <!-- Reset Button -->
-        <button class="reset-button"></button>  <!--  Reset  -->
+        <!-- <button class="reset-button"></button>   -->
 
+        <button id="delete"><img src="delete.svg" /></button> 
         <!-- 10: Advance Mode Button -->
-<button id="advance-mode-btn" class="control-input">!
+<button id="advance-mode-btn">!
 </button>
     </div>
 
@@ -106,14 +111,14 @@
          <div class="drag-wrapper box1" tabindex="0">
             <div class="drag-box">
                 <p class="textstyle1">
-WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
 <div class="resize-handle"></div>
             </div>
          
 
-            <!-- Pattern 002 -->
+
        <div class="drag-wrapper box2" tabindex="0">
-        <div class="drag-box">  <p> kkkkkijijiijiaiiijjjjjiiijijjijiijkkkkkkkkakkkkkkkkaYZ56656kjkk561234563157461a234563157432156413245412663215641327461a234563145k4126jijiijkkakiiiikaijijjjjijj  </p> </div>
+        <div class="drag-box">  <p class="textstyle2"> kkkkkijijiijiaiiijjjjjiiijijjijiijkkkkkkkkakkkkkkkkaYZ56656kjkk561234563157461a234563157432156413245412663215641327461a234563145k4126jijiijkkakiiiikaijijjjjijj  </p> </div>
         <div class="resize-handle"></div></div>
 
       
@@ -123,7 +128,7 @@ WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
     <div class="drag-wrapper box3" tabindex="0">
         <div class="drag-box">
         <p class="red redtextsetting" >
-        kWWYXGZWDWWYkZWWZWXG
+            AEFGnoSklmyWYXGZkZWWZWXG
     </p> </div>
     <div class="resize-handle"></div></div>
    
@@ -142,12 +147,12 @@ WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
             <div class="drag-wrapper box5" tabindex="0">
                 <div class="drag-box">
                 <p class= "green greentextsetting"> 
-                    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
                 </p></div>
                 <div class="resize-handle"></div>
             </div>
 
-              <!-- Pattern 006 -->
+              <!-- 黄色方格 -->
             <div class="drag-wrapper box6" tabindex="0"> 
                 <div class="drag-box"> 
                 <p class="textsetting6"> WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW  </p></div>
@@ -167,7 +172,7 @@ WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
     <div class="drag-wrapper box8" tabindex="0">
         <div class="drag-box">
         <p class="textsetting8 skyblue "> 
-        AIAIAIAIAIAIAIAIAIAAIIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAAIAIAIAIAIAAIAIAIAI
+            0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0EzozozozozozozozozozozozozozozozozoAIAIAIAIAIAIAIAIAIAAIIAIIAIAIAIAIAI
     </p></div>
     <div class="resize-handle"></div>
     </div>
@@ -180,17 +185,130 @@ WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
             <div class="drag-box">
             <p class=" ink">aaaaaaaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p></div>
             <div class="resize-handle"></div></div>
-
-        
     </div>   
     <!---------- CONTAINER END ------->
 
     
     <script>
+
+
+//loading animation
+const loader = document.getElementById('loader');
+    const textEl = document.getElementById('loading-text');
+    const fullText = '...loading ILLEGIBLE PATTERN';
+    const staticIndices = [0,1,2,10,19]; // "...", and spaces at positions 10 and 19
+    const textChars = fullText.split('');
+
+    function randomChar() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+      return chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    async function animateLoader() {
+      // 0.2s: Fade in grey bar
+      await new Promise(resolve => setTimeout(() => {
+        loader.style.opacity = 1;
+        resolve();
+      }, 200));
+
+      // 0.2s–2s: Typewriter effect
+      for (let i = 0; i < textChars.length; i++) {
+        await new Promise(r => setTimeout(r, (600 / textChars.length)));
+        textEl.textContent += textChars[i];
+        if (textEl.textContent.endsWith("loading")) {
+          await new Promise(r => setTimeout(r, 400));
+        }
+         if (textEl.textContent.endsWith("ILLEGIBLE")) {
+          await new Promise(r => setTimeout(r, 400));
+        }
+      }
+
+      textEl.style.opacity = 0.3;
+      await new Promise(r => setTimeout(r, 80));
+      textEl.style.opacity = 1;
+      await new Promise(r => setTimeout(r, 500));
+     
+      // 2s–4s: Start characters randomizing one by one from left to right, then let them all keep changing independently
+      const activeText = textEl.textContent.split('');
+      const animatingIndices = [];
+
+      // Launch each character's randomizer one by one
+      for (let i = 0; i < textChars.length; i++) {
+        if (!staticIndices.includes(i)) {
+          setTimeout(() => {
+            animatingIndices.push(i);
+          }, i * 20); // stagger each start by 40ms from left to right
+        }
+      }
+
+      // Continuously update any started characters
+      for (let t = 0; t < 50; t++) {
+        await new Promise(r => setTimeout(r, 40)); // refresh rate for visible glitching
+        for (let i of animatingIndices) {
+          activeText[i] = randomChar();
+        }
+        textEl.textContent = activeText.join('');
+
+        // At halfway point (after ~2s), change to ShapeFont
+        if (t === 30) textEl.style.fontFamily = 'shape-font';
+      }      
+
+      // 3s–4s: Continue randomizing (excluding static ones)
+      for (let i = 0; i < textChars.length; i++) {
+        if (staticIndices.includes(i)) continue;
+        await new Promise(r => setTimeout(r, (500 / textChars.length)));
+        const current = textEl.textContent.split('');
+        // for (let j = 0; j < 2; j++) {
+        //   current[i] = randomChar();
+        //   textEl.textContent = current.join('');
+        //   await new Promise(r => setTimeout(r, 20));
+        // }
+        textEl.textContent = current.join('');
+      }
+
+   await new Promise(r => setTimeout(r, 100));
+      // Final flicker of container
+      textEl.style.opacity = 0.3;
+      await new Promise(r => setTimeout(r, 100));
+      textEl.style.opacity = 1;
+      await new Promise(r => setTimeout(r, 100));
+      textEl.style.opacity = 0;
+      await new Promise(r => setTimeout(r, 200));
+      
+
+      // Hide loader and show main content
+      loader.style.opacity = 0;
+      await new Promise(r => setTimeout(r, 100));
+      document.getElementById('loader-wrapper').style.display = 'none';
+    }
+
+    window.addEventListener("pageshow", function (event) {
+  const loaderWrapper = document.getElementById("loader-wrapper");
+ 
+  // Show loader wrapper by default
+  loaderWrapper.style.display = "flex";
+ 
+  console.log("pageshow triggered");
+  console.log("event.persisted:", event.persisted);
+  console.log("sessionStorage loaderPlayed:", sessionStorage.getItem("loaderPlayed"));
+ 
+  // Skip loader if navigating back or loader already played
+  if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward" || sessionStorage.getItem("loaderPlayed")) {
+    console.log("Skipping loader");
+    loaderWrapper.style.display = "none";
+  } else {
+    console.log("Playing loader");
+    animateLoader().then(() => {
+      sessionStorage.setItem("loaderPlayed", "true");
+    });
+  }
+});
+    //animation ends
+
         const remSlider = document.getElementById("rem-slider");
         const h1Slider = document.getElementById("h1-slider");
         const h2Slider = document.getElementById("h2-slider");
-        const resetButton = document.querySelector(".reset-button");
+        // const resetButton = document.querySelector(".reset-button");
 
         // Random color generator
         function getRandomColor() {
@@ -216,38 +334,38 @@ WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
         });
 
 
-        ///// Reset Button Functionality///////
-        resetButton.addEventListener("click", function () {
-            // Reset slider values
-            remSlider.value = "1";
-            h1Slider.value = "16";
-            h2Slider.value = "32";
+        ///// Reset Button Functionality currentl commented out///////
+        // resetButton.addEventListener("click", function () {
+        //     // Reset slider values
+        //     remSlider.value = "1";
+        //     h1Slider.value = "16";
+        //     h2Slider.value = "32";
 
-            document.documentElement.style.setProperty("--rem-size", "1rem");
-            document.documentElement.style.setProperty("--h1-size", "16px");
-            document.documentElement.style.setProperty("--h2-size", "32px");
+        //     document.documentElement.style.setProperty("--rem-size", "1rem");
+        //     document.documentElement.style.setProperty("--h1-size", "16px");
+        //     document.documentElement.style.setProperty("--h2-size", "32px");
 
-            document.documentElement.style.setProperty("--rem-color", "blue");
-            document.documentElement.style.setProperty("--h1-color", "red");
-            document.documentElement.style.setProperty("--h2-color", "green");
+        //     document.documentElement.style.setProperty("--rem-color", "blue");
+        //     document.documentElement.style.setProperty("--h1-color", "red");
+        //     document.documentElement.style.setProperty("--h2-color", "green");
 
-            // Reset all <p> styles
-             document.querySelectorAll("p").forEach(p => {
-            p.style.lineHeight = "";
-            p.style.letterSpacing = "";
-            p.style.fontFamily = "shape-font";
-            p.style.textAlign = "left";
-            p.style.mixBlendMode = "multiply";
-            p.style.filter = "none";
-            p.style.opacity = "1";
-            p.classList.remove("shap-4");
-         });
+        //     // Reset all <p> styles
+        //      document.querySelectorAll("p").forEach(p => {
+        //     p.style.lineHeight = "";
+        //     p.style.letterSpacing = "";
+        //     p.style.fontFamily = "shape-font";
+        //     p.style.textAlign = "left";
+        //     p.style.mixBlendMode = "multiply";
+        //     p.style.filter = "none";
+        //     p.style.opacity = "1";
+        //     p.classList.remove("shap-4");
+        //  });
 
-            // Reset slider visuals
-            sliders.forEach(slider => {
-                updateSliderBackground(slider);
-            });
-        });
+        //     // Reset slider visuals
+        //     sliders.forEach(slider => {
+        //         updateSliderBackground(slider);
+        //     });
+        // });
 
         // Function to update the slider background
            function updateSliderBackground(slider) {
@@ -374,10 +492,42 @@ targetElement.offsetHeight;
     });
 }
 
+//advance mode popup
+     
+document.getElementById("advance-mode-btn").addEventListener("mouseover", function (event) {
+    console.log("Hovered over advance-mode-btn");
 
-     //////////////////////////////////////////////////////
-     ///----------------- [  ABOUT PAGE _ Pop-Up Window  ] -----------------
-     ///////////////////////////////////////////////////////////////////////
+    let popup = document.getElementById("advance-warning");
+    if (!popup) {
+        popup = document.createElement("div");
+        popup.id = "advance-warning";
+        
+        popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;">Really to proceed to advance mode? <br/><br/>Drag and drop to create your own pattern there!</p>`;
+        popup.style.width = "200px";
+        popup.style.position = "fixed";
+        popup.style.background = "#ff489a";
+        popup.style.color = "black";
+        popup.style.padding = "10px";
+        popup.style.border = "5px solid black";
+        popup.style.borderRadius = "25px";
+        popup.style.zIndex = "1000";
+        popup.style.pointerEvents = "none";
+         // Dynamically position the popup below the button
+        const rect = event.target.getBoundingClientRect();
+        popup.style.top = `${rect.bottom + window.scrollY + 15}px`;
+        popup.style.left = `${rect.left + window.scrollX - 200}px`;
+        document.body.appendChild(popup);
+    }
+});
+
+document.getElementById("advance-mode-btn").addEventListener("mouseleave", function () {
+    const popup = document.getElementById("advance-warning");
+    if (popup) {
+        popup.remove();
+    }
+});
+        //////////////////////////////////////////////////////////////////////////////////////////////
+     ///----------------- [  ABOUT PAGE _ Pop-Up Window  ] -----------------///////////////////////////////
 
         document.getElementById("about").addEventListener("click", function () {
             let popup = document.getElementById("about-popup");
@@ -414,11 +564,11 @@ targetElement.offsetHeight;
           
           </span>
           
-      <p style="margin-bottom: 20px;">ABOUT</p>
-       <p style="margin-bottom: 20px;"><span style="font-family: authentic-sans-130;">Illegible Text</span> is web pattern generator using illegible typography comprised of geometric elements.</p>
-             <p style="text-indent: 40px; margin-bottom: 20px; "> Try typing in some letters to design your own pattern!</p>
-                <p style=" margin-bottom: 20px; "> [this paragraph is placeholder text]Illegible Website is an experimental typography project exploring patterns generated by text using a custom variable font.Illegible Website is an experimental typography project exploring patterns generated by text using a custom variable font.Illegible Website is an experimental typography project exploring patterns generated by ts generated by text using a custom variable font tktkt ktktktk tktktktk tktktk tktktktk tktktktktktktk tktkt tktktktkt tktktkt tktktk tktk.</p>
-                   <p> This project is designed by Jo Zixuan in 2025 @RISD GD MFA</p>
+      <p class="pop-up" style="margin-bottom: 20px;">ABOUT</p>
+       <p class="pop-up" style="margin-bottom: 20px;"><span style="font-family: authentic-sans-130;">Illegible Text</span> is web pattern generator using illegible typography comprised of geometric elements.</p>
+             <p class="pop-up" style="text-indent: 40px; margin-bottom: 20px; ">Double click to type in your own pattern!<br></p>
+                <p class="pop-up" style=" margin-bottom: 20px;"> [this paragraph is placeholder text]Illegible Website is an experimental typography project exploring patterns generated by text using a custom variable font.Illegible Website is an experimental typography project exploring patterns generated by text using a custom variable font.Illegible Website is an experimental typography project exploring patterns generated by ts generated by text using a custom variable font tktkt ktktktk tktktktk tktktk tktktktk tktktktktktktk tktkt tktktktkt tktktkt tktktk tktk.</p>
+                   <p class="pop-up"> This project is designed by Jo Zixuan in 2025 @RISD GD MFA</p>
   `;
                 document.body.appendChild(popup);
 
@@ -432,11 +582,11 @@ targetElement.offsetHeight;
 
 ///////////////------- [  GLYPHS CHART _ Pop-Up Window  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
 document.getElementById("chart").addEventListener("click", function () {
-            let popup = document.getElementById("about-popup");
+            let popup = document.getElementById("chart-popup");
 
             if (!popup) {
                 popup = document.createElement("div");
-                popup.id = "about-popup";
+                popup.id = "chart-popup";
                 popup.style.position = "fixed";
                 popup.style.width = "600px";
                 popup.style.maxHeight = "390px"; // Set max height
@@ -473,9 +623,9 @@ document.getElementById("chart").addEventListener("click", function () {
           
           </span>
           
-      <p style="margin-bottom: 5px;mix-blend-mode:normal;">Rectangular mode</p>
+      <p class="pop-up" style="margin-bottom: 5px;mix-blend-mode:normal;">Rectangular mode</p>
       <img src="rectangular-chart.svg" alt='Chart explaining what the abstract shapes' correspoding keyboard input style=" width:600px;mix-blend-mode: normal;">
-      <p style="margin-top: 10px;margin-bottom: 5px;mix-blend-mode:normal">Circular mode</p>
+      <p class="pop-up" style="margin-top: 10px;margin-bottom: 5px;mix-blend-mode:normal">Circular mode</p>
       <img src="circular-chart.svg" alt='Chart explaining what the abstract shapes' correspoding keyboard input style=" width:600px;mix-blend-mode: normal;">
   `;
                 document.body.appendChild(popup);
@@ -504,6 +654,7 @@ document.getElementById("meaning").addEventListener("click", function () {
         }
     });
 });
+
 
 
 
@@ -555,8 +706,12 @@ document.getElementById("color-mode").addEventListener("click", function () {
             playSound("audio/button6.wav");
         });
 
-        document.querySelector(".reset-button").addEventListener("click", function () {
+        document.getElementById("delete").addEventListener("click", function () {
             playSound("audio/button8.wav");
+            if (currentSelection) {
+                currentSelection.remove();
+                currentSelection = null;
+            }
         });
 
         // Play sound effect when slider thumb is released
@@ -743,6 +898,33 @@ $(document).ready(function () {
     window.location.href = "advance.html";
 });
 
+ ///this goes at the end to play the animation when the user closes the tab or refreshes the page manually
+ window.addEventListener("beforeunload", function () {
+  sessionStorage.removeItem("loaderPlayed");
+});
+
+
+
+// Listen for clicks on any .drag-wrapper //Track current selection
+let currentSelection = null;
+document.querySelectorAll(".drag-wrapper").forEach(wrapper => {
+    wrapper.addEventListener("click", function () {
+        if (currentSelection) {
+            currentSelection.classList.remove("selected");
+        }
+        currentSelection = this;
+        currentSelection.classList.add("selected");
+    });
+});
+document.addEventListener("click", function (event) {
+    // If the clicked element is NOT inside a .drag-wrapper
+    if (!event.target.closest(".drag-wrapper")) {
+        if (currentSelection) {
+            currentSelection.classList.remove("selected");
+            currentSelection = null;
+        }
+    }
+});
 </script>
 </body>
 </html>

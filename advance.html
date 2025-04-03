@@ -18,6 +18,7 @@
   <!-- <script src="script.js"></script> -->
 </head>
 <body>
+ 
 
     <div class="button-container">
        
@@ -33,17 +34,15 @@
             <span class="slider"></span>
           </label>
           <div id="picker1" class="control-input"></div>
-        <div id="picker2" class="control-input"></div>
-        <div id="picker3" class="control-input"></div>
           <!-- <input type="color" id="color-picker" class="control-input" value="#FF0000"> -->
          <!-- Font Size Slider -->
         <div class="slider-group">
             <label for="font-size-slider"></label>
-            <input type="range" id="font-size-slider" class="control-input" min="10" max="200" step="1" value="16">
+            <input type="range" id="font-size-slider" class="control-input" min="10" max="800" step="1" value="16">
         </div>
     
         <!-- Line-height Slider vertical spacing -->
-        <div class="">
+        <div class="slider-group">
         <label for="line-height-slider"></label>
         <input type="range" id="line-height-slider"class="control-input" min="0.1" max="3" step="0.01" value="1">
         </div>
@@ -55,9 +54,9 @@
             </div>
 
        
-        <button id="import" class="styled-button darkblueback control-input"></button>  
-        <button id="save-png-btn" class="styled-button yellowback control-input"></button> 
-        <button id="delete" class="control-input"><img src="delete.svg" /></button>  <!--  Reset  -->
+        <button id="import" class="darkblueback control-input"></button>  
+        <button id="save-png-btn" class="yellowback control-input"></button> 
+        <button id="delete" class="control-input"><img src="delete.svg" /></button> 
         <button id="go-back" class="control-input"><img src="u-turn.svg" />
         </button>
     </div>
@@ -80,7 +79,8 @@
 <!----------------- JAVASCRIPT PART ------------------>
 <!----------------- JAVASCRIPT PART ------------------>
     <script>
-       let startX, startY, isSelecting = false;
+
+let startX, startY, isSelecting = false;
 let selections = [];
 let currentSelection = null;
 
@@ -112,6 +112,7 @@ document.addEventListener("mousedown", (e) => {
     if (clickedElement.closest(".selection")) {
         currentSelection = clickedElement.closest(".selection");
         updateSliders(currentSelection);
+        updateToggleFromSelection(currentSelection);
         isSelecting = false;
         return; // Prevent new selection when dragging an existing one
     }
@@ -173,6 +174,11 @@ function createSelection(x, y) {
       stop: function () {
         this.classList.remove("dragging");
       }
+    });
+    colorPicker.on('color:change', function(color) {
+        if (currentSelection) {
+            currentSelection.style.color = color.hexString;
+        }
     });
     selections.push(selection);
     currentSelection = selection;
@@ -249,6 +255,7 @@ function finalizeSelection() {
     selection.style.wordWrap = "break-word";
     selection.style.fontFamily = "shape-font";
     selection.style.fontVariationSettings = `'SHAP' 1`;
+    paragraph.style.fontVariationSettings = `'SHAP' 1`;
  
     document.removeEventListener("mousemove", resizeSelection);
     document.removeEventListener("mouseup", finalizeSelection);
@@ -300,20 +307,15 @@ document.getElementById("letter-spacing-slider").addEventListener("input", funct
 });
 
 
-// Sync sliders when clicking a selection
-document.addEventListener("click", (e) => {
-  const sel = e.target.closest(".selection");
-  if (sel) {
-    currentSelection = sel;
-    updateSliders(currentSelection);
-  }
-});
 
 function updateSliders(sel) {
   const style = window.getComputedStyle(sel);
   document.getElementById("font-size-slider").value = parseInt(style.fontSize);
   document.getElementById("line-height-slider").value = parseFloat(style.lineHeight);
   document.getElementById("letter-spacing-slider").value = parseFloat(style.letterSpacing);
+  const color = window.getComputedStyle(sel).color;
+  const rgba = color.match(/\d+/g).map(Number);
+  colorPicker.color.rgb = { r: rgba[0], g: rgba[1], b: rgba[2] };
 }
 
 function getRandomColor() {
@@ -593,13 +595,12 @@ document.getElementById("save-png-btn").addEventListener("click", function () {
     const originalSettings = [];
 
     paragraphs.forEach(p => {
-        const selection = p.closest(".selection");
-        const val = selection.style.fontVariationSettings || "'SHAP' 1";
+        const currentFontVariation = p.style.fontVariationSettings || getComputedStyle(p).getPropertyValue("font-variation-settings");
         originalSettings.push({
             el: p,
             fontVariationSettings: p.style.fontVariationSettings
         });
-        p.style.fontVariationSettings = val;
+        p.style.fontVariationSettings = currentFontVariation;
     });
 
     html2canvas(target, {
@@ -653,15 +654,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-//Improve Click Handling
-document.addEventListener("click", (e) => {
-  const sel = e.target.closest(".selection");
-  if (sel) {
-    currentSelection = sel;
-    updateSliders(currentSelection);
-    updateToggleFromSelection(currentSelection);
-  }
-});
+// //Improve Click Handling
+// document.addEventListener("click", (e) => {
+//   const sel = e.target.closest(".selection");
+//   if (sel) {
+//     currentSelection = sel;
+//     updateSliders(currentSelection);
+//     updateToggleFromSelection(currentSelection);
+//   }
+// });
     
 // Inject custom styles for selection and custom resize handle
 const style = document.createElement('style');
@@ -710,30 +711,39 @@ document.addEventListener("dblclick", (e) => {
 // Toggle SHAP axis using toggle switch
 document.getElementById("toggle-switch").addEventListener("change", function () {
     if (currentSelection) {
+        const paragraph = currentSelection.querySelector("p");
         const newVal = this.checked ? 4 : 1;
-        currentSelection.style.fontVariationSettings = `'SHAP' ${newVal}`;
+        if (paragraph) {
+            paragraph.style.fontVariationSettings = `'SHAP' ${newVal}`;
+        }
     }
 });
-
-// Sync toggle with current selection
+// Sync shape toggle with current selection
 function updateToggleFromSelection(sel) {
     const toggle = document.getElementById("toggle-switch");
-    const settings = window.getComputedStyle(sel).fontVariationSettings;
-    const shapValMatch = settings.match(/'SHAP'\s*(\d+(\.\d+)?)/);
-    if (shapValMatch) {
-        toggle.checked = parseFloat(shapValMatch[1]) === 4;
+    const paragraph = sel.querySelector("p");
+    if (!paragraph) {
+        toggle.checked = false;
+        return;
+    }
+
+    //  ensures it always reads the visible value, not just inline.
+    let settings = getComputedStyle(paragraph).getPropertyValue("font-variation-settings");
+
+    const match = settings.match(/'SHAP'\s*([0-9.]+)/);
+    if (match) {
+        toggle.checked = parseFloat(match[1]) === 4;
     } else {
         toggle.checked = false;
     }
 }
-
 // Update toggle when selection is clicked
 document.addEventListener("click", (e) => {
     const sel = e.target.closest(".selection");
     if (sel) {
         currentSelection = sel;
-        updateSliders(currentSelection);
-        updateToggleFromSelection(currentSelection);
+        updateSliders(sel);
+        updateToggleFromSelection(sel);
     }
 });
 
@@ -743,46 +753,31 @@ document.addEventListener("click", (e) => {
 
     ///test out spcial color pick///
     var colorPicker = new iro.ColorPicker('#picker1',{
-        width: 100,
-        // Set the initial color to pure red
-        color: "#f00",
+        width: 120,
+        color: "#f00",// Set the initial color to pure red
+        display:"flex",
+        margin:0,
+        borderWidth:9,
         layout: [
             { 
             component: iro.ui.Slider,
             options: {
                 sliderType: 'hue',
-                // sliderType: 'saturation',
-                // sliderType: 'value',
+                
             }
             },
-        ]
-    });
-    var colorPicker = new iro.ColorPicker('#picker2',{
-        width: 100,
-        // Set the initial color to pure red
-        color: "#f00",
-        layout: [
             { 
             component: iro.ui.Slider,
             options: {
-               
                 sliderType: 'saturation',
-              
-            }
+                
+                }
             },
-        ]
-    });
-    var colorPicker = new iro.ColorPicker('#picker3',{
-        width: 100,
-        // Set the initial color to pure red
-        color: "#f00",
-        layout: [
             { 
             component: iro.ui.Slider,
             options: {
-               
                 sliderType: 'value',
-            }
+                }
             },
         ]
     });
