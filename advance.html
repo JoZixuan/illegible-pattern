@@ -53,7 +53,17 @@
             <input type="range" id="letter-spacing-slider" class="control-input" min="-20" max="300" step="1" value="0">
             </div>
 
-       
+            
+        <div class="slider-group control-input">
+        <input type="range" id="ratio" min="0.2" max="6" step="0.05" value="1">
+        </div>
+        
+              
+        <div class="slider-group control-input">
+        <input type="range" id="slant" min="-80" max="80" step="1" value="0">
+        </div>
+
+        <button id="decoration"> Text-decorations</button>
         <button id="import" class="darkblueback control-input"></button>  
         <button id="save-png-btn" class="yellowback control-input"></button> 
         <button id="delete" class="control-input"><img src="delete.svg" /></button> 
@@ -305,6 +315,21 @@ document.getElementById("line-height-slider").addEventListener("input", function
 document.getElementById("letter-spacing-slider").addEventListener("input", function () {
   if (currentSelection) currentSelection.style.letterSpacing = this.value + "px";
 });
+document.getElementById("ratio").addEventListener("input", function () {
+  if (currentSelection) {
+    const ratio = this.value;
+    const slant = document.getElementById("slant").value;
+    currentSelection.style.transform = `scale(1, ${ratio}) skewY(${-slant}deg) rotateZ(${slant}deg)`;
+    }
+});
+
+document.getElementById("slant").addEventListener("input", function () {
+  if (currentSelection) {
+    const slant = this.value;
+    const ratio = document.getElementById("ratio").value;
+    currentSelection.style.transform = `scale(1, ${ratio}) skewY(${-slant}deg) rotateZ(${slant}deg)`;
+  }
+});
 
 
 
@@ -313,6 +338,23 @@ function updateSliders(sel) {
   document.getElementById("font-size-slider").value = parseInt(style.fontSize);
   document.getElementById("line-height-slider").value = parseFloat(style.lineHeight);
   document.getElementById("letter-spacing-slider").value = parseFloat(style.letterSpacing);
+  
+  const transform = style.transform;
+  if (transform && transform !== "none") {
+    const matrixValues = transform.match(/matrix\(([^)]+)\)/);
+    if (matrixValues) {
+      const values = matrixValues[1].split(",").map(Number);
+      const scaleY = values[3]; // 'd' in matrix(a,b,c,d,e,f)
+      const skewY = Math.atan(values[2]) * (180 / Math.PI); // 'c' in matrix is tan(skewY)
+      document.getElementById("ratio").value = scaleY.toFixed(2);
+      document.getElementById("slant").value = skewY.toFixed(0);
+    }
+  } else {
+    // If no transform applied, set default values
+    document.getElementById("ratio").value = 1;
+    document.getElementById("slant").value = 0;
+  }
+
   const color = window.getComputedStyle(sel).color;
   const rgba = color.match(/\d+/g).map(Number);
   colorPicker.color.rgb = { r: rgba[0], g: rgba[1], b: rgba[2] };

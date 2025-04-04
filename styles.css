@@ -7,6 +7,8 @@
     --px-color: red;
     --h1-color: green;
     --custom-cursor: url('dotcursor.svg') 10 10, auto;
+    --text-ratio:1;
+    --slant-angle:0;
 }
 
 #blended-content {
@@ -332,20 +334,31 @@ input[type="range"] {
     background: #ff489a;
 }
 
-#line-height-slider::-webkit-slider-thumb {
-    background: #ff489a;
-}
+
 #font-size-slider::-webkit-slider-thumb {
     background: #ff489a;
 }
-
-#letter-spacing-slider::-webkit-slider-thumb {
-    background: #ff489a;
+#line-height-slider::-webkit-slider-thumb {
+    background: #318cd6;
+    border-radius: 0px;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
 }
-/* Customize H2 Slider (Green) */
-/* #h2-slider {
+#letter-spacing-slider::-webkit-slider-thumb {
     background: #66ff66;
-} */
+    border-radius: 2px;
+}
+#slant::-webkit-slider-thumb {
+    background: #ff489a;
+    border-radius: 0px;
+    height: 15px;
+    transform:skewY(-40deg) rotateZ(40deg)
+}
+#ratio::-webkit-slider-thumb {
+    background: #ff489a;
+   
+}
+
+
 /* 🎨 Customize the circular slider button */
 #h2-slider::-webkit-slider-thumb {
     background: #318cd6;
