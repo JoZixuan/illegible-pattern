@@ -350,8 +350,8 @@ input[type="range"] {
 #slant::-webkit-slider-thumb {
     background: #ff489a;
     border-radius: 0px;
-    height: 15px;
-    transform:skewY(-40deg) rotateZ(40deg)
+    clip-path: polygon(40% 0, 100% 0%, 60% 100%, 0% 100%);
+
 }
 #ratio::-webkit-slider-thumb {
     background: #ff489a;
@@ -461,12 +461,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 #about{
     width:35px; 
-    font-size:23px;
+    font-size:27px;
     font-family: "Noto Sans SC", sans-serif;
     font-weight: 600;
     margin: -2px 0 0 0;
     background: transparent; 
-    padding:0px 5px 0px 0px;
+    padding:0px 3px 0px 4px;
     border:0px;
     display:flex;
     justify-content: space-around;
@@ -479,7 +479,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 #chart{
     width:35px; 
-    font-size:23px;
+    font-size:27px;
     font-family: "Noto Sans SC", sans-serif;
     font-weight: 600;
     margin: -2px 0 0px 0;
@@ -491,10 +491,27 @@ input[type="range"]::-webkit-slider-thumb:hover {
     color:#3fbd48
 }
 #chart:hover{
-    color: #ff489a;
+    color: black;
     font-weight: 900;
 }
 
+#decoration{
+    width:35px; 
+    font-size:27px;
+    font-family: "Noto Sans SC", sans-serif;
+    font-weight: 600;
+    margin: -2px 0 0px 0;
+    background: transparent; 
+    padding:0;
+    border:0px;
+    display:flex;
+    justify-content: space-around;
+    color:#3fbd48
+}
+
+#decoration:hover{
+    color:#ff489a; 
+}
 /* 圆角三角形 */
 #advance-mode-btn{
     

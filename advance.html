@@ -63,7 +63,7 @@
         <input type="range" id="slant" min="-80" max="80" step="1" value="0">
         </div>
 
-        <button id="decoration"> Text-decorations</button>
+        <button id="decoration">〓</button>
         <button id="import" class="darkblueback control-input"></button>  
         <button id="save-png-btn" class="yellowback control-input"></button> 
         <button id="delete" class="control-input"><img src="delete.svg" /></button> 
@@ -161,7 +161,7 @@ function createSelection(x, y) {
     selection.style.backgroundColor = "transparent";
     selection.style.lineHeight="0.9"
     selection.style.mixBlendMode = "multiply";
-    selection.style.padding = "10px";
+    selection.style.padding = "0px";
     selection.style.minWidth = "50px";
     selection.style.minHeight = "30px";
     selection.style.resize = "both";
@@ -655,10 +655,16 @@ document.getElementById("save-png-btn").addEventListener("click", function () {
         link.href = canvas.toDataURL("image/png");
         link.click();
 
-        // Restore original inline styles
-        originalSettings.forEach(({ el, fontVariationSettings }) => {
-            el.style.fontVariationSettings = fontVariationSettings;
-        });
+            // Restore original inline styles
+            originalSettings.forEach(({ el, fontVariationSettings }) => {
+                el.style.fontVariationSettings = fontVariationSettings;
+            });
+            originalFilters.forEach(({ el, filter }) => {
+                el.style.filter = filter;
+            });
+            originalDecorations.forEach(({ el, textDecoration }) => {
+                el.style.textDecoration = textDecoration;
+            });
     });
 });
 //________________________<< Greyscale Function button >>_________________________ _____________________________________________________________________
@@ -671,11 +677,9 @@ document.addEventListener("DOMContentLoaded", () => {
         isGreyscale = !isGreyscale;
         document.querySelectorAll("p").forEach(p => {
             if (isGreyscale) {
-                p.style.filter = "grayscale(100%)"; // Apply greyscale
-                p.style.opacity = "0.6"; // Reduce opacity slightly for effect
+                p.style.filter = "grayscale(100%)"; // Apply greyscaleeffect
             } else {
                 p.style.filter = "none"; // Remove greyscale
-                p.style.opacity = "1"; // Restore full opacity
             }
         });
     });
@@ -693,6 +697,22 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("p").forEach(p => {
             p.style.textAlign = alignments[currentAlignmentIndex];
         });
+    });
+});
+
+//________________________<< Text Decoration Toggle >>_________________________
+document.addEventListener("DOMContentLoaded", () => {
+    const decorationButton = document.getElementById("decoration");
+    const decorations = ["none", "underline", "overline", "line-through"];
+    let currentDecorationIndex = 0;
+
+    decorationButton.addEventListener("click", () => {
+        if (!currentSelection) return;
+        const paragraph = currentSelection.querySelector("p");
+        if (paragraph) {
+            currentDecorationIndex = (currentDecorationIndex + 1) % decorations.length;
+            paragraph.style.textDecoration = decorations[currentDecorationIndex];
+        }
     });
 });
 
