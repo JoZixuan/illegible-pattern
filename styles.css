@@ -49,6 +49,8 @@
 
 .pop-up{
     font-family: authentic-sans-90;
+    color:#000;
+    line-height: 130%;
 }
 
 body {
@@ -879,4 +881,19 @@ input[type="color"] {
   
       #main-content {
         display: none;
+      }
+
+      .selection {
+        position: relative;
+      }
+      .custom-resize-handle {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+  pointer-events: auto;
+      }
+      .selection p {
+        padding-bottom: 20px; /* Make space for the handle */
+        margin: 0;
       }
