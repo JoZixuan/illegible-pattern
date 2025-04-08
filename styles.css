@@ -339,23 +339,31 @@ input[type="range"] {
     background: #ff489a;
 }
 #line-height-slider::-webkit-slider-thumb {
-    background: #318cd6;
-    border-radius: 0px;
-    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    background: #00ab22;
+    width:30px;
+    height:30px;
+    clip-path: polygon(50% 0%, 80% 50%, 50% 100%, 20% 50%);
+
 }
 #letter-spacing-slider::-webkit-slider-thumb {
-    background: #66ff66;
-    border-radius: 2px;
+    background: #ff4d00;
+    width:30px;
+    height:30px;
+    clip-path: polygon(50% 20%, 100% 50%, 50% 80%, 0 50%);
+   
 }
 #slant::-webkit-slider-thumb {
     background: #ff489a;
     border-radius: 0px;
+    height:20px;
+    width:30px;
     clip-path: polygon(40% 0, 100% 0%, 60% 100%, 0% 100%);
 
 }
 #ratio::-webkit-slider-thumb {
-    background: #ff489a;
-   
+    background: #318cd6;
+    height:26px;
+    width:16px;
 }
 
 

@@ -26,7 +26,7 @@
          <button id="about" class="control-input"> ? </button>  
          <button id="chart" class="control-input"> ! </button>  
          <button id="meaning" class="control-input" >字</button>
-         <button id="color-mode" class="styled-button darkblueback control-input"></button>  
+         <!-- <button id="color-mode" class="styled-button darkblueback control-input"></button>   -->
          <button id="greyscale" class="styled-button inkback control-input"></button>  
          <button id="text-alignment" class="styled-button yellowback control-input"></button> 
          <label class="toggle-wrapper">
@@ -50,17 +50,17 @@
         <!-- letter spacing Slider horizontal spacing -->
         <div class="slider-group">
             <label for="letter-spacing-slider"></label>
-            <input type="range" id="letter-spacing-slider" class="control-input" min="-20" max="300" step="1" value="0">
+            <input type="range" id="letter-spacing-slider" class="control-input" min="-30" max="300" step="1" value="0">
             </div>
 
-            
+            <!-- ratio -->
         <div class="slider-group control-input">
-        <input type="range" id="ratio" min="0.2" max="6" step="0.05" value="1">
+        <input type="range" id="ratio" min="0.2" max="5" step="0.05" value="1">
         </div>
         
-              
+        <!-- slant -->
         <div class="slider-group control-input">
-        <input type="range" id="slant" min="-80" max="80" step="1" value="0">
+        <input type="range" id="slant" min="-40" max="40" step="1" value="0">
         </div>
 
         <button id="decoration">〓</button>
@@ -504,17 +504,17 @@ document.getElementById("meaning").addEventListener("click", function () {
 //  ///////////////////////////////////
 // -------------------- [  Toggle between Multiply and Solid  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
     
-document.getElementById("color-mode").addEventListener("click", function () {
-    let paragraphs = document.querySelectorAll("p");
-    paragraphs.forEach(p => {
-        let currentBlendMode = window.getComputedStyle(p).mixBlendMode;
-        if (currentBlendMode === "multiply") {
-            p.style.mixBlendMode = "normal";
-        } else {
-            p.style.mixBlendMode = "multiply";
-        }
-    });
-});
+// document.getElementById("color-mode").addEventListener("click", function () {
+//     let paragraphs = document.querySelectorAll("p");
+//     paragraphs.forEach(p => {
+//         let currentBlendMode = window.getComputedStyle(p).mixBlendMode;
+//         if (currentBlendMode === "multiply") {
+//             p.style.mixBlendMode = "normal";
+//         } else {
+//             p.style.mixBlendMode = "multiply";
+//         }
+//     });
+// });
 
         ////////////////////////
         //   --------     Function to play sound     --------  //////////////
@@ -545,8 +545,14 @@ document.getElementById("color-mode").addEventListener("click", function () {
             playSound("audio/button5.wav");
         });
 
-        document.getElementById("color-mode").addEventListener("click", function () {
+        document.getElementById("greyscale").addEventListener("click", function () {
             playSound("audio/button6.wav");
+        });
+        document.getElementById("text-alignment").addEventListener("click", function () {
+            playSound("audio/alignment-audio.wav");
+        });
+        document.getElementById("decoration").addEventListener("click", function () {
+            playSound("audio/decoration.wav");
         });
 
         document.getElementById("delete").addEventListener("click", function () {
@@ -820,7 +826,7 @@ document.addEventListener("click", (e) => {
 });
 
     document.getElementById("go-back").addEventListener("click", function () {
-        window.location.href = "index.html";
+        window.location.href = "home.html";
     });
 
     ///test out spcial color pick///
