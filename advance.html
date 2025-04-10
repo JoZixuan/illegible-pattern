@@ -22,17 +22,34 @@
 
     <div class="button-container">
        
-        
+        <div id="advance-popup"> 
+            <span class="close-popup" style="
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 100;">
+  
+            ✕
+            
+            </span>
+           
+                <span style="text-decoration: underline; text-underline-offset: 2px;">Drag and drop</span> on the blank canvas<br>to start your pattern! <br> <br>You can <span style="text-decoration: underline; text-underline-offset: 2px;">drag</span> them around <br>and <span style="text-decoration: underline; text-underline-offset: 3px;">double-click</span> to edit. 
+            </div>
+
          <button id="about" class="control-input"> ? </button>  
          <button id="chart" class="control-input"> ! </button>  
          <button id="meaning" class="control-input" >字</button>
          <!-- <button id="color-mode" class="styled-button darkblueback control-input"></button>   -->
          <button id="greyscale" class="styled-button inkback control-input"></button>  
          <button id="text-alignment" class="styled-button yellowback control-input"></button> 
+
          <label class="toggle-wrapper">
             <input type="checkbox" id="toggle-switch" class="control-input">
             <span class="slider"></span>
           </label>
+          
           <div id="picker1" class="control-input"></div>
           <!-- <input type="color" id="color-picker" class="control-input" value="#FF0000"> -->
          <!-- Font Size Slider -->
@@ -842,13 +859,13 @@ document.addEventListener("click", (e) => {
         window.location.href = "home.html";
     });
 
-    ///test out spcial color pick///
+    ///test out spcial color picker///
     var colorPicker = new iro.ColorPicker('#picker1',{
         width: 120,
         color: "#f00",// Set the initial color to pure red
         display:"flex",
         margin:0,
-        borderWidth:9,
+        borderWidth:8,
         layout: [
             { 
             component: iro.ui.Slider,
@@ -872,6 +889,17 @@ document.addEventListener("click", (e) => {
             },
         ]
     });
+
+
+    //Close the advance pop-up window to explain the function
+    document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("close-popup")) {
+    const popup = e.target.closest("div[id$='popup']");
+    if (popup) popup.remove();
+  }
+});
+
+
 </script>
 
 </html>

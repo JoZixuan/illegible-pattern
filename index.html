@@ -502,20 +502,24 @@ document.getElementById("advance-mode-btn").addEventListener("mouseover", functi
         popup = document.createElement("div");
         popup.id = "advance-warning";
         
-        popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;">Really to proceed to advance mode? <br/><br/>Drag and drop to create your own pattern there!</p>`;
-        popup.style.width = "200px";
+        popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;mix-blend-mode: normal;">Really for the advance mode?<br/>You'll have more fun in the next page!</p>`;
+        popup.style.width = "350px";
+        popup.style.height = "120px";
         popup.style.position = "fixed";
+        popup.style.display = "flex";
+        popup.style.justifyContent ="center";
+        popup.style.alignItems = "center";
+        popup.style.textAlign = "center";
+        popup.style.lineHeight= "150%";
         popup.style.background = "#ff489a";
-        popup.style.color = "black";
-        popup.style.padding = "10px";
-        popup.style.border = "5px solid black";
+        popup.style.mixBlendMode = "solid";
+        popup.style.border = "5px solid rgb(255, 240, 75)";
         popup.style.borderRadius = "25px";
         popup.style.zIndex = "1000";
         popup.style.pointerEvents = "none";
-         // Dynamically position the popup below the button
-        const rect = event.target.getBoundingClientRect();
-        popup.style.top = `${rect.bottom + window.scrollY + 15}px`;
-        popup.style.left = `${rect.left + window.scrollX - 200}px`;
+        popup.style.top = "50%";
+                popup.style.left = "50%";
+                popup.style.transform = "translate(-50%, -50%)";
         document.body.appendChild(popup);
     }
 });

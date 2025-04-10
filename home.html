@@ -498,18 +498,19 @@ document.getElementById("advance-mode-btn").addEventListener("mouseover", functi
     if (!popup) {
         popup = document.createElement("div");
         popup.id = "advance-warning";
-        
-        popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;">Really to proceed to advance mode? <br/><br/>Drag and drop to create your own pattern in the next page!</p>`;
-        popup.style.width = "300px";
-        popup.style.height = "150px";
+        popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;mix-blend-mode: normal;">Really for the advance mode?<br/>You'll have more fun in the next page!</p>`;
+        popup.style.width = "350px";
+        popup.style.height = "120px";
         popup.style.position = "fixed";
         popup.style.display = "flex";
+        popup.style.justifyContent ="center";
         popup.style.alignItems = "center";
         popup.style.textAlign = "center";
+        popup.style.lineHeight= "150%";
         popup.style.background = "#ff489a";
-        popup.style.color = "black";
-        popup.style.padding = "10px";
-        popup.style.border = "5px solid black";
+        popup.style.mixBlendMode = "solid";
+        // popup.style.color = "black";
+        popup.style.border = "5px solid rgb(255, 240, 75)";
         popup.style.borderRadius = "25px";
         popup.style.zIndex = "1000";
         popup.style.pointerEvents = "none";
