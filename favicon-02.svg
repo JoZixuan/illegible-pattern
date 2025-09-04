@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 121.9 121.9">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f0b;
+        stroke: #f4dc51;
+        stroke-width: 8.6px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #f4dc51;
+        stroke: #f0b;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-width: 9px;
+      }
+
+      .cls-3 {
+        fill: #0cf;
+        mix-blend-mode: multiply;
+        stroke: #1044ff;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="Layer_1" data-name="Layer 1">
+      <path class="cls-2" d="M65.2,9.4c28.5,0,51.6,23.1,51.6,51.6s-23.1,51.6-51.6,51.6"/>
+      <polyline class="cls-3" points="65.2 112.5 65.2 112.5 5.1 112.5 5.1 9.4 65.2 9.4"/>
+      <path class="cls-1" d="M65.2,112.8c-28.6,0-51.9-23.2-51.9-51.9S36.5,9.1,65.2,9.1"/>
+    </g>
+  </g>
+</svg>

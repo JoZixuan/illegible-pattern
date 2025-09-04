@@ -8,7 +8,7 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script> -->
     <!-- <script src="sketch.js"></script> -->
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="icon" type="image/x-icon" href="/favicon-05.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
@@ -17,574 +17,801 @@
   <script src="iro.min.js"></script>
   <!-- <script src="script.js"></script> -->
 </head>
-<body> 
-    <div id="loader-wrapper">
-        <div id="loader">
-        <div class="loading-text" id="loading-text"></div>
-          </div>     </div>   
+<body>
+ 
 
-    <div class="button-container">
+   
        
-        
-            <!--  第1个按钮：About page pop-up -->
-         <button id="about"> ? </button>  
+        <!-- <div id="advance-popup"> 
+            <span class="close-popup" style="
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 100;">
+  
+            ✕
+            
+            </span>
+           
+                <span style="text-decoration: underline; text-underline-offset: 2px;">Drag and drop</span> on the blank canvas<br>to start your pattern! <br> <br>You can <span style="text-decoration: underline; text-underline-offset: 2px;">drag</span> them around <br>and <span style="text-decoration: underline; text-underline-offset: 3px;">double-click</span> to edit. 
+            </div> -->
 
-            <!--  第2个按钮：Glyphs Chart -->
-         <button id="chart"> ! </button>  
-         
-            <!--  第3个按钮：Change Shape font to Authentic Sans -->
-         <button id="meaning" >字</button>
+         <button id="about" class="control-input"> ? </button>  
+         <button id="chart" class="control-input"> ! </button>  
+         <button id="meaning" class="control-input" >字</button>
+         <!-- <button id="text-alignment" class="styled-button yellowback control-input"></button>  -->
+         <label class="toggle-wrapper">
+            <input type="checkbox" id="toggle-switch" class="control-input">
+            <span class="slider"></span>
+          </label>
+          <button id="greyscale" class="styled-button inkback control-input"></button>  
 
-
-            <!--  4：Change multiply color to solid color -->
-         <button id="color-mode" class="styled-button darkblueback"></button>  
-
-
-            <!--  5：Greyscale Button -->
-        <button id="greyscale" class="styled-button inkback"></button>  
-
-
-             <!--  6：Text Alignment button-->
-         <button id="text-alignment" class="styled-button yellowback"></button> 
-
-          
-         <!-- REM Size Slider -->
+          <div id="picker1" class="control-input"></div>
+          <!-- <input type="color" id="color-picker" class="control-input" value="#FF0000"> -->
+         <!-- Font Size Slider -->
         <div class="slider-group">
-            <label for="rem-slider"></label>
-            <input type="range" id="rem-slider" min="0.5" max="20" step="0.1" value="1">
+            <label for="font-size-slider"></label>
+            <input type="range" id="font-size-slider" class="control-input" min="10" max="800" step="1" value="16">
+            <span id="font-size-value" class="slider-bubble">16</span>
         </div>
-
-        <!-- H1 Size Slider -->
-        <div class="slider-group">
-            <label for="h1-slider"></label>
-            <input type="range" id="h1-slider" min="5" max="100" step="1" value="16">
-        </div>
-
-        <!-- H2 Size Slider -->
-        <div class="slider-group">
-            <label for="h2-slider"></label>
-            <input type="range" id="h2-slider" min="10" max="100" step="1" value="32">
-        </div>
-
         <!-- Line-height Slider vertical spacing -->
         <div class="slider-group">
-        <label for="line-height-slider"></label>
-        <input type="range" id="line-height-slider" min="0.1" max="3" step="0.01" value="1">
+          <label for="line-height-slider"></label>
+          <input type="range" id="line-height-slider" class="control-input" min="0.1" max="3" step="0.01" value="1">
+          <span id="line-height-value" class="slider-bubble">1</span>
         </div>
-
         <!-- letter spacing Slider horizontal spacing -->
         <div class="slider-group">
             <label for="letter-spacing-slider"></label>
-            <input type="range" id="letter-spacing-slider" min="-30" max="300" step="1" value="0">
+            <input type="range" id="letter-spacing-slider" class="control-input" min="-40" max="350" step="1" value="0">
+            <span id="letter-spacing-value" class="slider-bubble">0</span>
             </div>
 
-         <!--  7: Import image as background-->
-        <button id="import" class="darkblueback"></button>  
-
-
-          <!-- 8：SVG Download button-->
-            <!-- <button id="save-svg-btn" class="styled-button skyblueback"></button>    -->
+            <!-- ratio -->
+        <div class="slider-group control-input">
+        <input type="range" id="ratio" min="0.5" max="2.5" step="0.05" value="1">
+        </div>
         
-        <!--  9：PNG Download button-->
-         <button id="save-png-btn" class="yellowback"></button> 
+        <!-- slant -->
+        <div class="slider-group control-input">
+          <input type="range" id="slant" min="-40" max="40" step="1" value="0">
+          <span id="slant-value" class="slider-bubble">0</span>
+        </div>
 
-          <!-- Reset Button -->
-        <!-- <button class="reset-button"></button>   -->
+        <button id="decoration">〓</button>
+        <button id="import-font" class="darkblueback control-input"></button>
+        <button id="save-png-btn" class="yellowback control-input"></button> 
+        <button id="delete" class="control-input"><img src="delete.svg" /></button> 
+         <button id="gallery-btn" class="control-input pinkback"></button> 
+         <button id="instruction-btn" class="control-input">         </button>
+       
+ 
+<!---labels created individually-->
+<div id="button-label-container" style="display: block;">
+  <div id = "about-btn-label">About</div>
+  <div id = "chart-btn-label" style="margin-top: 29px;">Chart</div>
+  <div id = "legible-btn-label" style="margin-top: 28px;">Legible</div>
+  <div id = "shape-btn-label" style="margin-top: 34px;">Shape</div>
+  <div id = "greyscale-btn-label" style="margin-top: 39px;">Greyscale</div>
+  <div id = "underline-btn-label" style="margin-top: 28px;">Underline</div>
+  <div id = "import-btn-label" style="margin-top: 28px;">Import Font</div>
+  <div id = "save-btn-label" style="margin-top: 31px;">Save</div>
+  <div id = "delete-btn-label" style="margin-top: 27px;">Delete</div>
+  <div id = "gallery-btn-label" style="margin-top: 28px;">Gallery</div>
+  <div id = "instruction-btn-label" style="margin-top: 27px;">Hint</div>
+</div>
 
-        <button id="delete"><img src="delete.svg" /></button> 
-        <!-- 10: Advance Mode Button -->
-<button id="advance-mode-btn">!
-</button>
-    </div>
-
-
- <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Content starts here !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
- <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Content starts here !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
- <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Content starts here !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-     
+<div id="slider-label-container" style="display: block;">
+  <span>Color Picker</span>
+  <span class="slider-label" data-for="font-size-slider">Font Size</span>
+  <span class="slider-label" data-for="line-height-slider">Line Height</span>
+  <span class="slider-label" data-for="letter-spacing-slider">Letter Spacing</span>
+  <span class="slider-label" data-for="slant">Slant</span>
+  <span class="slider-label" data-for="ratio">Ratio</span>
+</div>
+ 
  <!-- A BIG CONTAINER -->
 
     <div id="blended-content" class="container">
 
-         <!-- Pattern 001 -->
-
-         <div class="drag-wrapper box1" tabindex="0">
-            <div class="drag-box">
-                <p class="textstyle1">
-WaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaWWaWaWaWaWaWaWaWaWaWaWaWaWaWaW</p> </div>
-<div class="resize-handle"></div>
-            </div>
-         
-
-
-       <div class="drag-wrapper box2" tabindex="0">
-        <div class="drag-box">  <p class="textstyle2"> kkkkkijijiijiaiiijjjjjiiijijjijiijkkkkkkkkakkkkkkkkaYZ56656kjkk561234563157461a234563157432156413245412663215641327461a234563145k4126jijiijkkakiiiikaijijjjjijj  </p> </div>
-        <div class="resize-handle"></div></div>
-
-      
-
-          <!-- Pattern 003 -->
-
-    <div class="drag-wrapper box3" tabindex="0">
-        <div class="drag-box">
-        <p class="red redtextsetting" >
-            AEFGnoSklmyWYXGZkZWWZWXG
-    </p> </div>
-    <div class="resize-handle"></div></div>
-   
-
-         <!-- Pattern 004 -->
-        
-        <div class="drag-wrapper box4" tabindex="0">
-            <div class="drag-box">
-            <p class="h2"> 
-            QRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRQRASQRASRQRASRQRQRQSRSQRQSRQSRSRQSRSSSRQSQRSQRSQQRASQRASRQRSRSQRQSRQSRQRSRQSRSSSRQSQRSQQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQSSSRQSQRSQRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQR   </p></div>
-             <div class="resize-handle"></div>
-        </div>
-
-                  <!-- Pattern 005 -->
-
-            <div class="drag-wrapper box5" tabindex="0">
-                <div class="drag-box">
-                <p class= "green greentextsetting"> 
-                    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                </p></div>
-                <div class="resize-handle"></div>
-            </div>
-
-              <!-- 黄色方格 -->
-            <!-- <div class="drag-wrapper box6" tabindex="0"> 
-                <div class="drag-box"> 
-                <p class="textsetting6"> WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW  </p></div>
-                 <div class="resize-handle"></div>
-                </div> -->
-
-           
-              <!-- Pattern 007 -->
-            <div class="drag-wrapper box7" tabindex="0">
-                <div class="drag-box">
-                <p class= "pinktextsetting"> FLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyysrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLF</p></div>
-                <div class="resize-handle"></div>
-            </div>
-
-             <!-- Pattern 008 -->
-        
-    <div class="drag-wrapper box8" tabindex="0">
-        <div class="drag-box">
-        <p class="textsetting8 skyblue "> 
-            0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0EzozozozozozozozozozozozozozozozozoAIAIAIAIAIAIAIAIAIAAIIAIIAIAIAIAIAI
-    </p></div>
-    <div class="resize-handle"></div>
-    </div>
-
+     
 
 
         
- <!-- section 4 -->
-        <div class="drag-wrapper box9" tabindex="0">
-            <div class="drag-box">
-            <p class=" ink">aaaaaaaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p></div>
-            <div class="resize-handle"></div></div>
-    </div>   
-    <!---------- CONTAINER END ------->
+    </div>   <!---------- CONTAINER END ------->
+</body>
 
-    
+
+<!----------------- JAVASCRIPT PART ------------------>
+<!----------------- JAVASCRIPT PART ------------------>
+<!----------------- JAVASCRIPT PART ------------------>
     <script>
 
+let startX, startY, isSelecting = false;
+let selections = [];
+let currentSelection = null;
 
-//loading animation
-const loader = document.getElementById('loader');
-    const textEl = document.getElementById('loading-text');
-    const fullText = '...loading ILLEGIBLE PATTERN';
-    const staticIndices = [0,1,2,10,19]; // "...", and spaces at positions 10 and 19
-    const textChars = fullText.split('');
+let suppressClearOnce = false; // Prevent the next click from clearing selection right after creation
 
-    function randomChar() {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-      return chars[Math.floor(Math.random() * chars.length)];
+// ===== Layout step 1: separate sliders (top) and buttons (left) =====
+// ===== Layout step 1: separate sliders (top) and buttons (left) =====
+// ===== Layout step 1: separate sliders (top) and buttons (left) =====
+(function setupBasicTwoBars() {
+  const styleEl = document.createElement('style');
+  styleEl.textContent = `
+    /* Top slider bar: layout only (no visual changes) */
+    .slider-container{
+      position: fixed; 
+      left: 15px; 
+      right: 20px; 
+      top: 14px; 
+      z-index: 900;  
+      outline: 2px solid #f3e24d;  
+      height:27px;
+      padding: 8px 10px;
+      display: flex; align-items: center; gap: 22px;
+      background: white; border-radius: 10px;
     }
+    .slider-container .slider-group{ display: inline-flex; align-items: center; }
 
-    async function animateLoader() {
-      // 0.2s: Fade in grey bar
-      await new Promise(resolve => setTimeout(() => {
-        loader.style.opacity = 1;
-        resolve();
-      }, 200));
-
-      // 0.2s–2s: Typewriter effect
-      for (let i = 0; i < textChars.length; i++) {
-        await new Promise(r => setTimeout(r, (600 / textChars.length)));
-        textEl.textContent += textChars[i];
-        if (textEl.textContent.endsWith("loading")) {
-          await new Promise(r => setTimeout(r, 400));
-        }
-         if (textEl.textContent.endsWith("ILLEGIBLE")) {
-          await new Promise(r => setTimeout(r, 400));
-        }
-      }
-
-      textEl.style.opacity = 0.3;
-      await new Promise(r => setTimeout(r, 80));
-      textEl.style.opacity = 1;
-      await new Promise(r => setTimeout(r, 500));
-     
-      // 2s–4s: Start characters randomizing one by one from left to right, then let them all keep changing independently
-      const activeText = textEl.textContent.split('');
-      const animatingIndices = [];
-
-      // Launch each character's randomizer one by one
-      for (let i = 0; i < textChars.length; i++) {
-        if (!staticIndices.includes(i)) {
-          setTimeout(() => {
-            animatingIndices.push(i);
-          }, i * 20); // stagger each start by 40ms from left to right
-        }
-      }
-
-      // Continuously update any started characters
-      for (let t = 0; t < 50; t++) {
-        await new Promise(r => setTimeout(r, 40)); // refresh rate for visible glitching
-        for (let i of animatingIndices) {
-          activeText[i] = randomChar();
-        }
-        textEl.textContent = activeText.join('');
-
-        // At halfway point (after ~2s), change to ShapeFont
-        if (t === 30) textEl.style.fontFamily = 'shape-font';
-      }      
-
-      // 3s–4s: Continue randomizing (excluding static ones)
-      for (let i = 0; i < textChars.length; i++) {
-        if (staticIndices.includes(i)) continue;
-        await new Promise(r => setTimeout(r, (500 / textChars.length)));
-        const current = textEl.textContent.split('');
-        // for (let j = 0; j < 2; j++) {
-        //   current[i] = randomChar();
-        //   textEl.textContent = current.join('');
-        //   await new Promise(r => setTimeout(r, 20));
-        // }
-        textEl.textContent = current.join('');
-      }
-
-   await new Promise(r => setTimeout(r, 100));
-      // Final flicker of container
-      textEl.style.opacity = 0.3;
-      await new Promise(r => setTimeout(r, 100));
-      textEl.style.opacity = 1;
-      await new Promise(r => setTimeout(r, 100));
-      textEl.style.opacity = 0;
-      await new Promise(r => setTimeout(r, 200));
-      
-
-      // Hide loader and show main content
-      loader.style.opacity = 0;
-      await new Promise(r => setTimeout(r, 100));
-      document.getElementById('loader-wrapper').style.display = 'none';
+    /* Left vertical button rail: layout only (no visual changes) */
+    .button-rail{
+      position: fixed; top: 74px; left: 15px; width: 45px; bottom: 500px; z-index: 901;
+      display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 10px 3px; background: white; outline: 2px solid #f3e24d;  border-radius: 10px; height: 476px;
     }
+    .button-rail .control-input, .button-rail button, .button-rail .toggle-wrapper{ margin: 0; }
+    .button-rail .toggle-wrapper{ width: 36px; }
 
-    window.addEventListener("pageshow", function (event) {
-  const loaderWrapper = document.getElementById("loader-wrapper");
- 
-  // Show loader wrapper by default
-  loaderWrapper.style.display = "flex";
- 
-  console.log("pageshow triggered");
-  console.log("event.persisted:", event.persisted);
-  console.log("sessionStorage loaderPlayed:", sessionStorage.getItem("loaderPlayed"));
- 
-  // Skip loader if navigating back or loader already played
-  if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward" || sessionStorage.getItem("loaderPlayed")) {
-    console.log("Skipping loader");
-    loaderWrapper.style.display = "none";
-  } else {
-    console.log("Playing loader");
-    animateLoader().then(() => {
-      sessionStorage.setItem("loaderPlayed", "true");
-    });
-  }
-});
-    //animation ends
-
-        const remSlider = document.getElementById("rem-slider");
-        const h1Slider = document.getElementById("h1-slider");
-        const h2Slider = document.getElementById("h2-slider");
-        // const resetButton = document.querySelector(".reset-button");
-
-        // Random color generator
-        function getRandomColor() {
-            return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
-        }
-
-        // Update REM size and change color dynamically
-        remSlider.addEventListener("input", function () {
-            document.documentElement.style.setProperty("--rem-size", this.value + "rem");
-            document.documentElement.style.setProperty("--rem-color", getRandomColor());
-        });
-
-        // Update H1 size and change color dynamically
-        h1Slider.addEventListener("input", function () {
-            document.documentElement.style.setProperty("--h1-size", this.value + "px");
-            document.documentElement.style.setProperty("--h1-color", getRandomColor());
-        });
-
-        // Update H2 size and change color dynamically
-        h2Slider.addEventListener("input", function () {
-            document.documentElement.style.setProperty("--h2-size", this.value + "px");
-            document.documentElement.style.setProperty("--h2-color", getRandomColor());
-        });
+  
+  `;
+  document.head.appendChild(styleEl);
 
 
-        ///// Reset Button Functionality currentl commented out///////
-        // resetButton.addEventListener("click", function () {
-        //     // Reset slider values
-        //     remSlider.value = "1";
-        //     h1Slider.value = "16";
-        //     h2Slider.value = "32";
+  // Create new containers
+  const sliderWrap = document.createElement('div');
+  sliderWrap.className = 'slider-container';
+document.body.appendChild(sliderWrap);
 
-        //     document.documentElement.style.setProperty("--rem-size", "1rem");
-        //     document.documentElement.style.setProperty("--h1-size", "16px");
-        //     document.documentElement.style.setProperty("--h2-size", "32px");
+  const buttonRail = document.createElement('div');
+  buttonRail.className = 'button-rail';
+document.body.appendChild(buttonRail);
 
-        //     document.documentElement.style.setProperty("--rem-color", "blue");
-        //     document.documentElement.style.setProperty("--h1-color", "red");
-        //     document.documentElement.style.setProperty("--h2-color", "green");
+  // Helpers to move nodes
+  const moveToSlider = (sel) => { const el = document.querySelector(sel); if (!el) return; const group = el.closest('.slider-group'); sliderWrap.appendChild(group || el); };
+  const moveElToSlider = (sel) => { const el = document.querySelector(sel); if (el) sliderWrap.appendChild(el); };
 
-        //     // Reset all <p> styles
-        //      document.querySelectorAll("p").forEach(p => {
-        //     p.style.lineHeight = "";
-        //     p.style.letterSpacing = "";
-        //     p.style.fontFamily = "shape-font";
-        //     p.style.textAlign = "left";
-        //     p.style.mixBlendMode = "multiply";
-        //     p.style.filter = "none";
-        //     p.style.opacity = "1";
-        //     p.classList.remove("shap-4");
-        //  });
-
-        //     // Reset slider visuals
-        //     sliders.forEach(slider => {
-        //         updateSliderBackground(slider);
-        //     });
-        // });
-
-        // Function to update the slider background
-           function updateSliderBackground(slider) {
-            let value = slider.value; // Get slider value
-            let min = slider.min;
-            let max = slider.max;
-            let percentage = ((value - min) / (max - min)) * 100;
-
-            // 🎨 Left side = Blue (#34d3ff), Right side = Yellow (#fff04b)
-            slider.style.background = `linear-gradient(to right, #34d3ff 0%, #34d3ff ${percentage}%, #fff04b ${percentage}%, #fff04b 100%)`;
-        }
-
-        // Get all sliders
-        const sliders = document.querySelectorAll("input[type='range']");
-
-        // Add event listener to each slider
-        sliders.forEach(slider => {
-            slider.addEventListener("input", function () {
-                updateSliderBackground(this);
-            });
-
-            // Initialize the background on page load
-            updateSliderBackground(slider);
-        });
-
-        const lineHeightSlider = document.getElementById("line-height-slider");
-
-        // Update line-height dynamically
-        lineHeightSlider.addEventListener("input", function () {
-            document.documentElement.style.setProperty("--line-height", this.value);
-            document.querySelectorAll("p").forEach(p => {  
-                p.style.lineHeight = this.value;
-            });
-        });
-
-    // Update letter spacing dynamically
-        const letterSpacingSlider = document.getElementById("letter-spacing-slider");
-
-    letterSpacingSlider.addEventListener("input", function () {
-    const percentage = this.value;
-    const emValue = percentage / 100;
-    document.querySelectorAll("p").forEach(p => {
-        p.style.letterSpacing = `${emValue}em`;
-    });
-});
-
-// SVG FUNCTION!!
-//         document.getElementById("save-svg-btn").addEventListener("click", saveAsSVG);
-
-// function saveAsSVG() {
-//     let targetElement = document.querySelector("#blended-content"); // Update this ID to match your content
-    
-//     let rect = targetElement.getBoundingClientRect();
-// let width = rect.width;
-// let height = rect.height;
-
-//     // Create a canvas
-//     let canvas = document.createElement("canvas");
-//     canvas.width = width;
-//     canvas.height = height;
-//     let ctx = canvas.getContext("2d");
-// targetElement.offsetHeight; // forces reflow
-
-// // Force repaint on draggable elements by flattening styles
-// document.querySelectorAll(".drag-wrapper").forEach(el => {
-//     const computedStyle = window.getComputedStyle(el);
-//   el.style.left = computedStyle.left;
-//   el.style.top = computedStyle.top;
-//   el.style.transform = "none"; // Disable transform
-// });
-
-// // Force reflow
-// targetElement.offsetHeight;
-//     // Use html2canvas to capture blended content
-//     html2canvas(targetElement, {
-//         backgroundColor: null,
-//         useCORS: true
-//     }).then(canvas => {
-//         let imgData = canvas.toDataURL("image/png");
-
-//         // Wrap image in SVG
-//         let svgContent = `
-//         <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
-//             <image href="${imgData}" width="${width}" height="${height}" />
-//         </svg>`;
-
-//         let blob = new Blob([svgContent], { type: "image/svg+xml;charset=utf-8" });
-//         let url = URL.createObjectURL(blob);
-
-//         let a = document.createElement("a");
-//         a.href = url;
-//         a.download = "blended-output.svg";
-//         a.click();
-//         URL.revokeObjectURL(url);
-//     });
-// }
-
-///////////  SAVE PNG function /////////
-document.getElementById("save-png-btn").addEventListener("click", saveAsPNG);
-
-function saveAsPNG() {
-    let targetElement = document.querySelector(".container"); // Adjust selector if needed
-
-// Force repaint on draggable elements by flattening styles
-document.querySelectorAll(".drag-wrapper").forEach(el => {
-    const computedStyle = window.getComputedStyle(el);
-  el.style.left = computedStyle.left;
-  el.style.top = computedStyle.top;
-  el.style.transform = "none"; // Disable transform
-});
-
-// Force reflow
-targetElement.offsetHeight;
-    html2canvas(targetElement, {
-        backgroundColor: null,
-        useCORS: true
-    }).then(canvas => {
-        let a = document.createElement("a");
-        a.href = canvas.toDataURL("image/png");
-        a.download = "blended-output.png";
-        a.click();
-    }).catch(error => {
-        console.error("Error capturing content:", error);
-    });
+// Move color picker first, then sliders, to avoid overlap
+moveElToSlider('#picker1');
+const p1 = document.getElementById('picker1');
+if (p1) {
+  p1.style.width = '350px';
+  p1.style.flex = '0 0 auto'; // prevent being covered or squashed
 }
 
-//advance mode popup
-     
-document.getElementById("advance-mode-btn").addEventListener("mouseover", function (event) {
-    console.log("Hovered over advance-mode-btn");
+moveToSlider('#font-size-slider');
+moveToSlider('#line-height-slider');
+moveToSlider('#letter-spacing-slider');
+moveToSlider('#ratio');
+moveToSlider('#slant');
 
-    let popup = document.getElementById("advance-warning");
-    if (!popup) {
-        popup = document.createElement("div");
-        popup.id = "advance-warning";
+  // Move buttons to left vertical rail (top→bottom order)
+  ['#about','#chart','#meaning','#toggle-switch','#greyscale','#decoration','#import-font','#save-png-btn','#delete','#gallery-btn','#instruction-btn']
+    .forEach(sel => { const el = document.querySelector(sel); if (!el) return; buttonRail.appendChild(el.closest('.toggle-wrapper') || el); });
+
+  // Initialize and position rail labels now that the rail exists
+  try { ensureRailLabels(); positionRailLabels(); } catch (e) {}
+})();
+
+// Helper to manage current selection and .is-selected class
+function setCurrentSelection(sel) {
+  document.querySelectorAll('.selection.is-selected').forEach(s => s.classList.remove('is-selected'));
+  if (!sel) {
+    const active = document.activeElement;
+    if (active && typeof active.closest === 'function' && active.closest('.selection')) {
+      active.blur(); // remove focus-within state
+    }
+  }
+  currentSelection = sel || null;
+  if (currentSelection) {
+    currentSelection.classList.add('is-selected');
+  }
+}
+
+// Dummy text options
+const dummyTexts = [
+  "QRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRQRASQRASRQRASRQRQRQSRSQRQSRQSRSRQSRSSSRQSQRSQRSQQRASQRASRQRSRSQRQSRQSRQRSRQSRSSSRQSQRSQQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQSSSRQSQRSQRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRQRASQRASRQRASRQRQRQSRSQRQSRQSRSRQSRSSSRQSQRSQRSQQRASQRASRQRSRSQRQSRQSRQRSRQSRSSSRQSQRSQQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQSSSRQSQRSQRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRQRASQRASRQRASRQRQRQSRSQRQSRQSRSRQSRSSSRQSQRSQRSQQRASQRASRQRSRSQRQSRQSRQRSRQSRSSSRQSQRSQQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRQRASQRASRQRASRQRQRQSRSQRQSRQSRRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQSSSRQSQRSQRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRRSQQRASQRASRQRASRQRASRSRRRAAAASRSRRARARARAARRRSSSSSAAAQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRASQRASRQRASRQRASASRQRQRQSRSQRQSRQSRQRSRQSRSSSRQSQRSQRSQQRASQRASRQRASRQRQRQSRSQRQSRQSRQRS",
+    "FLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLFLFLFLFFLFLFLFLF",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "rsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrssrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsrsr",
+    "SUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSUSU",
+    "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+    "WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaW",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+    "vxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvxvx",
+    "0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E",
+"EFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGnoEFGno",
+"HIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUVHIJKLMNOPTUV",    
+"klmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklmklm",
+"1234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567123456712345671234567",
+"ijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijij",
+"fghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghByfghBy"
+];
+
+// Prevent default browser selection
+document.addEventListener("mousedown", (e) => {
+    // Ignore clicks on sliders, color picker, and input elements
+    if (e.target.closest(".control-input")) {
+        return; // Do nothing if interacting with UI elements
+    }
+
+    // Allow interaction inside editable content
+    if (e.target.closest(".selection-content")) {
+        return;
+    }
+
+    // Clear selection when clicking empty canvas (inside #blended-content but not on a .selection)
+    if ((e.target.id === 'blended-content' || (e.target.closest && e.target.closest('#blended-content'))) && !e.target.closest('.selection')) {
+      setCurrentSelection(null);
+    }
+
+    if (!e.target.classList.contains("selection")) {
+        e.preventDefault(); // Only block text selection if not clicking on an editable box
+    }
+
+    if (e.button !== 0) return; // Ignore right-clicks or middle-clicks
+
+    let clickedElement = document.elementFromPoint(e.clientX, e.clientY);
+    if (clickedElement.closest(".selection")) {
+        setCurrentSelection(clickedElement.closest(".selection"));
+        updateSliders(currentSelection);
+        updateToggleFromSelection(currentSelection);
+        isSelecting = false;
+        return; // Prevent new selection when dragging an existing one
+    }
+
+    startX = e.clientX;
+    startY = e.clientY;
+    isSelecting = true;
+
+    document.addEventListener("mousemove", detectDrag);
+    document.addEventListener("mouseup", cancelIfNotDragged);
+});
+
+
+function detectDrag(e) {
+  if (!isSelecting) return;
+  if (Math.abs(e.clientX - startX) > 5 || Math.abs(e.clientY - startY) > 5) {
+    createSelection(startX, startY);
+    document.removeEventListener("mousemove", detectDrag);
+    document.removeEventListener("mouseup", cancelIfNotDragged);
+  }
+}
+
+function cancelIfNotDragged() {
+  isSelecting = false;
+  document.removeEventListener("mousemove", detectDrag);
+  document.removeEventListener("mouseup", cancelIfNotDragged);
+}
+
+function createSelection(x, y) {
+    
+    let selection = document.createElement("div");
+    selection.classList.add("selection");
+    selection.style.left = `${x}px`;
+    selection.style.top = `${y}px`;
+    selection.style.position = "absolute";
+    selection.style.backgroundColor = "transparent";
+    selection.style.lineHeight="0.9"
+    selection.style.mixBlendMode = "multiply";
+    selection.style.padding = "0px";
+    selection.style.minWidth = "50px";
+    selection.style.minHeight = "30px";
+    selection.style.resize = "both";
+    selection.style.overflow = "hidden";
+    selection.style.fontFamily = (window.userFontName || "shape-font");
+    selection.tabIndex = 0;
+    selection.style.resize = "none"; // Disable native resizer
+    
+    const customHandle = document.createElement("div");
+    customHandle.classList.add("custom-resize-handle");
+    selection.customHandle = customHandle;
+    selection.appendChild(customHandle);
+
+    document.getElementById("blended-content").appendChild(selection);
+    $(selection).draggable({
+      containment: "#blended-content",
+      start: function () {
+        this.classList.add("dragging");
+      },
+      stop: function () {
+        this.classList.remove("dragging");
+      }
+    });
+    selections.push(selection);
+    setCurrentSelection(selection);
+
+    selection.focus();
+
+    document.addEventListener("mousemove", resizeSelection);
+    document.addEventListener("mouseup", finalizeSelection);
+    enableCustomResize(selection);
+}
+
+function resizeSelection(e) {
+    if (!isSelecting) return;
+    let selection = currentSelection;
+
+    let endX = e.clientX;
+    let endY = e.clientY;
+
+    selection.style.width = `${Math.abs(endX - startX)}px`;
+    selection.style.height = `${Math.abs(endY - startY)}px`;
+    selection.style.left = `${Math.min(startX, endX)}px`;
+    selection.style.top = `${Math.min(startY, endY)}px`;
+    selection.tabIndex = 0; // allow programmatic focus
+selection.focus();
+}
+
+
+
+function finalizeSelection() {
+    isSelecting = false;
+    let selection = currentSelection;
+    if (!selection || selection.offsetWidth < 70 || selection.offsetHeight < 70) {
+        selection.remove();
+        selections.pop();
+        return;
+    }
+
+    selection.tabIndex = 0;
+
+    const paragraph = document.createElement("p");
+    paragraph.innerText = dummyTexts[Math.floor(Math.random() * dummyTexts.length)];
+    paragraph.style.margin = "0";
+    paragraph.style.padding = "0";
+    paragraph.style.whiteSpace = "pre-wrap";
+    paragraph.style.wordBreak = "break-word";
+    paragraph.style.outline = "none";
+    paragraph.style.cursor = "text";
+    paragraph.style.mixBlendMode = "inherit"; // inherit parent mix blend
+    paragraph.style.color = "inherit"; // inherit parent color
+    paragraph.style.font = "inherit"; // inherit all font styles
+    paragraph.setAttribute("contenteditable", "true");
+    paragraph.setAttribute("tabindex", "0");
+
+    selection.innerHTML = ""; // Clear any existing content (handle will be re-appended below)
+    selection.setAttribute("tabindex", "0");
+    selection.focus();
+    const contentWrapper = document.createElement("div");
+    contentWrapper.classList.add("selection-content");
+    contentWrapper.appendChild(paragraph);
+    selection.appendChild(contentWrapper);
+    selection.appendChild(selection.customHandle); // Re-append the resize handle
+    if (paragraph && typeof paragraph.focus === 'function') {
+      paragraph.focus();
+    }
+
+    setCurrentSelection(selection); // <-- auto-select on creation
+
+    selection.style.color = getRandomColor();
+    // Set font size based on selection height
+    const selH = selection.offsetHeight;
+    let fontPx;
+    if (selH < 150) {
+      // For short boxes under 100px tall, keep font size below the box height
+      const maxPx = Math.max(12, selH - 5);
+      const minPx = 12;
+      fontPx = Math.floor(Math.random() * (maxPx - minPx + 1)) + minPx;
+    } else {
+      // Scale with height for taller boxes
+      const minPx = Math.max(16, Math.floor(selH * 0.12));   // lower bound ~12% of height
+      const maxPx = Math.min(Math.floor(selH * 0.60), 300);  // upper bound capped at 300px
+      const span = Math.max(1, maxPx - minPx + 1);
+      fontPx = Math.floor(Math.random() * span) + minPx;
+    }
+    selection.style.fontSize = `${fontPx}px`;
+    selection.style.display = "block";
+    selection.style.alignItems = "left";
+    selection.style.justifyContent = "left";
+    selection.style.textAlign = "left";
+    selection.style.overflow = "hidden";
+    selection.style.padding = "5px";
+    selection.style.wordBreak = "break-word";
+    selection.style.wordWrap = "break-word";
+    selection.style.fontFamily = (window.userFontName || "shape-font");
+    selection.style.fontVariationSettings = `'SHAP' 1`;
+    paragraph.style.fontVariationSettings = `'SHAP' 1`;
+
+    document.removeEventListener("mousemove", resizeSelection);
+    document.removeEventListener("mouseup", finalizeSelection);
+    if (selection) { updateSliders(selection); }
+    suppressClearOnce = true;
+}
+
+
+
+function enableCustomResize(selection) {
+  const handle = selection.querySelector(".custom-resize-handle");
+  let isResizing = false, startX, startY, startWidth, startHeight;
+
+  handle.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    isResizing = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startWidth = selection.offsetWidth;
+    startHeight = selection.offsetHeight;
+
+    function onMouseMove(e) {
+      if (!isResizing) return;
+      const newWidth = startWidth + (e.clientX - startX);
+      const newHeight = startHeight + (e.clientY - startY);
+      selection.style.width = `${newWidth}px`;
+      selection.style.height = `${newHeight}px`;
+    }
+
+    function onMouseUp() {
+      isResizing = false;
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    }
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  });
+}
+
+// === Duo-tone slider background (match Spring version) ===
+function updateSliderBackground(slider) {
+  if (!slider) return;
+  var min = Number(slider.min) || 0;
+  var max = Number(slider.max) || 100;
+  var val = Number(slider.value);
+  var pct = ((val - min) / (max - min)) * 100;
+  // Left = #34d3ff, Right = #fff04b
+  slider.style.background = `linear-gradient(to right, #34d3ff 0%, #34d3ff ${pct}%, #fff04b ${pct}%, #fff04b 100%)`;
+}
+// Sliders to edit current selection only
+document.getElementById("font-size-slider").addEventListener("input", function () {
+  if (currentSelection) currentSelection.style.fontSize = this.value + "px";
+  updateRangeBubble('font-size-slider', 'font-size-value', v => Math.round(v), 42);
+  updateSliderBackground(this);
+});
+document.getElementById("line-height-slider").addEventListener("input", function () {
+  if (currentSelection) currentSelection.style.lineHeight = this.value;
+  updateRangeBubble('line-height-slider', 'line-height-value', v => Number(v).toFixed(2));
+  updateSliderBackground(this);
+});
+document.getElementById("letter-spacing-slider").addEventListener("input", function () {
+  if (currentSelection) {
+    const percentage = Number(this.value) || 0;   // e.g., 100 → 1em
+    const emValue = percentage / 100;
+    currentSelection.style.letterSpacing = emValue + "em";
+  }
+  updateLetterSpacingBubble();
+  updateSliderBackground(this);
+});
+
+// --- Combined transform for ratio and slant sliders ---
+function updateCombinedTransform() {
+  const selection = document.querySelector(".is-selected") || currentSelection;
+  if (!selection) return;
+
+  const ratio = parseFloat(document.getElementById("ratio").value);
+  const slant = parseFloat(document.getElementById("slant").value);
+
+  const skewX = Math.tan(slant * Math.PI / 180); // X-axis skew from slant degrees
+  const transform = `matrix(1, 0, ${skewX}, ${ratio}, 0, 0)`;
+
+  selection.style.transform = transform;
+}
+
+document.getElementById("slant").addEventListener("input", function () {
+  updateCombinedTransform();
+  updateRangeBubble('slant', 'slant-value', v => Math.round(v), 42);
+  updateSliderBackground(this);
+});
+
+document.getElementById("ratio").addEventListener("input", function () {
+  updateCombinedTransform();
+  updateRangeBubble('ratio', 'ratio-value', v => parseFloat(v).toFixed(2), 42);
+  updateSliderBackground(this);
+});
+
+
+
+function updateSliders(sel) {
+  const style = window.getComputedStyle(sel);
+  document.getElementById("font-size-slider").value = parseInt(style.fontSize);
+  updateSliderBackground(document.getElementById('font-size-slider'));
+  updateRangeBubble('font-size-slider', 'font-size-value', v => Math.round(v), 42);
+
+  // Convert computed line-height (usually px) to unitless multiplier for the slider
+  (function () {
+    const lhPx = parseFloat(style.lineHeight);
+    const fsPx = parseFloat(style.fontSize);
+    let multiplier = 1;
+    if (!Number.isNaN(lhPx) && !Number.isNaN(fsPx) && fsPx > 0) {
+      multiplier = lhPx / fsPx;
+    }
+    // Clamp to slider range [0.1, 3]
+    multiplier = Math.max(0.1, Math.min(3, multiplier));
+    const lhSlider = document.getElementById("line-height-slider");
+    lhSlider.value = multiplier.toFixed(2);
+    updateSliderBackground(lhSlider);
+    updateRangeBubble('line-height-slider', 'line-height-value', v => Number(v).toFixed(2));
+  })();
+
+  (function () {
+    const lsRaw = style.letterSpacing;               // may be 'normal' or e.g. '3.2px'
+    const fsPx = parseFloat(style.fontSize) || 16;   // fallback just in case
+    let percentage = 0;
+    if (lsRaw !== 'normal') {
+      const lsPx = parseFloat(lsRaw);                // computed is usually px
+      if (!Number.isNaN(lsPx) && fsPx > 0) {
+        percentage = (lsPx / fsPx) * 100;           // px → %
+      }
+    }
+    document.getElementById("letter-spacing-slider").value = percentage;
+    updateSliderBackground(document.getElementById('letter-spacing-slider'));
+    updateLetterSpacingBubble();
+  })();
+
+  // --- Updated transform parsing for slant and ratio ---
+  const transform = style.transform;
+  const slantInput = document.getElementById("slant");
+  const ratioInput = document.getElementById("ratio");
+
+  if (transform && transform !== "none") {
+    const matrixMatch = transform.match(/matrix\(([^)]+)\)/);
+    if (matrixMatch) {
+      const values = matrixMatch[1].split(",").map(Number);
+      const a = values[0], c = values[2], d = values[3];
+
+      // Slant calculation (skewX in degrees)
+      let slantDeg = Math.atan(c) * (180 / Math.PI);
+      slantDeg = Math.max(parseFloat(slantInput.min), Math.min(parseFloat(slantInput.max), slantDeg));
+      slantInput.value = String(Math.round(slantDeg));
+
+      // Ratio calculation (scaleY)
+      const ratio = d;
+      ratioInput.value = ratio.toFixed(2);
+
+      updateSliderBackground(slantInput);
+      updateRangeBubble('slant', 'slant-value', v => Math.round(v), 42);
+      updateSliderBackground(ratioInput);
+      updateRangeBubble('ratio', 'ratio-value', v => parseFloat(v).toFixed(2), 42);
+    }
+  } else {
+    slantInput.value = "0";
+    ratioInput.value = "1";
+    updateSliderBackground(slantInput);
+    updateRangeBubble('slant', 'slant-value', v => Math.round(v), 42);
+    updateSliderBackground(ratioInput);
+    updateRangeBubble('ratio', 'ratio-value', v => parseFloat(v).toFixed(2), 42);
+  }
+
+  // Sync color picker to the selection's current color
+  const color = style.color;
+  const rgba = color.match(/\d+/g).map(Number);
+  if (typeof colorPicker !== 'undefined' && colorPicker && rgba) {
+    colorPicker.color.rgb = { r: rgba[0], g: rgba[1], b: rgba[2] };
+  }
+}
+// --- General bubble helpers for sliders ---
+function ensureBubble(sliderId, bubbleId) {
+  const slider = document.getElementById(sliderId);
+  if (!slider) return null;
+  let bubble = document.getElementById(bubbleId);
+  if (!bubble) {
+    bubble = document.createElement('span');
+    bubble.id = bubbleId;
+    bubble.className = 'slider-bubble';
+    bubble.textContent = slider.value || '0';
+    slider.insertAdjacentElement('afterend', bubble);
+  }
+  // Ensure parent is a positioning context
+  const group = slider.parentElement;
+  if (group && getComputedStyle(group).position === 'static') {
+    group.style.position = 'relative';
+  }
+  return bubble;
+}
+
+function updateRangeBubble(sliderId, bubbleId, formatFn) {
+  const slider = document.getElementById(sliderId);
+  if (!slider) return;
+  const bubble = ensureBubble(sliderId, bubbleId);
+  if (!bubble) return;
+
+  // Determine thumb width: data-* overrides CSS var, else fallback 42
+  const cssThumb  = parseFloat(getComputedStyle(slider).getPropertyValue('--thumb-w'));
+  const dataThumb = slider.dataset.thumbWidth ? parseFloat(slider.dataset.thumbWidth) : NaN;
+  const thumbSize = (!Number.isNaN(dataThumb) && dataThumb > 0) ? dataThumb
+                 : (!Number.isNaN(cssThumb)  && cssThumb  > 0) ? cssThumb
+                 : 42;
+
+  const rawVal = Number(slider.value);
+  const displayVal = typeof formatFn === 'function' ? formatFn(rawVal) : Math.round(rawVal);
+  bubble.textContent = displayVal;
+
+  const styles = getComputedStyle(slider);
+  const paddingLeft  = parseFloat(styles.paddingLeft)  || 0;
+  const paddingRight = parseFloat(styles.paddingRight) || 0;
+  const trackWidth = slider.clientWidth - paddingLeft - paddingRight;
+
+  const min = Number(slider.min) || 0;
+  const max = Number(slider.max) || 100;
+  const percent = (rawVal - min) / (max - min);
+
+  // Center of the thumb along the track
+  let centerX = paddingLeft + percent * (trackWidth - thumbSize) + thumbSize / 2;
+
+  // Clamp within track
+  const leftBound  = paddingLeft + thumbSize / 2;
+  const rightBound = paddingLeft + trackWidth - thumbSize / 2;
+  centerX = Math.max(leftBound, Math.min(centerX, rightBound));
+
+  // Essential styles (visuals come from CSS)
+  if (!bubble.style.top) bubble.style.top = '0px';
+  bubble.style.position = 'absolute';
+  bubble.style.transform = 'translateX(-50%)';
+  bubble.style.pointerEvents = 'none';
+  bubble.style.userSelect = 'none';
+  if (!bubble.style.zIndex) bubble.style.zIndex = '10';
+
+  bubble.style.left = centerX + 'px';
+}
+
+function updateLetterSpacingBubble() {
+  const slider = document.getElementById('letter-spacing-slider');
+  if (!slider) return;
+
+  // Ensure parent is a positioning context
+  const group = slider.parentElement;
+  if (group && getComputedStyle(group).position === 'static') {
+    group.style.position = 'relative';
+  }
+
+  // Ensure bubble exists
+  let bubble = document.getElementById('letter-spacing-value');
+  if (!bubble) {
+    bubble = document.createElement('span');
+    bubble.id = 'letter-spacing-value';
+    bubble.className = 'slider-bubble';
+    bubble.textContent = '0';
+    (group || slider.parentElement || document.body).appendChild(bubble);
+  }
+
+  // Update label text (just the number)
+  const val = Number(slider.value) || 0;
+  bubble.textContent = Math.round(val);
+
+  // Compute the center X of the thumb over the track
+  const styles = getComputedStyle(slider);
+  const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+  const paddingRight = parseFloat(styles.paddingRight) || 0;
+  const trackWidth = slider.clientWidth - paddingLeft - paddingRight;
+
+  // Thumb width: match CSS for #letter-spacing-slider (30px); fallback to 20px
+  const cssThumb = parseFloat(getComputedStyle(slider).getPropertyValue('--thumb-w'));
+const thumbSize = (!Number.isNaN(cssThumb) && cssThumb > 0) ? cssThumb : 42;
+
+  const min = Number(slider.min) || 0;
+  const max = Number(slider.max) || 100;
+  const percent = (val - min) / (max - min);
+
+  // Center of the thumb along the track
+  let centerX = paddingLeft + percent * (trackWidth - thumbSize) + thumbSize / 2;
+
+  // Clamp so the bubble's center stays within the track bounds
+  const leftBound = paddingLeft + thumbSize / 2;
+  const rightBound = paddingLeft + trackWidth - thumbSize / 2;
+  centerX = Math.max(leftBound, Math.min(centerX, rightBound));
+
+  // Ensure essential styles for centering/visibility
+  bubble.style.position = 'absolute';
+  if (!bubble.style.top) bubble.style.top = '0px';
+  bubble.style.transform = 'translateX(-50%)';
+  bubble.style.pointerEvents = 'none';
+  bubble.style.userSelect = 'none';
+  if (!bubble.style.zIndex) bubble.style.zIndex = '10';
+
+  // Place bubble so its center aligns with the thumb center
+  bubble.style.left = centerX + 'px';
+}
+
+window.addEventListener('resize', updateLetterSpacingBubble);
+window.addEventListener('DOMContentLoaded', updateLetterSpacingBubble);
+window.addEventListener('resize', function(){
+  updateRangeBubble('font-size-slider', 'font-size-value', v => Math.round(v));
+  updateRangeBubble('line-height-slider', 'line-height-value', v => Number(v).toFixed(2));
+  updateRangeBubble('slant', 'slant-value', v => Math.round(v));
+  document.querySelectorAll("input[type='range']").forEach(function(slider){ updateSliderBackground(slider); });
+});
+window.addEventListener('DOMContentLoaded', function(){
+  updateRangeBubble('font-size-slider', 'font-size-value', v => Math.round(v));
+  updateRangeBubble('line-height-slider', 'line-height-value', v => Number(v).toFixed(2));
+  updateRangeBubble('slant', 'slant-value', v => Math.round(v));
+  document.querySelectorAll("input[type='range']").forEach(function(slider){
+    updateSliderBackground(slider);
+    slider.addEventListener('input', function(){ updateSliderBackground(this); });
+  });
+});
+
+function getRandomColor() {
+  return `#${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}`;
+}
+
+
+     ///----------------- [  ABOUT PAGE _ Pop-Up Window  ] -----------------
+     ///////////////////////////////////////////////////////////////////////
+
+     document.getElementById("about").addEventListener("click", function () {
+        let popup = document.getElementById("about-popup");
+        let isCreating = false;
+
+        if (!popup) {
+            popup = document.createElement("div");
+            popup.id = "about-popup";
+            popup.style.position = "fixed";
+            popup.style.width = "475px";
+            popup.style.maxHeight = "475px"; // Set max height
+            popup.style.overflow = "auto"; // Enable scroll bar when content is too long
+            popup.style.height = "auto";
+            popup.style.background = "#ff489a";
+            popup.style.color = "black";
+            popup.style.fontFamily = "authentic-sans-90"
+            popup.style.lineHeight = "120%"
+            popup.style.padding = "25px 25px 25px 33px";
+            popup.style.textAlign = "left";
+            popup.style.top = "50%";
+            popup.style.left = "50%";
+            popup.style.outline = "4px solid #fff04b";
+            popup.style.borderRadius = "25px";
+            popup.style.transform = "translate(-50%, -50%)";
+            popup.style.zIndex = "1000";
+            popup.innerHTML = `
+  <span id="close-popup" style="
+      position: absolute;
+      top: 18px;
+      right: 17px;
+      cursor: pointer;
+      font-size: 21px;
+      font-weight: 900;">
+
+      ✕
+      
+      </span>
+      
+   <p class="pop-up" style="margin-bottom: 17px;margin-top: 10px;"><span style="font-family: authentic-sans-130;">Illegible Pattern</span> is a web tool that generates randomized geometric patterns using an illegible typeface.</p>
         
-        popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;mix-blend-mode: normal;">Really for the advance mode?<br/>You'll have more fun in the next page!</p>`;
-        popup.style.width = "350px";
-        popup.style.height = "120px";
-        popup.style.position = "fixed";
-        popup.style.display = "flex";
-        popup.style.justifyContent ="center";
-        popup.style.alignItems = "center";
-        popup.style.textAlign = "center";
-        popup.style.lineHeight= "150%";
-        popup.style.background = "#ff489a";
-        popup.style.mixBlendMode = "solid";
-        popup.style.border = "5px solid rgb(255, 240, 75)";
-        popup.style.borderRadius = "25px";
-        popup.style.zIndex = "1000";
-        popup.style.pointerEvents = "none";
-        popup.style.top = "50%";
-                popup.style.left = "50%";
-                popup.style.transform = "translate(-50%, -50%)";
-        document.body.appendChild(popup);
-    }
-});
+   <p class="pop-up" style="text-indent: 22px; color:yellow; mix-blend-mode: normal; "> 
+         <span style="text-decoration: underline; text-underline-offset: 3px;">Drag and drop</span> on the blank canvas to start your pattern!
+    </p>
+    <p class="pop-up" style="text-indent: 50px; color:yellow; mix-blend-mode: normal; margin-bottom: 19px;">      
+        You can <span style="text-decoration: underline; text-underline-offset: 3px;">move</span> them around and <span style="text-decoration: underline; text-underline-offset: 3px;">type in</span> to edit.
+    </p>
+         
+        
+        <p class="pop-up" style=" margin-bottom: 2px;"> A custom variable font Modular Shapes, which includes both rectangular and circular mode, let users create abstract pattern composition by typing. This project is designed and coded by Jo Zixuan during RISD Graphic Design MFA. </p>
+        <p class="pop-up" style=" margin-bottom: 0px;"> Share the patterns you make with this tool to our <a href="https://www.are.na/jo-zixuan/illegible-pattern" target="_blank" style="mix-blend-mode: normal; color:purple; ">gallery</a>!</p>
+         
+`;
+            document.body.appendChild(popup);
+            isCreating = true;
 
-document.getElementById("advance-mode-btn").addEventListener("mouseleave", function () {
-    const popup = document.getElementById("advance-warning");
-    if (popup) {
-        popup.remove();
-    }
-});
-        //////////////////////////////////////////////////////////////////////////////////////////////
-     ///----------------- [  ABOUT PAGE _ Pop-Up Window  ] -----------------///////////////////////////////
-
-        document.getElementById("about").addEventListener("click", function () {
-            let popup = document.getElementById("about-popup");
-
-            if (!popup) {
-                popup = document.createElement("div");
-                popup.id = "about-popup";
-                popup.style.position = "fixed";
-                popup.style.width = "500px";
-                popup.style.maxHeight = "500px"; // Set max height
-                popup.style.overflow = "auto"; // Enable scroll bar when content is too long
-                popup.style.height = "auto";
-                popup.style.background = "#ff489a";
-                popup.style.color = "back";
-                popup.style.fontFamily = "authentic-sans-90"
-                popup.style.lineHeight = "120%"
-                popup.style.padding = "20px";
-                popup.style.textAlign = "left";
-                popup.style.top = "50%";
-                popup.style.left = "50%";
-                popup.style.outline = "5px solid #fff04b";
-                popup.style.transform = "translate(-50%, -50%)";
-                popup.style.zIndex = "1000";
-                popup.innerHTML = `
-     <span id="close-popup" style="
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          cursor: pointer;
-          font-size: 20px;
-          font-weight: 100;">
-
-          ✕
-          
-          </span>
-          
-     <p class="pop-up" style="margin-bottom: 20px;"><span style="font-family: authentic-sans-130;">ABOUT</span></p>
-       <p class="pop-up" style="margin-bottom: 20px;"><span style="font-family: authentic-sans-130;">Illegible Pattern</span> is a web tool for generating geometric patterns using an illegible typeface.</p>
-             <p class="pop-up" style="text-indent: 80px; margin-bottom: 20px;  text-decoration:underline; text-underline-offset: 3px;">Double click to edit the text in the patterns<br></p>
-                <p class="pop-up" style=" margin-bottom: 20px;"> A custom variable font, Modular Shapes, was designed for this project. It includes a variable axis of shape, allowing
-users to choose from a range rectangular or circular forms.By stripping away the semantic meaning of each letter, every glyph becomes a building block within the system. Through customization of font size, leading (line-height), kerning (letter-spacing), alignment, vertical scale, slant, and color, designers can intuitively generate pattern compositions using
-traditional typesetting methods.</p>
-                    <p class="pop-up" > Share your illegible pattern at this <a href="https://www.are.na/jo-zixuan/illegible-pattern" target="_blank">are.na</a> channel. <br>Designed and coded by Jo Zixuan in 2025 @RISD GD MFA</p>
-  `;
-                document.body.appendChild(popup);
-
-                document.getElementById("close-popup").addEventListener("click", function () {
-                    popup.remove();
-                });
-            } else {
+            document.getElementById("close-popup").addEventListener("click", function () {
                 popup.remove();
-            }
-        });
+            });
+        } else {
+            popup.remove();
+        }
+    });
 
 ///////////////------- [  GLYPHS CHART _ Pop-Up Window  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
 document.getElementById("chart").addEventListener("click", function () {
@@ -595,7 +822,7 @@ document.getElementById("chart").addEventListener("click", function () {
                 popup.id = "chart-popup";
                 popup.style.position = "fixed";
                 popup.style.width = "600px";
-                popup.style.maxHeight = "390px"; // Set max height
+                popup.style.maxHeight = "411px"; // Set max height
                 popup.style.overflow = "auto"; // Enable scroll bar when content is too long
                 popup.style.height = "auto";
                 popup.style.background = "#3fbd48";
@@ -610,33 +837,34 @@ document.getElementById("chart").addEventListener("click", function () {
                
                 popup.style.textAlign = "left";
                 popup.style.outline = "5px solid #fff04b";
+                popup.style.borderRadius = "0 15px 0 0"; // round only the top-right corner
                 popup.style.bottom = "0%";
                 popup.style.left = "0%";
                 // popup.style.top = "50%";
                 // popup.style.left = "50%";
                 // popup.style.transform = "translate(-50%, -50%)";
                 popup.style.zIndex = "1000";
-                popup.innerHTML = `
-      <span id="close-popup" style="
+               popup.innerHTML = `
+      <span id="close-chart-popup" style="
           position: absolute;
-          top: 10px;
+          top: 17px;
           right: 15px;
           cursor: pointer;
-          font-size: 20px;
-          font-weight: 100;">
+          font-size: 21px;
+          font-weight: 500;">
 
           ✕
           
           </span>
           
-      <p class="pop-up" style="margin-bottom: 5px;mix-blend-mode:normal;">Rectangular mode</p>
+      <p style="margin-bottom: 5px;mix-blend-mode:normal; font-family: authentic-sans-90;">Rectangular mode</p>
       <img src="rectangular-chart.svg" alt='Chart explaining what the abstract shapes' correspoding keyboard input style=" width:600px;mix-blend-mode: normal;">
-      <p class="pop-up" style="margin-top: 10px;margin-bottom: 5px;mix-blend-mode:normal">Circular mode</p>
+      <p style="margin-top: 10px;margin-bottom: 5px;mix-blend-mode:normal; font-family: authentic-sans-90;">Circular mode</p>
       <img src="circular-chart.svg" alt='Chart explaining what the abstract shapes' correspoding keyboard input style=" width:600px;mix-blend-mode: normal;">
   `;
                 document.body.appendChild(popup);
 
-                document.getElementById("close-popup").addEventListener("click", function () {
+                document.getElementById("close-chart-popup").addEventListener("click", function () {
                     popup.remove();
                 });
             } else {
@@ -649,35 +877,45 @@ document.getElementById("chart").addEventListener("click", function () {
 // -------------------- [  Toggle between Shape and Meaning  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
     
 
-document.getElementById("meaning").addEventListener("click", function () {
-    let paragraphs = document.querySelectorAll("p");
-    paragraphs.forEach(p => {
-        let currentFont = window.getComputedStyle(p).fontFamily;
-        if (currentFont.includes("shape-font")) {
-            p.style.fontFamily = "authentic-sans-130";
-        } else {
-            p.style.fontFamily = "shape-font";
-        }
-    });
-});
 
+document.getElementById("meaning").addEventListener("click", function () {
+    // Prefer current selection; fallback to last-created selection
+    const target = currentSelection || selections[selections.length - 1] || null;
+    if (!target) return;
+
+    const user = window.userFontName || null;
+    const currentFont = getComputedStyle(target).fontFamily;
+    let next;
+
+    if (user) {
+      // Toggle between shape-font and the user-uploaded font
+      next = currentFont.includes("shape-font") ? user : "shape-font";
+    } else {
+      // Fallback: toggle between shape-font and Authentic Sans
+      next = currentFont.includes("shape-font") ? "authentic-sans-130" : "shape-font";
+    }
+
+    target.style.fontFamily = next;
+    const p = target.querySelector("p");
+    if (p) p.style.fontFamily = "inherit";
+});
 
 
 
 //  ///////////////////////////////////
 // -------------------- [  Toggle between Multiply and Solid  ] ---------------- //////////////////////////////////////////////////////////////////////////-->
     
-document.getElementById("color-mode").addEventListener("click", function () {
-    let paragraphs = document.querySelectorAll("p");
-    paragraphs.forEach(p => {
-        let currentBlendMode = window.getComputedStyle(p).mixBlendMode;
-        if (currentBlendMode === "multiply") {
-            p.style.mixBlendMode = "normal";
-        } else {
-            p.style.mixBlendMode = "multiply";
-        }
-    });
-});
+// document.getElementById("color-mode").addEventListener("click", function () {
+//     let paragraphs = document.querySelectorAll("p");
+//     paragraphs.forEach(p => {
+//         let currentBlendMode = window.getComputedStyle(p).mixBlendMode;
+//         if (currentBlendMode === "multiply") {
+//             p.style.mixBlendMode = "normal";
+//         } else {
+//             p.style.mixBlendMode = "multiply";
+//         }
+//     });
+// });
 
         ////////////////////////
         //   --------     Function to play sound     --------  //////////////
@@ -708,23 +946,21 @@ document.getElementById("color-mode").addEventListener("click", function () {
             playSound("audio/button5.wav");
         });
 
-        document.getElementById("color-mode").addEventListener("click", function () {
+        document.getElementById("greyscale").addEventListener("click", function () {
             playSound("audio/button6.wav");
         });
-        document.getElementById("greyscale").addEventListener("click", function () {
-            playSound("audio/button7.wav");
+        // document.getElementById("text-alignment").addEventListener("click", function () {
+        //     playSound("audio/alignment-audio.wav");
+        // });
+        document.getElementById("decoration").addEventListener("click", function () {
+            playSound("audio/decoration.wav");
         });
-        
-        document.getElementById("text-alignment").addEventListener("click", function () {
-            playSound("audio/alignment-audio.wav");
-        });
-
 
         document.getElementById("delete").addEventListener("click", function () {
             playSound("audio/button8.wav");
             if (currentSelection) {
                 currentSelection.remove();
-                currentSelection = null;
+                setCurrentSelection(null);
             }
         });
 
@@ -734,6 +970,88 @@ document.getElementById("color-mode").addEventListener("click", function () {
                 playSound("audio/click3.wav");
             });
         });
+
+// ---------------- [ Import Font Button ] ----------------
+(function(){
+  const importBtn = document.getElementById("import-font");
+  if (!importBtn) return;
+
+  // Hidden file input to pick font files
+  const fontInput = document.createElement("input");
+  fontInput.type = "file";
+  fontInput.accept = ".ttf,.otf,.woff,.woff2";
+  fontInput.style.display = "none";
+  document.body.appendChild(fontInput);
+
+  // Hover popup with instructions
+  importBtn.addEventListener("mouseover", function(){
+    let popup = document.getElementById("import-font-popup");
+    if (!popup) {
+      popup = document.createElement("div");
+      popup.id = "import-font-popup";
+      popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;mix-blend-mode: normal;">Click to upload your own font file.<br>
+It will replace all the current style.</p>`;
+      popup.style.width = "300px";
+      popup.style.height = "87px";
+      popup.style.position = "fixed";
+      popup.style.display = "flex";
+      popup.style.justifyContent = "center";
+      popup.style.alignItems = "center";
+      popup.style.textAlign = "center";
+      popup.style.lineHeight = "150%";
+      popup.style.background = "#ff489a";
+      popup.style.mixBlendMode = "solid";
+      popup.style.border = "3px solid rgb(255, 240, 75)";
+      popup.style.borderRadius = "25px";
+      popup.style.zIndex = "1000";
+      popup.style.pointerEvents = "none";
+      popup.style.top = "267px";
+      popup.style.left = "75px";
+      document.body.appendChild(popup);
+    }
+  });
+  importBtn.addEventListener("mouseleave", function(){
+    const popup = document.getElementById("import-font-popup");
+    if (popup) popup.remove();
+  });
+
+  // Click to open file picker
+  importBtn.addEventListener("click", function(){
+    fontInput.click();
+  });
+
+  // Load chosen font and apply to all selections/patterns
+  fontInput.addEventListener("change", async function(event){
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    try {
+      const url = URL.createObjectURL(file);
+      const userFontName = "user-font"; // Consistent family name
+      const fontFace = new FontFace(userFontName, `url(${url})`);
+      await fontFace.load();
+      document.fonts.add(fontFace);
+      window.userFontName = userFontName; // remember for future selections
+
+      // Apply to all current dynamic selections
+      document.querySelectorAll('.selection').forEach(sel => {
+        sel.style.fontFamily = userFontName;
+        const p = sel.querySelector('p');
+        if (p) p.style.fontFamily = 'inherit';
+      });
+
+      // Also apply to any paragraph inside the main container as a safety net
+      document.querySelectorAll('#blended-content p').forEach(p => {
+        const parent = p.closest('.selection');
+        if (!parent) {
+          p.style.fontFamily = userFontName;
+        }
+      });
+    } catch (err) {
+      console.error('Failed to load font:', err);
+    }
+  });
+})();
 
 
 //  <!-- SHAP Variable Axis changes when clicked -->
@@ -748,67 +1066,107 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //________________________<< Import Image as background  >>__________________
-// _____________________________________________________________________
-document.addEventListener("DOMContentLoaded", () => {
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/*";
-    fileInput.style.display = "none"; // Keep it hidden, but accessible via button
+// __________________________This function is cancelled________________
+// document.addEventListener("DOMContentLoaded", () => {
+//     const fileInput = document.createElement("input");
+//     fileInput.type = "file";
+//     fileInput.accept = "image/*";
+//     fileInput.style.display = "none"; // Keep it hidden, but accessible via button
 
-    // Append file input to body
-    document.body.appendChild(fileInput);
+//     // Append file input to body
+//     document.body.appendChild(fileInput);
 
-    // Get the import button
-    const importButton = document.getElementById("import");
+//     // Get the import button
+//     const importButton = document.getElementById("import");
 
-    // Click event to trigger file selection
-    importButton.addEventListener("click", () => {
-        fileInput.click();
+//     // Click event to trigger file selection
+//     importButton.addEventListener("click", () => {
+//         fileInput.click();
+//     });
+
+//     // Handle file selection
+//     fileInput.addEventListener("change", (event) => {
+//         const file = event.target.files[0];
+//         if (file && file.type.startsWith("image/")) {
+//             const reader = new FileReader();
+//             reader.onload = (e) => {
+//                 document.body.style.backgroundImage = `url('${e.target.result}')`;
+//                 document.body.style.backgroundSize = "100vw auto";
+//                 document.body.style.backgroundPosition = "top center";
+//                 document.body.style.backgroundRepeat = "no-repeat";
+//             };
+//             reader.readAsDataURL(file);
+//         }
+//     });
+
+//     // Drag and Drop functionality
+//     document.body.addEventListener("dragover", (event) => {
+//         event.preventDefault();
+//         document.body.style.opacity = "0.8";
+//     });
+
+//     document.body.addEventListener("dragleave", () => {
+//         document.body.style.opacity = "1";
+//     });
+
+//     document.body.addEventListener("drop", (event) => {
+//         event.preventDefault();
+//         document.body.style.opacity = "1";
+
+//         const file = event.dataTransfer.files[0];
+//         if (file && file.type.startsWith("image/")) {
+//             const reader = new FileReader();
+//             reader.onload = (e) => {
+//                 document.body.style.backgroundImage = `url('${e.target.result}')`;
+//                 document.body.style.backgroundSize = "100vw auto";
+//                 document.body.style.backgroundPosition = "top center";
+//                 document.body.style.backgroundRepeat = "no-repeat";
+//             };
+//             reader.readAsDataURL(file);
+//         }
+//     });
+// });
+
+//save png function//
+document.getElementById("save-png-btn").addEventListener("click", function () {
+    playSound("audio/button2.wav");
+
+    const target = document.getElementById("blended-content");
+
+    const paragraphs = target.querySelectorAll(".selection p");
+    const originalSettings = [];
+
+    paragraphs.forEach(p => {
+        const currentFontVariation = p.style.fontVariationSettings || getComputedStyle(p).getPropertyValue("font-variation-settings");
+        originalSettings.push({
+            el: p,
+            fontVariationSettings: p.style.fontVariationSettings
+        });
+        p.style.fontVariationSettings = currentFontVariation;
     });
 
-    // Handle file selection
-    fileInput.addEventListener("change", (event) => {
-        const file = event.target.files[0];
-        if (file && file.type.startsWith("image/")) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                document.body.style.backgroundImage = `url('${e.target.result}')`;
-                document.body.style.backgroundSize = "100vw auto";
-                document.body.style.backgroundPosition = "top center";
-                document.body.style.backgroundRepeat = "no-repeat";
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+    html2canvas(target, {
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: null
+    }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "illegible-pattern.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
 
-    // Drag and Drop functionality
-    document.body.addEventListener("dragover", (event) => {
-        event.preventDefault();
-        document.body.style.opacity = "0.8";
-    });
-
-    document.body.addEventListener("dragleave", () => {
-        document.body.style.opacity = "1";
-    });
-
-    document.body.addEventListener("drop", (event) => {
-        event.preventDefault();
-        document.body.style.opacity = "1";
-
-        const file = event.dataTransfer.files[0];
-        if (file && file.type.startsWith("image/")) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                document.body.style.backgroundImage = `url('${e.target.result}')`;
-                document.body.style.backgroundSize = "100vw auto";
-                document.body.style.backgroundPosition = "top center";
-                document.body.style.backgroundRepeat = "no-repeat";
-            };
-            reader.readAsDataURL(file);
-        }
+            // Restore original inline styles
+            originalSettings.forEach(({ el, fontVariationSettings }) => {
+                el.style.fontVariationSettings = fontVariationSettings;
+            });
+            originalFilters.forEach(({ el, filter }) => {
+                el.style.filter = filter;
+            });
+            originalDecorations.forEach(({ el, textDecoration }) => {
+                el.style.textDecoration = textDecoration;
+            });
     });
 });
-
 //________________________<< Greyscale Function button >>_________________________ _____________________________________________________________________
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -819,11 +1177,9 @@ document.addEventListener("DOMContentLoaded", () => {
         isGreyscale = !isGreyscale;
         document.querySelectorAll("p").forEach(p => {
             if (isGreyscale) {
-                p.style.filter = "grayscale(100%)"; // Apply greyscale
-                p.style.opacity = "0.6"; // Reduce opacity slightly for effect
+                p.style.filter = "grayscale(100%)"; // Apply greyscaleeffect
             } else {
                 p.style.filter = "none"; // Remove greyscale
-                p.style.opacity = "1"; // Restore full opacity
             }
         });
     });
@@ -831,117 +1187,552 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //________________________<< Text Alignment Function button >>_________________________ _____________________________________________________________________
 
+// document.addEventListener("DOMContentLoaded", () => {
+//     const textAlignmentButton = document.getElementById("text-alignment");
+//     const alignments = ["left", "center", "right"];
+//     let currentAlignmentIndex = 0;
+
+//     textAlignmentButton.addEventListener("click", () => {
+//         currentAlignmentIndex = (currentAlignmentIndex + 1) % alignments.length;
+//         document.querySelectorAll("p").forEach(p => {
+//             p.style.textAlign = alignments[currentAlignmentIndex];
+//         });
+//     });
+// });
+
+//________________________<< Text Decoration Toggle >>_________________________
 document.addEventListener("DOMContentLoaded", () => {
-    const textAlignmentButton = document.getElementById("text-alignment");
-    const alignments = ["left", "center", "right"];
-    let currentAlignmentIndex = 0;
+    const decorationButton = document.getElementById("decoration");
+    const decorations = ["none", "underline", "overline", "line-through"];
+    let currentDecorationIndex = 0;
 
-    textAlignmentButton.addEventListener("click", () => {
-        currentAlignmentIndex = (currentAlignmentIndex + 1) % alignments.length;
-        document.querySelectorAll("p").forEach(p => {
-            p.style.textAlign = alignments[currentAlignmentIndex];
-        });
-    });
-});
-
-
-
-// TRYING JQuery drag edit and resize
-
-$(document).ready(function () {
-      $(".drag-wrapper").each(function () {
-        const $wrapper = $(this);
-        const $box = $wrapper.find(".drag-box");
-        const $handle = $wrapper.find(".resize-handle");
-
-        $wrapper.draggable({
-  containment: "#blended-content",
-  stop: function(event, ui) {
-    // On stop, apply absolute positioning instead of transform
-    $wrapper.css({
-      left: ui.position.left,
-      top: ui.position.top,
-      transform: "none"
-    });
-  }
-});
-
-        $box.on("dblclick", function () {
-          $box.attr("contenteditable", true).focus();
-          $wrapper.draggable("disable");
-        });
-
-        $box.on("blur", function () {
-          $box.removeAttr("contenteditable");
-          $wrapper.draggable("enable");
-        });
-
-        let isResizing = false;
-        let startX, startY, startWidth, startHeight;
-
-        $handle.on("mousedown", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          isResizing = true;
-          startX = e.clientX;
-          startY = e.clientY;
-          startWidth = $wrapper.outerWidth();
-          startHeight = $wrapper.outerHeight();
-
-          $wrapper.draggable("disable");
-
-          $(document).on("mousemove.boxResize", function (e) {
-            if (!isResizing) return;
-            let newWidth = startWidth + (e.clientX - startX);
-            let newHeight = startHeight + (e.clientY - startY);
-            $wrapper.css({ width: newWidth + "px", height: newHeight + "px" });
-          });
-
-          $(document).on("mouseup.boxResize", function () {
-            isResizing = false;
-            $(document).off(".boxResize");
-            $wrapper.draggable("enable");
-          });
-        });
-      });
-    });
-
-    ///// 按钮跳转到advance mode .////
-    document.getElementById("advance-mode-btn").addEventListener("click", function () {
-    window.location.href = "advance.html";
-});
-
- ///this goes at the end to play the animation when the user closes the tab or refreshes the page manually
- window.addEventListener("beforeunload", function () {
-  sessionStorage.removeItem("loaderPlayed");
-});
-
-
-
-// Listen for clicks on any .drag-wrapper //Track current selection
-let currentSelection = null;
-document.querySelectorAll(".drag-wrapper").forEach(wrapper => {
-    wrapper.addEventListener("click", function () {
-        if (currentSelection) {
-            currentSelection.classList.remove("selected");
+    decorationButton.addEventListener("click", () => {
+        if (!currentSelection) return;
+        const paragraph = currentSelection.querySelector("p");
+        if (paragraph) {
+            currentDecorationIndex = (currentDecorationIndex + 1) % decorations.length;
+            paragraph.style.textDecoration = decorations[currentDecorationIndex];
         }
-        currentSelection = this;
-        currentSelection.classList.add("selected");
     });
 });
-document.addEventListener("click", function (event) {
-    // If the clicked element is NOT inside a .drag-wrapper
-    if (!event.target.closest(".drag-wrapper")) {
-        if (currentSelection) {
-            currentSelection.classList.remove("selected");
-            currentSelection = null;
+
+// //Improve Click Handling
+// document.addEventListener("click", (e) => {
+//   const sel = e.target.closest(".selection");
+//   if (sel) {
+//     setCurrentSelection(sel);
+//     updateSliders(currentSelection);
+//     updateToggleFromSelection(currentSelection);
+//   }
+// });
+    
+// Inject custom styles for selection and custom resize handle
+const style = document.createElement('style');
+style.textContent = `
+.selection {
+  cursor: text;
+  position: relative;
+}
+
+.selection:focus-within,
+.selection:hover,
+.selection.is-selected {
+    outline: 3px dotted rgb(255, 105, 188);
+    outline-offset: -3px;
+}
+
+.custom-resize-handle {
+  width: 17px;
+  height: 17px;
+  background: hotpink;
+  clip-path: polygon(25% 0, 63% 37%, 100% 0, 100% 100%, 0 100%, 38% 62%, 0 25%);
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+  display: none;
+}
+
+.selection:hover .custom-resize-handle,
+.selection:focus-within .custom-resize-handle,
+.selection.is-selected .custom-resize-handle {
+  display: block;
+}
+ .selection:hover {
+   cursor: grab;
+ }
+ .selection.dragging {
+   cursor: grabbing !important;
+ }`;
+document.head.appendChild(style);
+
+// // ===== NEW FUNCTION LABELS SYSTEM =====
+
+// const BUTTON_LABELS = [
+//   { id: "about", label: "About" },
+//   { id: "chart", label: "Chart" },
+//   { id: "meaning", label: "Legible" },
+//   { id: "greyscale", label: "Greyscale" },
+//   { id: "toggle-switch", label: "Shape" },
+//   { id: "picker1", label: "Color" },
+//   { id: "decoration", label: "Underline" },
+//   { id: "import-font", label: "Import Font" },
+//   { id: "save-png-btn", label: "Save" },
+//   { id: "delete", label: "Delete" },
+// ];
+
+// const SLIDER_LABELS = [
+//   { id: "font-size-slider", label: "Font Size" },
+//   { id: "line-height-slider", label: "Line Height" },
+//   { id: "letter-spacing-slider", label: "Letter Spacing" },
+//   { id: "slant", label: "Slant" },
+// ];
+
+// function createFunctionLabels() {
+//   const buttonBar = document.createElement("div");
+//   buttonBar.id = "button-labels";
+//   buttonBar.className = "button-labels-bar";
+//   document.querySelector(".button-rail").appendChild(buttonBar);
+
+//   const sliderBar = document.createElement("div");
+//   sliderBar.id = "slider-labels";
+//   sliderBar.className = "slider-labels-bar";
+//   document.querySelector(".slider-container").appendChild(sliderBar);
+
+//   BUTTON_LABELS.forEach(({ id, label }) => {
+//     const el = document.getElementById(id);
+//     if (!el) return;
+//     const span = document.createElement("div");
+//     span.className = "function-label btn-label";
+//     span.dataset.for = id;
+//     span.textContent = label;
+//     buttonBar.appendChild(span);
+//   });
+
+//   SLIDER_LABELS.forEach(({ id, label }) => {
+//     const el = document.getElementById(id);
+//     if (!el) return;
+//     const span = document.createElement("div");
+//     span.className = "function-label slider-label";
+//     span.dataset.for = id;
+//     span.textContent = label;
+//     sliderBar.appendChild(span);
+//   });
+
+//   positionFunctionLabels();
+// }
+
+// function positionFunctionLabels() {
+//   const buttonBar = document.getElementById("button-labels");
+//   const sliderBar = document.getElementById("slider-labels");
+//   if (!buttonBar || !sliderBar) return;
+
+//   BUTTON_LABELS.forEach(({ id }) => {
+//     const el = document.getElementById(id);
+//     const label = buttonBar.querySelector(`.btn-label[data-for="${id}"]`);
+//     if (!el || !label) return;
+//     label.style.left = `${el.offsetLeft + el.offsetWidth + 1}px`;
+// label.style.top = `${el.offsetTop + el.offsetHeight / 7}px`;
+//   });
+
+//   SLIDER_LABELS.forEach(({ id }) => {
+//     const el = document.getElementById(id);
+//     const label = sliderBar.querySelector(`.slider-label[data-for="${id}"]`);
+//     if (!el || !label) return;
+//     label.style.left = `${el.offsetLeft + el.offsetWidth / 2}px`;
+// label.style.top = `${el.offsetTop + el.offsetHeight + 20}px`;
+//   });
+// }
+
+// window.addEventListener("resize", positionFunctionLabels);
+// window.addEventListener("DOMContentLoaded", () => {
+//   createFunctionLabels();
+// });
+// Helper: place caret at mouse position inside a contenteditable element
+function placeCaretAtPoint(el, clientX, clientY) {
+  if (!el) return;
+  const sel = window.getSelection();
+  if (!sel) return;
+  const range = document.createRange();
+
+  // Modern API
+  if (document.caretPositionFromPoint) {
+    const pos = document.caretPositionFromPoint(clientX, clientY);
+    if (pos && pos.offsetNode) {
+      range.setStart(pos.offsetNode, Math.min(pos.offset, (pos.offsetNode.nodeValue || '').length || 0));
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      return;
+    }
+  }
+  // WebKit/Blink fallback
+  if (document.caretRangeFromPoint) {
+    const r = document.caretRangeFromPoint(clientX, clientY);
+    if (r) {
+      sel.removeAllRanges();
+      sel.addRange(r);
+      return;
+    }
+  }
+  // Last resort: put caret at end
+  range.selectNodeContents(el);
+  range.collapse(false);
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
+// Make text editable and set caret exactly where clicked
+document.addEventListener('mousedown', function (e) {
+  const p = e.target.closest('.selection-content p');
+  if (!p) return;
+  p.setAttribute('contenteditable', 'true');
+  // Avoid native selection flicker; we’ll place the caret ourselves
+  e.preventDefault();
+  p.focus();
+  placeCaretAtPoint(p, e.clientX, e.clientY);
+}, true); // capture phase so this runs first
+
+// Toggle SHAP axis using toggle switch
+document.getElementById("toggle-switch").addEventListener("change", function () {
+    if (currentSelection) {
+        const paragraph = currentSelection.querySelector("p");
+        const newVal = this.checked ? 4 : 1;
+        if (paragraph) {
+            paragraph.style.fontVariationSettings = `'SHAP' ${newVal}`;
         }
     }
 });
+// Sync shape toggle with current selection
+function updateToggleFromSelection(sel) {
+    const toggle = document.getElementById("toggle-switch");
+    const paragraph = sel.querySelector("p");
+    if (!paragraph) {
+        toggle.checked = false;
+        return;
+    }
+
+    //  ensures it always reads the visible value, not just inline.
+    let settings = getComputedStyle(paragraph).getPropertyValue("font-variation-settings");
+
+    const match = settings.match(/'SHAP'\s*([0-9.]+)/);
+    if (match) {
+        toggle.checked = parseFloat(match[1]) === 4;
+    } else {
+        toggle.checked = false;
+    }
+}
+// Update toggle when selection is clicked
+document.addEventListener("click", (e) => {
+    if (suppressClearOnce) {
+      suppressClearOnce = false; // consume this click (likely the post-drag click)
+      return;
+    }
+    const sel = e.target.closest(".selection");
+    if (sel) {
+        setCurrentSelection(sel);
+        updateSliders(sel);
+        updateToggleFromSelection(sel);
+        const p = sel.querySelector('p');
+        if (p) {
+            p.setAttribute('contenteditable', 'true');
+            p.focus();
+            // If no selection ranges exist (e.g., programmatic focus), put caret at end by default
+            const selObj = window.getSelection();
+            if (selObj && selObj.rangeCount === 0) {
+              const r = document.createRange();
+              r.selectNodeContents(p);
+              r.collapse(false);
+              selObj.addRange(r);
+            }
+        }
+    }
+    // Clear selection if clicking on empty canvas area (inside #blended-content but not on a .selection)
+    else if (e.target.closest('#blended-content') && !e.target.closest('.selection')) {
+        setCurrentSelection(null);
+    }
+});
+
+
+    ///test out spcial color picker///
+    var colorPicker = new iro.ColorPicker('#picker1',{
+        width: 120,
+        color: "#f00",// Set the initial color to pure red
+        display:"flex",
+        margin:0,
+        borderWidth:8,
+        layout: [
+            { 
+            component: iro.ui.Slider,
+            options: {
+                sliderType: 'hue',
+                
+            }
+            },
+            { 
+            component: iro.ui.Slider,
+            options: {
+                sliderType: 'saturation',
+                
+                }
+            },
+            { 
+            component: iro.ui.Slider,
+            options: {
+                sliderType: 'value',
+                }
+            },
+        ]
+    });
+
+    // Keep picker in sync with the currently selected box color
+    colorPicker.on('color:change', function(color) {
+      if (currentSelection) {
+        currentSelection.style.color = color.hexString;
+      }
+    });
+
+
+    //Close the advance pop-up window to explain the function
+//     document.addEventListener("click", function (e) {
+//   if (e.target.classList.contains("close-popup")) {
+//     const popup = e.target.closest("div[id$='popup']");
+//     if (popup) popup.remove();
+//   }
+// });
+
+
+// ===== Gallery Pane (bottom-right) =====
+(function initGalleryPane() {
+  function buildGalleryPane() {
+    // If it already exists, don't duplicate
+    let gallery = document.getElementById('gallery');
+    if (gallery) return gallery;
+
+    gallery = document.createElement('div');
+    gallery.id = 'gallery';
+    // Position & sizing per spec
+    gallery.style.position = 'fixed';
+    gallery.style.right = '0';
+    gallery.style.bottom = '0';
+    gallery.style.width = '30vw';            
+    gallery.style.height = 'calc(100vh - 130px)';
+    // Visuals (match chart popup style)
+    gallery.style.background = 'black';     // yellow as gallery background 
+    gallery.style.color = 'white';
+    gallery.style.outline = '5px solid #fff04b';
+    gallery.style.borderRadius = "20px 0 0 0";
+    // gallery.style.borderRadius = '20px';
+    gallery.style.zIndex = '1000';
+    gallery.style.display = 'flex';
+    gallery.style.flexDirection = 'column';
+    gallery.style.overflow = 'hidden';        // header fixed, inner scrolls
+    gallery.style.fontFamily = 'authentic-sans-90, sans-serif';
+
+    // Header (title + delete button)
+    const header = document.createElement('div');
+    header.className = 'gallery-header';
+    header.style.display = 'flex';
+    header.style.alignItems = 'center';
+    header.style.justifyContent = 'space-between';
+    header.style.fontSize = '15px';
+    header.style.padding = '7px 12px';
+    header.style.background = '#fff04b';
+    header.style.color = '#000';
+
+    const title = document.createElement('div');
+    title.textContent = 'Illegible Pattern Gallery';
+    title.style.fontWeight = '700';
+
+    const closeBtn = document.createElement('span');
+    closeBtn.id = 'close-gallery';
+    closeBtn.textContent = '✕';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.fontSize = '18px';
+    closeBtn.style.fontWeight = '900';
+    closeBtn.style.padding = '0px 6px';
+
+    header.appendChild(title);
+    header.appendChild(closeBtn);
+
+    // Scroll area for images
+    const scroll = document.createElement('div');
+    scroll.className = 'gallery-scroll';
+    scroll.style.position = 'relative';
+    scroll.style.flex = '1 1 auto';
+    scroll.style.overflowY = 'auto';
+    scroll.style.overflowX = 'hidden';
+    scroll.style.padding = '0px 0px 0 3px';
+    scroll.style.background = '#fff04b';
+
+    // Image strip container
+    const list = document.createElement('div');
+    list.className = 'gallery-list';
+    list.style.display = 'block';
+    list.style.width = '100%';
+
+    scroll.appendChild(list);
+
+    // Append
+    gallery.appendChild(header);
+    gallery.appendChild(scroll);
+    document.body.appendChild(gallery);
+
+    // Close behavior: hide the gallery instead of removing it
+    closeBtn.addEventListener('click', function() {
+      gallery.style.display = 'none';
+    });
+
+    return gallery;
+  }
+
+  // Public helper: replace gallery content with an array of image URLs
+  window.setGalleryImages = function(urls) {
+    const gallery = buildGalleryPane();
+    const list = gallery.querySelector('.gallery-list');
+    list.innerHTML = '';
+    (urls || []).forEach(function(src) {
+      const wrapper = document.createElement('div');
+      wrapper.style.marginBottom = '10px';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.style.width = '100%';    // make all images same width as pane
+      img.style.height = 'auto';
+      img.style.display = 'block';
+
+      wrapper.appendChild(img);
+      list.appendChild(wrapper);
+    });
+  };
+
+  // Auto-create the pane on load (empty; caller can populate via setGalleryImages)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildGalleryPane);
+  } else {
+    buildGalleryPane();
+  }
+})();
+
+// ===== Wire Gallery Button to Toggle Gallery Pane =====
+document.addEventListener('DOMContentLoaded', function(){
+  const btn = document.getElementById('gallery-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    const gallery = document.getElementById('gallery');
+    if (!gallery) return;
+    const isHidden = (gallery.style.display === 'none' || getComputedStyle(gallery).display === 'none');
+    gallery.style.display = isHidden ? 'flex' : 'none';
+  });
+});
+
+// Gallery-specific scrollbar styling (matching chart popup aesthetics)
+(function injectGalleryScrollCSS(){
+  const galleryScrollCSS = document.createElement('style');
+  galleryScrollCSS.textContent = `
+    #gallery .gallery-scroll::-webkit-scrollbar { width: 10px; }
+    #gallery .gallery-scroll::-webkit-scrollbar-track 
+    #gallery .gallery-scroll::-webkit-scrollbar-thumb 
+    #gallery .gallery-scroll::-webkit-scrollbar-thumb:hover 
+    /* Firefox */
+    #gallery .gallery-scroll { scrollbar-width: thin; scrollbar-color: #fff04b #34d3ff; }
+  `;
+  document.head.appendChild(galleryScrollCSS);
+})();
+
+setGalleryImages([
+   "gallery/pattern0.jpg",
+  "gallery/pattern1.jpg",
+  "gallery/pattern2.jpg",
+  "gallery/pattern3.jpg",
+  "gallery/pattern4.jpg",
+  "gallery/pattern5.jpg",
+  "gallery/pattern6.jpg",
+  "gallery/pattern7.jpg",
+  "gallery/pattern8.jpg",
+  "gallery/pattern9.jpg",
+  "gallery/pattern10.jpg",
+  "gallery/pattern11.jpg",
+  "gallery/pattern12.jpg",
+  "gallery/pattern13.jpg",
+  "gallery/pattern14.jpg",
+  "gallery/pattern15.jpg",
+  "gallery/pattern16.jpg",
+  "gallery/pattern17.jpg",
+  "gallery/pattern18.jpg",
+  "gallery/pattern19.jpg",
+  "gallery/pattern20.jpg",
+  // "gallery/pattern21.jpg",
+  "gallery/pattern22.jpg",
+  "gallery/pattern23.jpg",
+  "gallery/pattern25.jpg",
+  "gallery/pattern26.jpg",
+  "gallery/pattern27.jpg",
+  "gallery/pattern28.jpg",
+  "gallery/pattern24.jpg",
+]);
+
 window.addEventListener("DOMContentLoaded", function () {
     document.getElementById("about").click();
 });
+// Ensure the letter-spacing bubble exists (in case it was removed) and position it on load
+document.addEventListener('DOMContentLoaded', function(){
+  const slider = document.getElementById('letter-spacing-slider');
+  if (slider && !document.getElementById('letter-spacing-value')) {
+    const bubble = document.createElement('span');
+    bubble.id = 'letter-spacing-value';
+    bubble.className = 'slider-bubble';
+    bubble.textContent = '0';
+    slider.insertAdjacentElement('afterend', bubble);
+  }
+  if (typeof updateLetterSpacingBubble === 'function') {
+    updateLetterSpacingBubble();
+  }
+});
+
+// Dynamically position slider labels based on the center of their corresponding sliders
+function positionSliderLabels() {
+  const labels = document.querySelectorAll('.slider-label');
+  labels.forEach(label => {
+    const sliderId = label.dataset.for;
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+
+    const rect = slider.getBoundingClientRect();
+    const containerRect = slider.offsetParent.getBoundingClientRect();
+
+    label.style.position = "absolute";
+    label.style.left = `${rect.left + rect.width / 2 - 152}px`;
+    label.style.top = `${rect.bottom - 40}px`;
+    label.style.transform = "translateX(-50%)";
+  });
+}
+
+window.addEventListener("load", () => {
+  positionSliderLabels();
+});
+
+window.addEventListener("resize", () => {
+  positionSliderLabels();
+});
+
+window.addEventListener("load", () => {
+  updateRangeBubble('ratio', 'ratio-value', v => parseFloat(v).toFixed(2), 42);
+});
+
+// Label toggle button logic
+document.getElementById("instruction-btn").addEventListener("click", function () {
+  const buttonLabels = document.getElementById("button-labels") || document.getElementById("button-label-container");
+  const sliderLabels = document.getElementById("slider-labels") || document.getElementById("slider-label-container");
+
+  if (!buttonLabels || !sliderLabels) return;
+
+  // Use computed style in case display is not set inline
+  const currentlyVisible = (buttonLabels.style.display !== "none");
+  buttonLabels.style.display = currentlyVisible ? "none" : "block";
+  sliderLabels.style.display = currentlyVisible ? "none" : "block";
+});
 </script>
-</body>
+
 </html>

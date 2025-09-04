@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 121.9 121.9">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #1044ff;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        stroke-width: 0px;
+      }
+
+      .cls-1, .cls-7, .cls-5 {
+        mix-blend-mode: multiply;
+      }
+
+      .cls-8 {
+        fill: #f4dc51;
+        stroke: #f0b;
+      }
+
+      .cls-8, .cls-7 {
+        stroke-miterlimit: 10;
+        stroke-width: 7px;
+      }
+
+      .cls-2 {
+        fill: #fff000;
+      }
+
+      .cls-7 {
+        fill: #0cf;
+        stroke: #0079ff;
+      }
+
+      .cls-3 {
+        fill: #f0b;
+      }
+
+      .cls-4, .cls-9, .cls-10 {
+        fill: #000;
+      }
+
+      .cls-5 {
+        fill: #27c2e9;
+      }
+
+      .cls-9 {
+        font-size: 60px;
+      }
+
+      .cls-9, .cls-10 {
+        font-family: AUTHENTICSans-Condensed150, 'AUTHENTIC Sans';
+      }
+
+      .cls-11 {
+        isolation: isolate;
+      }
+
+      .cls-10 {
+        font-size: 64.2px;
+      }
+
+      .cls-6 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g class="cls-11">
+    <g id="Layer_1" data-name="Layer 1">
+      <path class="cls-4" d="M-31.1-488.5h-68.8c-6.6,0-12,5.4-12,12v55.4c0,6.6,5.4,12,12,12H-31.1c6.6,0,12-5.4,12-12v-55.4c0-6.6-5.4-12-12-12ZM-43.6-477.2c5.8,0,10.4,4.7,10.4,10.4s-4.7,10.4-10.4,10.4-10.4-4.7-10.4-10.4,4.7-10.4,10.4-10.4ZM-32.8-417.2h-65c-2.5,0-5.5-1.9-5.5-6.1,0-7.4,5.4-29.9,17-29.9s19.2,19.6,23.1,19.6c5.1-.1,8.9-9.4,17.4-9.4s17.5,15.2,17.5,20.7-1.8,5.2-4.4,5.2Z"/>
+      <rect class="cls-5" x="-243.7" y="-190.7" width="34.8" height="34.3"/>
+      <path class="cls-8" d="M254.4-517.3c28.5,0,51.6,23.1,51.6,51.6s-23.1,51.6-51.6,51.6"/>
+      <polyline class="cls-7" points="254.4 -414.1 254.4 -414.1 202.8 -414.1 202.8 -517.3 254.4 -517.3"/>
+      <path class="cls-3" d="M254.4-417.4c-26.7,0-48.3-21.6-48.3-48.3s21.6-48.3,48.3-48.3"/>
+      <rect class="cls-5" x="-113.7" y="-190.7" width="34.8" height="34.3"/>
+      <path class="cls-3" d="M257.1-387c31.3,0,56.7,25.4,56.7,56.7s-25.4,56.7-56.7,56.7"/>
+      <polyline class="cls-1" points="257.7 -273.6 257.7 -273.6 196.5 -273.6 196.5 -386.7 257.7 -386.7"/>
+      <path class="cls-2" d="M257.7-282.1c-26.6,0-48.1-21.5-48.1-48.1s21.5-48.1,48.1-48.1"/>
+      <text class="cls-10" transform="translate(4.4 55)"><tspan x="0" y="0">ON</tspan></text>
+      <text class="cls-10" transform="translate(15.2 117.1)"><tspan x="0" y="0">OFF</tspan></text>
+      <g>
+        <rect class="cls-4" x="-3.3" y="56" width="128.1" height="12.2" transform="translate(-19.9 29.8) rotate(-23.8)"/>
+        <path class="cls-6" d="M116.1,32.6l3.7,8.3L5.4,91.5l-3.7-8.3,114.4-50.6M117.7,28.6l-2.8,1.2L.5,80.4l-2.8,1.2,1.2,2.8,3.7,8.3,1.2,2.8,2.8-1.2,114.4-50.6,2.8-1.2-1.2-2.8-3.7-8.3-1.2-2.8h0Z"/>
+      </g>
+      <text class="cls-9" transform="translate(-190.4 52.9)"><tspan x="0" y="0">on</tspan></text>
+      <text class="cls-9" transform="translate(-158.4 111.2)"><tspan x="0" y="0">off</tspan></text>
+      <g>
+        <rect class="cls-4" x="-203.2" y="59.9" width="128.3" height="9.9" transform="translate(-63.7 -68.8) rotate(-35.6)"/>
+        <path class="cls-6" d="M-90,24.9l4.6,6.4-102.8,73.5-4.6-6.4L-90,24.9M-89.5,22.1l-1.6,1.2-102.8,73.5-1.6,1.2,1.2,1.6,4.6,6.4,1.2,1.6,1.6-1.2L-84.3,32.9l1.6-1.2-1.2-1.6-4.6-6.4-1.2-1.6h0Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

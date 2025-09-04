@@ -1,3 +1,13 @@
+#gallery-btn{
+  -webkit-mask-image: url('gallery-icon.svg');
+  mask-image: url('gallery-icon.svg');
+  height: 23px;
+  mask-size: 27px;
+  min-width: 27px;
+  border: 0;
+  margin: 9px 0 8px 0;
+}
+#gallery-btn:hover{ background-color: #34d3ff; }
 /* Default font sizes */
 :root {
     --rem-size: 2rem; 
@@ -75,13 +85,13 @@ body {
   
   /* Track (background of the scrollbar) */
   ::-webkit-scrollbar-track {
-    background: #34d3ff;
+    background: #fff04b;
     border-radius: 10px;
   }
   
   /* Handle (the draggable part) */
   ::-webkit-scrollbar-thumb {
-    background: #fff04b;
+    background: #34d3ff;
     border-radius: 10px;
   }
   
@@ -110,6 +120,8 @@ body {
     align-items: center;
     width: 350px;
 }
+
+
 
 /* .slider-group label {
     flex: 1; 
@@ -339,37 +351,44 @@ input[type="range"] {
 
 #font-size-slider::-webkit-slider-thumb {
     background: #ff489a;
-    width:23px;
-    height:23px;
+    width:30px;
+    height:30px;
 }
 #line-height-slider::-webkit-slider-thumb {
     background: #00ab22;
-    width:30px;
-    height:30px;
-    clip-path: polygon(50% 0%, 80% 50%, 50% 100%, 20% 50%);
+    width:37px;
+    height:32px;
+    clip-path: polygon(50% 0, 95% 30%, 95% 70%, 50% 100%, 5% 70%, 5% 30%);
 
 }
 #letter-spacing-slider::-webkit-slider-thumb {
     background: #ff4d00;
-    width:30px;
-    height:30px;
-    clip-path: polygon(50% 20%, 100% 50%, 50% 80%, 0 50%);
-   
+    width: 37px;
+    height:28px;
+    /* clip-path: polygon(50% 20%, 100% 50%, 50% 80%, 0 50%); */
+   clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+
 }
 #slant::-webkit-slider-thumb {
     background: #ff489a;
     border-radius: 0px;
-    height:20px;
-    width:30px;
-    clip-path: polygon(40% 0, 100% 0%, 60% 100%, 0% 100%);
+    height:24px;
+    width:44px;
+    clip-path: polygon(35% 0, 100% 0%, 65% 100%, 0% 100%);
 
 }
 #ratio::-webkit-slider-thumb {
     background: #318cd6;
     height:26px;
-    width:16px;
+    width:44px;
 }
 
+/* Per-slider thumb width (px) used by JS for centering bubbles */
+#font-size-slider       { --thumb-w: 30; }
+#line-height-slider     { --thumb-w: 37; }
+#letter-spacing-slider  { --thumb-w: 37; }
+#slant                  { --thumb-w: 44; } /* this one is a bit wider */
+#ratio { --thumb-w: 44; } 
 
 /* 🎨 Customize the circular slider button */
 #h2-slider::-webkit-slider-thumb {
@@ -385,8 +404,9 @@ cursor: pointer;
 -webkit-appearance: none;
 appearance: none;}
 
+/* Slight increase on hover */
 input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.2); /* Slight increase on hover */
+    transform: scale(1.12); 
 }
  
 /* EDITABLE TEXT */
@@ -406,21 +426,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* BUTTON STYLING */
 
-.button-container {
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    gap: 10px; /* Space between buttons */
-    /* justify-content: center; */
-    z-index: 9998;
-    width:97%;
-    height:27px;
-    padding: 5px 10px;
-    background:white;
-    outline: 1px solid #f3e24d;
-    border-radius: 10px;
-    position:fixed;
-}
 
 /* .button {
 /* 
@@ -452,12 +457,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 #meaning{
     width:35px; 
-    font-size:21px;
+    font-size:23px;
     font-family: "Noto Sans SC", sans-serif;
     font-weight: 600;
-    margin: -2px -2px 0 -1px;
+    margin: 4px 0px 12px 0px;
     background: transparent; 
-    padding:0px;
     border:0px;
     display:flex;
     justify-content: space-around;
@@ -473,6 +477,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 #about{
     width:35px; 
+    height:32px;
     font-size:27px;
     font-family: "Noto Sans SC", sans-serif;
     font-weight: 600;
@@ -491,12 +496,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 #chart{
     width:35px; 
-    font-size:27px;
+    font-size:30px;
     font-family: "Noto Sans SC", sans-serif;
     font-weight: 600;
-    margin: -2px 0 0px 0;
+    /* margin: -5px 0x 0px 0px; */
+    height:35px;
     background: transparent; 
-    padding:0;
+    padding:0px;
     border:0px;
     display:flex;
     justify-content: space-around;
@@ -512,7 +518,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     font-size:27px;
     font-family: "Noto Sans SC", sans-serif;
     font-weight: 600;
-    margin: -2px -1px 0px -4px;
+    margin: 1px 0px 4px 0px;
     background: transparent; 
     padding:0;
     border:0px;
@@ -563,38 +569,68 @@ input[type="range"]::-webkit-slider-thumb:hover {
   100% { transform: scale(1.85) translate(1px, -2px) rotate(-1deg); }
 }
 
+#greyscale{
+    margin-top: 19px;
+}
 #delete{
     background: transparent; 
     padding:0;
     border:0px;
-    min-width:22px;
-    margin-top:3px;
-    transition: 0.2s;
+    min-width:24px;
+    margin-top:6px;
+    margin-bottom: -2px;
+    transition: 0.1s;
     filter:  invert(45%) sepia(99%) saturate(463%) hue-rotate(167deg) brightness(89%) contrast(86%);
 }
+
+
 #delete:hover{
     filter:invert(71%) sepia(75%) saturate(5030%) hue-rotate(324deg) brightness(90%) contrast(104%);
 }
+#instruction-btn{
+    -webkit-mask-image: url('onoff.svg');
+    mask-image: url('onoff.svg');
+    mask-size:27px;
+    height: 28px;
+    min-width:27px;
+    border: 0;
+    background-color: #3fbd48;
+    border:0px;
+    transition: 0.1s;
+}
+
+#instruction-btn:hover{
+background-color: black;}
+
+
+        #save-png-btn{
+            -webkit-mask-image: url('save.svg');
+            mask-image: url('save.svg');
+            height: 23px;
+            mask-size:26px;
+            min-width:26px;
+            border: 0;
+            margin: 13px 0px 4px 0px;
+        }
+        #save-png-btn:hover{
+            background-color: #00ff11;
+        }
+
+        #import-font{
+            -webkit-mask-image: url('save.svg');
+            mask-image: url('save.svg');
+            transform:rotate(180deg);
+            height: 23px;
+            mask-size:26px;
+            min-width:26px;
+            border: 0;
+            margin: 0 0px 0px 0px;
+        }
 
 button:hover {
     background: #ff0000e6;
 }
  
-#go-back{
-    background: transparent; 
-    padding:0;
-    border:0px;
-    min-width:23px;
-    margin-left:-4px;
-    margin-top:3px;
-    transition: 0.2s;
-}
-
-#go-back:hover{
-    transform: rotate(90deg);
-    filter: invert(22%) sepia(99%) saturate(5774%) hue-rotate(304deg) brightness(103%) contrast(116%);
-    margin-top:0px;
-}
     
 /* color picker setting */
 input[type="color"] {
@@ -758,9 +794,10 @@ input[type="color"] {
         display: inline-block;
         min-width: 43px;
         height: 25px;
-        top:0px;
         overflow: hidden; 
         border-radius: 5px 100px 100px 5px;
+        transform: rotate(90deg);
+    
       }
     
       .toggle-wrapper input {
@@ -821,30 +858,6 @@ input[type="color"] {
             margin: 0 -5px;
         }
         
-        #save-png-btn{
-            -webkit-mask-image: url('save.svg');
-            mask-image: url('save.svg');
-            height: 23px;
-            mask-size:26px;
-            min-width:26px;
-            border: 0;
-            margin: 0 -4px 0 -6px;
-        }
-        #save-png-btn:hover{
-            background-color: #00ff11;
-        }
-
-        #import{
-            -webkit-mask-image: url('save.svg');
-            mask-image: url('save.svg');
-            transform:rotate(180deg);
-            height: 23px;
-            mask-size:26px;
-            min-width:26px;
-            border: 0;
-            margin: 0 -3px;
-        }
-
 
         /* THESE SETTING ARE FOR opening loading animation */
 
@@ -890,17 +903,7 @@ input[type="color"] {
         position: relative;
         overflow: visible; /* Prevent handle from scrolling */
       }
-      .custom-resize-handle {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 17px;
-        height: 17px;
-        background: hotpink;
-        clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
-        z-index: 10;
-        pointer-events: auto;
-      }
+      
 .selection p {
         margin: 0;
       }
@@ -930,3 +933,76 @@ input[type="color"] {
     border: 5px solid rgb(255, 240, 75);
 
 }
+.slider-group { 
+  position: relative; 
+   overflow: visible; 
+}
+
+.slider-bubble {
+  position: absolute;    
+    top:0.5px;
+  transform: translateX(-50%);
+  font-family: authentic-sans-130, sans-serif;
+  font-size: 11px;         /* a bit larger for readability */
+  line-height: 1;
+  color: white;             /* high contrast text */
+  background:transparent; /* yellow pill background */
+  /* border: 1px solid #000;
+  border-radius: 10px; */
+  user-select: none;
+  pointer-events: none;    /* don't block slider interactions */
+  z-index: 10;         
+  display: inline-block;
+  white-space: nowrap;
+  min-width: 2ch;      /* room for at least two digits */
+  text-align: center;
+}
+
+#button-label-container{
+      position: fixed;   
+    color: rgb(138, 138, 138);
+    font-size:12px;
+    font-family: authentic-sans-90, sans-serif;
+    margin-left:72px;
+    margin-top:90px;
+}
+#slider-label-container{
+    position: fixed;   
+    color:  rgb(138, 138, 138);
+    font-size:12px;
+    font-family: authentic-sans-90, sans-serif;
+    left:152px;
+    top: 67px;
+}
+.slider-label {
+  position: absolute;
+  font-size: 12px;
+  white-space: nowrap;         /* prevents vertical wrapping */
+  text-align: center;
+  transform: translateX(-50%);
+  max-width: none;
+}
+/* .slider-container {
+  position: relative;
+} */
+/* 
+.button-labels-bar,
+.slider-labels-bar {
+  position: absolute;
+  font-family: authentic-sans-90, sans-serif;
+  font-size: 12px;
+  color: grey;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+
+.function-label {
+  position: absolute;
+  white-space: nowrap;
+  line-height: 1;
+  text-align: left;
+}
+.slider-label {
+  text-align: center;
+} */
