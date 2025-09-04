@@ -17,31 +17,36 @@
   <script src="iro.min.js"></script>
   <!-- <script src="script.js"></script> -->
 </head>
-<body> 
-    <!-- <div id="loader-wrapper">
-        <div id="loader">
-        <div class="loading-text" id="loading-text"></div>
-          </div>     </div>    -->
+<body>
+ 
 
-    <div class="button-container">
+   
        
-        
-            <!--  第1个按钮：About page pop-up -->
-         <button id="about"> ? </button>  
+        <!-- <div id="advance-popup"> 
+            <span class="close-popup" style="
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 100;">
+  
+            ✕
+            
+            </span>
+           
+                <span style="text-decoration: underline; text-underline-offset: 2px;">Drag and drop</span> on the blank canvas<br>to start your pattern! <br> <br>You can <span style="text-decoration: underline; text-underline-offset: 2px;">drag</span> them around <br>and <span style="text-decoration: underline; text-underline-offset: 3px;">double-click</span> to edit. 
+            </div> -->
 
-            <!--  第2个按钮：Glyphs Chart -->
-         <button id="chart"> ! </button>  
-         
-            <!--  第3个按钮：Change Shape font to Authentic Sans -->
-         <button id="meaning" >字</button>
-
-
-            <!--  4：Change multiply color to solid color -->
-         <button id="color-mode" class="styled-button darkblueback"></button>  
-
-
-            <!--  5：Greyscale Button -->
-        <button id="greyscale" class="styled-button inkback"></button>  
+         <button id="about" class="control-input"> ? </button>  
+         <button id="chart" class="control-input"> ! </button>  
+         <button id="meaning" class="control-input" >字</button>
+         <!-- <button id="text-alignment" class="styled-button yellowback control-input"></button>  -->
+         <label class="toggle-wrapper">
+            <input type="checkbox" id="toggle-switch" class="control-input">
+            <span class="slider"></span>
+          </label>
+          <button id="greyscale" class="styled-button inkback control-input"></button>  
 
           <div id="picker1" class="control-input"></div>
           <!-- <input type="color" id="color-picker" class="control-input" value="#FF0000"> -->
