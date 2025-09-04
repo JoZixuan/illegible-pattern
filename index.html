@@ -92,15 +92,15 @@
 <div id="button-label-container" style="display: block;">
   <div id = "about-btn-label">About</div>
   <div id = "chart-btn-label" style="margin-top: 29px;">Chart</div>
-  <div id = "legible-btn-label" style="margin-top: 28px;">Legible</div>
-  <div id = "shape-btn-label" style="margin-top: 34px;">Shape</div>
+  <div id = "legible-btn-label" style="margin-top: 27px;">Legible</div>
+  <div id = "shape-btn-label" style="margin-top: 33px;">Shape</div>
   <div id = "greyscale-btn-label" style="margin-top: 39px;">Greyscale</div>
-  <div id = "underline-btn-label" style="margin-top: 28px;">Underline</div>
-  <div id = "import-btn-label" style="margin-top: 28px;">Import Font</div>
-  <div id = "save-btn-label" style="margin-top: 31px;">Save</div>
+  <div id = "underline-btn-label" style="margin-top: 27px;">Underline</div>
+  <div id = "import-btn-label" style="margin-top: 27px;">Import Font</div>
+  <div id = "save-btn-label" style="margin-top: 30px;">Save</div>
   <div id = "delete-btn-label" style="margin-top: 27px;">Delete</div>
   <div id = "gallery-btn-label" style="margin-top: 28px;">Gallery</div>
-  <div id = "instruction-btn-label" style="margin-top: 27px;">Hint</div>
+  <div id = "instruction-btn-label" style="margin-top: 26px;">Hint</div>
 </div>
 
 <div id="slider-label-container" style="display: block;">
@@ -990,14 +990,14 @@ document.getElementById("meaning").addEventListener("click", function () {
       popup = document.createElement("div");
       popup.id = "import-font-popup";
       popup.innerHTML = `<p style="font-family: authentic-sans-90; font-size= 50px;mix-blend-mode: normal;">Click to upload your own font file.<br>
-It will replace all the current style.</p>`;
-      popup.style.width = "300px";
-      popup.style.height = "87px";
+It will replace the current pattern font.</p>`;
+      popup.style.width = "318px";
+      popup.style.height = "70px";
       popup.style.position = "fixed";
       popup.style.display = "flex";
       popup.style.justifyContent = "center";
       popup.style.alignItems = "center";
-      popup.style.textAlign = "center";
+      popup.style.textAlign = "left";
       popup.style.lineHeight = "150%";
       popup.style.background = "#ff489a";
       popup.style.mixBlendMode = "solid";
@@ -1005,8 +1005,9 @@ It will replace all the current style.</p>`;
       popup.style.borderRadius = "25px";
       popup.style.zIndex = "1000";
       popup.style.pointerEvents = "none";
-      popup.style.top = "267px";
+      popup.style.top = "337px";
       popup.style.left = "75px";
+      popup.style.padding = "3px 0px 0px 5px";
       document.body.appendChild(popup);
     }
   });
